@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 
 
-class UserPofileInfo(models.Model):
+class UserProfileInfo(models.Model):
     name = models.CharField(max_length=40)
     bio = models.CharField(max_length=200, blank=True)
     profile_picture = models.ImageField(blank=True, upload_to=settings.MEDIA_ROOT, null=True, default= settings.MEDIA_ROOT+'/default.png')

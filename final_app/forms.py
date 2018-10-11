@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from final_app.models import UserPofileInfo
+from final_app.models import UserProfileInfo
 
 class RegisterForm(forms.ModelForm):
     username = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder': 'Username'}))
@@ -25,5 +25,5 @@ class UserProfileInfoForm(forms.ModelForm):
     bio = forms.CharField(label='',widget=forms.Textarea(attrs={'placeholder':'Bio'}))
     
     class Meta():
-        model = UserPofileInfo
+        model = UserProfileInfo
         fields = ('name', 'bio', 'profile_picture')
