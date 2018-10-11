@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from final_app.forms import UserForm
+from final_app.forms import RegisterForm, UserProfileInfoForm
+from django.conf import settings
+
 
 
 def landing(request):
@@ -18,24 +20,48 @@ def user_logout(request):
 def register (request):
     registered = False
     if request.method == 'POST':
-        user_form = UserForm(data=request.POST)
-        if user_form.is_valid():
-            user = user_form.save()
+        form = RegisterForm(data=request.POST)
+        if form.is_valid():
+            user = form.save()
             user.set_password(user.password)
             user.save()
             registered = True
             login(request, user)
-            print (f'successfully logged in: {user}')
-            return HttpResponse('registered')
+            return redirect('profile_create')
         else:
-            print(user_form.errors)
+            print(form.errors)
     else:
-        user_form = UserForm()
+        form = RegisterForm()
         context = {
-            'user_form': user_form,
+            'register_form': form,
             'registered': registered
         }
-    return render(request, 'final_app/register.html', context)
+        return render(request, 'final_app/register.html', context)
+
+
+@login_required
+def profile_create(request):
+    if request.method == "POST":        
+        form = UserProfileInfoForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = request.user
+            profile.save()
+            return render(request, 'final_app/profile.html')
+        else: 
+            print(form.errors)
+            return render(request, 'final_app/profile_create.html', {'form': form})
+    else:
+        form = UserProfileInfoForm()
+        return render(request, 'final_app/profile_create.html', {'form': form})
+
+
+def profile_view(request):
+    user = request.user
+    context = {
+        'user': user
+    }
+    return render(request, 'final_app/profile.html', context)
 
 
 def user_login(request):
