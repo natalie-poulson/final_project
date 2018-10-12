@@ -3,29 +3,32 @@ from django.contrib.auth.models import User
 from . import models
 
 class CreateProfile(forms.ModelForm):
-    # name = forms.CharField(label='', 
-    #     widget=forms.TextInput( 
-    #         attrs={
-    #             'placeholder': 'Name',
-    #             }
-    #         ))
-    # current_city = forms.CharField(label='',
-    #     widget=forms.TextInput( 
-    #         attrs={
-    #             'placeholder':'Current City'
-    #             }
-    #     ))
-    # bio = forms.CharField(label='',
-    #     widget=forms.TextInput( 
-    #         attrs={
-    #             'placeholder': 'Bio'
-    #             }
-    #     ))
-    # profile_picture = forms.ImageField(label='',
-    #     required=False,
-    #     )
+    name = forms.CharField(label='', 
+        widget=forms.TextInput( 
+            attrs={
+                'placeholder': 'Name',
+                }
+            ))
+    current_city = forms.CharField(label='',
+        widget=forms.TextInput( 
+            attrs={
+                'placeholder':'Current City'
+                }
+        ))
+    bio = forms.CharField(label='',
+        widget=forms.TextInput( 
+            attrs={
+                'placeholder': 'Bio'
+                }
+        ))
+    profile_picture = forms.ImageField(label='',
+        required=False,
+        )
 
 
     class Meta():
         model = models.UserProfileInfo
         fields = ('name', 'current_city', 'bio', 'profile_picture')
+
+    # def clean_name(self):
+    #     name =  self.cleaned_data('name')

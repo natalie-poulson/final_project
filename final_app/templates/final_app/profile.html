@@ -6,7 +6,15 @@
     <p><strong>Name:</strong> {{ user.profile.name }}</p>
     <p><strong>Current City:</strong> {{ user.profile.current_city }}</p>
     <p><strong>Bio:</strong> {{ user.profile.bio }}</p>
-    <p><strong>Date Joined:</strong> {{ user.profile.date }}</p>
+    <p><strong>Date Joined:</strong> {{ user.profile.created_at }}</p>
     <a href = "{% url 'final_app:profile_edit' %}">Edit Profile</a>
 
+
+    <h1> Trips by {{user.username}} </h1>
+        {% for trip in trips %}
+        <h4><a href={% url 'final_app:trip_detail' pk=trip.id %} >{{trip.trail}}</a><span>Completed?: {{trip.completed}}</span></h4>
+        {% endfor %}
+
 {% endblock %}
+
+

@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from . import forms
 from django.conf import settings
-from .models import User, UserProfileInfo
+from .models import User, UserProfileInfo, Trip
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 
@@ -33,8 +33,10 @@ def profile_create(request):
 @login_required(login_url='/accounts/login/')
 def profile_view(request):
     user = request.user
+    trips = Trip.objects.filter(user=request.user).order_by('-created_at')
     context = {
-        'user': user
+        'user': user,
+        'trips' : trips
     }
     return render(request, 'final_app/profile.html', context)
 
@@ -42,7 +44,7 @@ def profile_view(request):
 @login_required(login_url='/accounts/login/')
 def profile_edit(request):
     if request.method == "POST":
-        form = forms.CreateProfile(data=request.POST or None, instance=request.user.profile, files=request.FILES)
+        form = forms.CreateProfile(data=request.POST, instance=request.user.profile, files=request.FILES)
         if form.is_valid():
             form.save()
             if 'profile_picture' in request.FILES:
@@ -54,5 +56,8 @@ def profile_edit(request):
     return render(request, 'final_app/profile_edit.html', {'form': form})
 
 
+def trip_detail(request, pk):
+    trip = Trip.objects.get(id=pk)
+    return render(request, 'final_app/trip_detail.html', {'trip': trip})
 
     

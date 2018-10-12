@@ -33,16 +33,19 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # third party apps
     'django_extensions',
+    'crispy_forms',
+    # my apps
     'accounts',
     'final_app',
-    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -56,8 +59,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'final_django.urls'
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {
@@ -137,3 +138,5 @@ MEDIA_URL = '/media/'
 
 # MEDIA_ROOT = MEDIA_DIR
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

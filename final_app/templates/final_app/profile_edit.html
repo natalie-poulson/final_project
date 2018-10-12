@@ -4,9 +4,13 @@
 
 
 {% block content %}
+<div class="row">
+    <div class="col-sm-6 col-md-3">
     <form enctype="multipart/form-data" method="POST">
         {% csrf_token %}
         {{ form|crispy }}
         <input type="submit" value="Submit">
     </form>
+    </div>
+</div>
 {% endblock %}
