@@ -27,11 +27,12 @@ class Trip (models.Model):
 
 
 class Post(models.Model):
-    user = models.ForeignKey(User, on_delete = models.CASCADE, related_name='posts')  
+    user = models.ForeignKey(User, on_delete = models.CASCADE, related_name='posts') 
+    trip = models.ForeignKey(Trip, on_delete = models.CASCADE, related_name='trip_posts') 
     title = models.CharField(max_length=200)
     image = models.ImageField(blank=True, null=True,  upload_to='post_pictures/%Y/%m')
     caption = models.CharField(blank=True, max_length=200)
-    body = models.TextField()
+    body = models.TextField(blank=True)
     created_at = models.DateField(auto_now_add =True)
     
     def __str__ (self):

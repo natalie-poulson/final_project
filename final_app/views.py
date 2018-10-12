@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from . import forms
 from django.conf import settings
-from .models import User, UserProfileInfo, Trip
+from .models import User, UserProfileInfo, Trip, Post
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 
@@ -61,3 +61,6 @@ def trip_detail(request, pk):
     return render(request, 'final_app/trip_detail.html', {'trip': trip})
 
     
+def post_detail(request, pk):
+    post = Post.objects.get(id=pk)
+    return render(request, 'final_app/post_detail.html', {'post': post})

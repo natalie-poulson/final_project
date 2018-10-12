@@ -11,5 +11,5 @@ urlpatterns = [
     path('profile', views.profile_view, name="profile"),
 
     path('trips/<int:pk>', views.trip_detail, name="trip_detail"),
-
+    path('posts/<int:pk>', views.post_detail, name="post_detail"),
 ]

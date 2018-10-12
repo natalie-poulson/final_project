@@ -12,8 +12,21 @@
 
     <h1> Trips by {{user.username}} </h1>
         {% for trip in trips %}
-        <h4><a href={% url 'final_app:trip_detail' pk=trip.id %} >{{trip.trail}}</a><span>Completed?: {{trip.completed}}</span></h4>
-        {% endfor %}
+        <h4></h4><a href={% url 'final_app:trip_detail' pk=trip.id %} >{{trip.trail}}</a><span>Completed?: {{trip.completed}}</span></h4>
+        {% endfor %}  
+
+
+    <h1> Posts by {{user.username}} </h1>
+    {% for trip in trips %}
+            {% for trip_post in trip.trip_posts.all %}
+            <a href={% url 'final_app:post_detail' pk=trip_post.id %} >
+                <h4>{{trip_post.title}}</h4>
+            </a>
+            {% endfor %}
+    {% endfor %}  
+
+
+       
 
 {% endblock %}
 
