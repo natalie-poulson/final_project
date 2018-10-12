@@ -36,7 +36,7 @@ def profile_view(request):
     trips = Trip.objects.filter(user=request.user).order_by('-created_at')
     context = {
         'user': user,
-        'trips' : trips
+        'trips' : trips,
     }
     return render(request, 'final_app/profile.html', context)
 
@@ -58,9 +58,44 @@ def profile_edit(request):
 
 def trip_detail(request, pk):
     trip = Trip.objects.get(id=pk)
-    return render(request, 'final_app/trip_detail.html', {'trip': trip})
+    post_form = forms.CreatePost()
+
+    context = {
+        'trip': trip,
+        'post_form' : post_form
+    }
+
+    return render(request, 'final_app/trip_detail.html', context)
 
     
 def post_detail(request, pk):
     post = Post.objects.get(id=pk)
     return render(request, 'final_app/post_detail.html', {'post': post})
+
+
+def post_create(request):
+    if request.method == 'POST':
+        post_form = forms.CreatePost(request.POST, request.FILES)
+        trip_id = request.POST.get('trip_id')
+
+        print("TRIP:", trip_id)
+        print("USER:", request.user)
+        
+        if post_form.is_valid():
+            instance = post_form.save(commit=False)
+            instance.user = request.user
+            instance.trip = Trip.objects.get(pk=trip_id)
+            instance.save()
+
+            trip = Trip.objects.get(pk=trip_id)
+            post_form = forms.CreatePost()
+
+            context = {
+                'trip': trip,
+                'post_form' : post_form
+            }
+
+            return render(request, 'final_app/trip_detail.html', context)        
+        print(post_form.errors)
+        return render(request, 'final_app/trip_detail.html', {'post_form': post_form})
+    return redirect('final_app:trip_detail')

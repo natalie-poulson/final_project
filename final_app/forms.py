@@ -32,3 +32,10 @@ class CreateProfile(forms.ModelForm):
 
     # def clean_name(self):
     #     name =  self.cleaned_data('name')
+
+
+
+class CreatePost(forms.ModelForm):
+    class Meta():
+        model = models.Post
+        fields = ('title', 'image', 'caption', 'body')
