@@ -34,9 +34,12 @@ def profile_create(request):
 def profile_view(request):
     user = request.user
     trips = Trip.objects.filter(user=request.user).order_by('-created_at')
+    trip_form = forms.CreateTrip()
+
     context = {
         'user': user,
         'trips' : trips,
+        'trip_form': trip_form
     }
     return render(request, 'final_app/profile.html', context)
 
@@ -99,3 +102,19 @@ def post_create(request):
         print(post_form.errors)
         return render(request, 'final_app/trip_detail.html', {'post_form': post_form})
     return redirect('final_app:trip_detail')
+
+
+
+def trip_create(request):
+    if request.method == 'POST':
+        trip_form = forms.CreateTrip(request.POST)
+        
+        if trip_form.is_valid():
+            instance = trip_form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+
+            return redirect('final_app:profile')       
+        print(trip_form.errors)
+        return render(request, 'final_app/profile.html', {'trip_form': trip_form})
+    return redirect('final_app:profile')

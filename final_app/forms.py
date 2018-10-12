@@ -39,3 +39,10 @@ class CreatePost(forms.ModelForm):
     class Meta():
         model = models.Post
         fields = ('title', 'image', 'caption', 'body')
+
+
+class CreateTrip(forms.ModelForm):
+    class Meta():
+        model = models.Trip
+        fields = ('trail', 'permit', 'completed')
+

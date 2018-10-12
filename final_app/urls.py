@@ -11,6 +11,8 @@ urlpatterns = [
     path('profile', views.profile_view, name="profile"),
 
     path('trips/<int:pk>', views.trip_detail, name="trip_detail"),
+    path('trip/create', views.trip_create, name="trip_create"),
+
     path('posts/<int:pk>', views.post_detail, name="post_detail"),
     path('post/create', views.post_create, name="post_create"),
 
