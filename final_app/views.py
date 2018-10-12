@@ -5,10 +5,13 @@ from django.http import HttpResponse
 from . import forms
 from django.conf import settings
 from .models import User, UserProfileInfo
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 
 def landing(request):
-    return render(request, 'final_app/landing.html')
+    login_form = AuthenticationForm()
+    signup_form = UserCreationForm()
+    return render(request, 'final_app/landing.html',{'login_form': login_form, 'signup_form': signup_form})
 
 @login_required(login_url='/accounts/signup/')
 def profile_create(request):
@@ -38,21 +41,17 @@ def profile_view(request):
 
 @login_required(login_url='/accounts/login/')
 def profile_edit(request):
-    user = User.objects.get(id=request.user.id)
-    user, created  = UserProfileInfo.objects.get_or_create(user=user)
-    user.save()
-
     if request.method == "POST":
-        form = forms.CreateProfile(request.POST, instance=user)
+        form = forms.CreateProfile(data=request.POST or None, instance=request.user.profile, files=request.FILES)
         if form.is_valid():
-            user = form.save()
+            form.save()
             if 'profile_picture' in request.FILES:
-                user.profile_picture = request.FILES['profile_picture']
-            user.save()
-            return redirect('profile')
+                form.profile_picture = request.FILES['profile_picture']
+            form.save()
+            return redirect('final_app:profile')
     else:
-        form = forms.CreateForm(instance=user)
-    return render(request, 'final_app/profile_edit.html', {'form': form, 'user': user})
+        form = forms.CreateProfile(instance=request.user.profile)
+    return render(request, 'final_app/profile_edit.html', {'form': form})
 
 
 

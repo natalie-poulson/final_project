@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 
+
 # Sign Up View
 def signup_view(request):
     if request.method == 'POST':
@@ -12,8 +13,7 @@ def signup_view(request):
             login(request, user)
             return redirect('final_app:profile_create')
     else:
-        form = UserCreationForm()
-    return render(request,'accounts/signup.html', {'form': form})
+        return redirect('final_app:landing')
 
 # Login In View
 def login_view(request):
@@ -25,10 +25,9 @@ def login_view(request):
             if 'next' in request.POST:
                 return redirect(request.POST.get('next'))
             else:
-                return redirect('final_app:landing')
+                return redirect('final_app:profile')
     else:
-        form = AuthenticationForm()
-    return render(request,'accounts/login.html', {'form': form})
+        return redirect('final_app:landing')
 
 # Logouts
 @login_required(login_url='/accounts/login/')

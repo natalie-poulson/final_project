@@ -1,9 +1,12 @@
 {% extends 'final_app/base_layout.html' %}
+{% load crispy_forms_tags %}
+{% crispy form %}
+
 
 {% block content %}
     <form enctype="multipart/form-data" method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         <input type="submit" value="Submit">
     </form>
 {% endblock %}
