@@ -2,11 +2,18 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<h1>Trip Detail Page!</h1>
+<!-- <a href= "{% url 'final_app:trip_delete' %}">Delete This Trip</a> -->
 
+<form class="trip-delete" action="{% url 'final_app:trip_delete' %}" method="post">
+    {% csrf_token %}
+    <input type='hidden' name='trip_id' required id='id_trip_id' value='{{ trip.id }}' />
+    <button type='submit'>Delete This Trip</button>
+</form>
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-        Create A New Post
+        Create A New Post for This Trip
       </button>
       
       <!-- Modal -->
@@ -42,7 +49,8 @@
 
     <h2>Posts about this Trip by {{ trip.user }}</h2>
     {% for trip_post in trip.trip_posts.all %}
-        <p>{{trip_post.title}}</p>
+
+      <h3><a href="{% url 'final_app:post_detail' pk=trip_post.id %}" >{{trip_post.title}}</a></h3>
     {% endfor %}    
 
 {% endblock %}

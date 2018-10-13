@@ -118,3 +118,32 @@ def trip_create(request):
         print(trip_form.errors)
         return render(request, 'final_app/profile.html', {'trip_form': trip_form})
     return redirect('final_app:profile')
+
+
+
+@login_required(login_url='/accounts/login/')
+def trip_delete(request):
+    if request.method == 'POST':
+        trip_id = request.POST.get('trip_id')
+        trip = Trip.objects.get(pk=trip_id)
+        trip.delete()
+        return redirect('final_app:profile')
+
+
+@login_required(login_url='/accounts/login/')
+def post_delete(request):
+    if request.method == 'POST':
+        post_id = request.POST.get('post_id')
+        post = Post.objects.get(pk=post_id)
+        trip = Trip.objects.get(pk=post.trip.id)
+
+        post.delete()
+
+        post_form = forms.CreatePost()
+
+        context = {
+            'trip': trip,
+            'post_form' : post_form
+        }
+
+        return render(request, 'final_app/trip_detail.html',context )

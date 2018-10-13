@@ -1,9 +1,21 @@
 {% extends 'final_app/base_layout.html' %}
 
 {% block content %}
+<h1>Post Detail Page!</h1>
+
+<form class="post-delete" action="{% url 'final_app:post_delete' %}" method="post">
+        {% csrf_token %}
+        <input type='hidden' name='post_id' required id='id_post_id' value='{{ post.id }}' />
+        <button type='submit'>Delete This Post</button>
+    </form>
+
+
     <p><strong>Title:</strong> {{ post.title }}</p>
     <p><strong>User:</strong> {{ post.user }}</p>
-    <p><strong>Trip:</strong> {{ post.trip }}</p>
+
+
+    <p><strong>Trip:</strong><a href={% url 'final_app:trip_detail' pk=post.trip.id %}> {{ post.trip }}  </a></p>
+
     <p><strong>Image:</strong> {{ post.image }}</p>
     <p><strong>Caption:</strong> {{ post.caption }}</p>
     <p><strong>Body:</strong> {{ post.body }}</p>

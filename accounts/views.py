@@ -37,6 +37,5 @@ def login_view(request):
 # Logouts
 @login_required(login_url='/accounts/login/')
 def logout_view(request):
-    if request.method == 'POST':
-        logout(request)
-        return redirect('final_app:landing')
+    logout(request)
+    return redirect('final_app:landing')

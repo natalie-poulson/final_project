@@ -12,8 +12,9 @@ urlpatterns = [
 
     path('trips/<int:pk>', views.trip_detail, name="trip_detail"),
     path('trip/create', views.trip_create, name="trip_create"),
+    path('trip/delete', views.trip_delete, name="trip_delete"),
 
     path('posts/<int:pk>', views.post_detail, name="post_detail"),
     path('post/create', views.post_create, name="post_create"),
-
+    path('post/delete', views.post_delete, name="post_delete"),
 ]
