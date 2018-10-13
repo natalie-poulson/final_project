@@ -10,12 +10,14 @@ class CreateProfile(forms.ModelForm):
                 }
             ))
     current_city = forms.CharField(label='',
+        required=False,
         widget=forms.TextInput( 
             attrs={
                 'placeholder':'Current City'
                 }
         ))
     bio = forms.CharField(label='',
+        required=False,
         widget=forms.TextInput( 
             attrs={
                 'placeholder': 'Bio'

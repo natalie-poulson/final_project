@@ -27,7 +27,7 @@
               </button>
             </div>
             <div class="modal-body">
-                <form class='post-create-form'  action="{% url 'final_app:post_create' %}" method='post'>
+                <form class='post-create-form' enctype="multipart/form-data" action="{% url 'final_app:post_create' %}" method='post'>
                     {% csrf_token %}
                     {{ post_form|crispy }}
                     <input type='hidden' name='trip_id' required id='id_trip_id' value='{{ trip.id }}' />
@@ -43,10 +43,11 @@
 
 
     <p><strong>Trail:</strong> {{ trip.trail }}</p>
+    {% if trip.permit %}
     <p><strong>Permit:</strong> {{ trip.permit }}</p>
+    {% endif %}
     <p><strong>User:</strong> {{ trip.user }}</p>
     <p><strong>Completed:</strong> {{ trip.completed }}</p>
-
     <h2>Posts about this Trip by {{ trip.user }}</h2>
     {% for trip_post in trip.trip_posts.all %}
 

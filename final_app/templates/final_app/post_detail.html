@@ -16,8 +16,18 @@
 
     <p><strong>Trip:</strong><a href={% url 'final_app:trip_detail' pk=post.trip.id %}> {{ post.trip }}  </a></p>
 
-    <p><strong>Image:</strong> {{ post.image }}</p>
+    {% if post.image %}
+    <p><strong>Image:</strong> <img src="{{ post.image.url }}" width="auto" height="250px" alt=""></p>
+    {% endif %}
+
+    {% if post.caption %}
     <p><strong>Caption:</strong> {{ post.caption }}</p>
+    {% endif %}
+
+
+    {% if post.body %}
     <p><strong>Body:</strong> {{ post.body }}</p>
+    {% endif %}
+
 
 {% endblock %}
