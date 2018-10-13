@@ -48,3 +48,12 @@ class Gear(models.Model):
 
     def __str__ (self):
         return self.gear_name
+
+
+class Food(models.Model):
+    trip = models.ForeignKey(Trip, on_delete = models.CASCADE, related_name='trip_foods')
+    food_name = models.CharField(max_length=200)
+    packed =  models.BooleanField(default=False) 
+
+    def __str__ (self):
+        return self.food_name

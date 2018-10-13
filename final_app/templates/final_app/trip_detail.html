@@ -64,12 +64,12 @@
     <hr>
     <h4>Gear</h4>
     <!-- Small modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Add Gear</button>
+      <button id="gear" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-gear-modal-sm">Add Gear</button>
 
-      <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div id="gear" class="modal fade bd-gear-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
           <div class="modal-content">
-              <form class='gear-create-form' enctype="multipart/form-data" action="{% url 'final_app:gear_create' %}" method='post'>
+              <form class='gear-create-form' action="{% url 'final_app:gear_create' %}" method='post'>
                   {% csrf_token %}
                   {{ gear_form|crispy }}
                   <input type='hidden' name='trip_id' required id='id_trip_id' value='{{ trip.id }}' />
@@ -99,6 +99,35 @@
         
       {% endfor %}
 
+    <hr>
+
+
+
+    <hr>
+    <h4>Food</h4>
+
+    <button id="food" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-food-modal-sm">Add Food</button>
+
+    <div id="food" class="modal fade bd-food-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <form class='food-create-form' action="{% url 'final_app:food_create' %}" method='post'>
+                {% csrf_token %}
+                {{ food_form|crispy }}
+                <input type='hidden' name='trip_id' required id='id_trip_id' value='{{ trip.id }}' />
+                <button type="input" class="btn btn-success">Add</button>
+            </form>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+ 
+    {% for trip_food in trip.trip_foods.all %}
+    <li><input type="checkbox" id=" {{ trip_food.food_name }}" name = "" value= "" {% if trip_food.packed is True %} checked="checked"{% endif %}>{{trip_food.food_name}}
+    <a href= {% url 'final_app:food_edit' pk=trip_food.id %} >Edit</a>
+    <a href= {% url 'final_app:food_delete' pk=trip_food.id %} >Delete</a>
+    </li>
+      {% endfor %}
     <hr>
 
     <hr>

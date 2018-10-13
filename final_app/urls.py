@@ -25,4 +25,9 @@ urlpatterns = [
     path('gear/create', views.gear_create, name="gear_create"),
     path('gear/<int:pk>/edit', views.gear_edit, name="gear_edit"),
     path('gear/<int:pk>/delete', views.gear_delete, name="gear_delete"),
+
+    path('food/create', views.food_create, name="food_create"),
+    path('food/<int:pk>/edit', views.food_edit, name="food_edit"),
+    path('food/<int:pk>/delete', views.food_delete, name="food_delete"),
+
 ]

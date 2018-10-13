@@ -63,3 +63,9 @@ class CreateGear(forms.ModelForm):
     class Meta():
         model = models.Gear
         fields = ('gear_name', 'packed')
+
+
+class CreateFood(forms.ModelForm):
+    class Meta():
+        model = models.Food
+        fields = ('food_name', 'packed')

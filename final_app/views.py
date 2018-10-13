@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from . import forms
 from django.conf import settings
-from .models import User, UserProfileInfo, Trip, Post, Gear
+from .models import User, UserProfileInfo, Trip, Post, Gear, Food
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 
@@ -65,11 +65,13 @@ def trip_detail(request, pk):
     trip = Trip.objects.get(id=pk)
     post_form = forms.CreatePost()
     gear_form = forms.CreateGear()
-
+    food_form = forms.CreateFood()
+   
     context = {
         'trip': trip,
         'post_form' : post_form,
-        'gear_form': gear_form
+        'gear_form': gear_form,
+        'food_form': food_form
     }
 
     return render(request, 'final_app/trip_detail.html', context)
@@ -97,11 +99,13 @@ def post_create(request):
             trip = Trip.objects.get(pk=trip_id)
             post_form = forms.CreatePost()
             gear_form = forms.CreateGear()
-
+            food_form = forms.CreateFood()
+   
             context = {
                 'trip': trip,
                 'post_form' : post_form,
-                'gear_form': gear_form
+                'gear_form': gear_form,
+                'food_form': food_form
             }
 
             return render(request, 'final_app/trip_detail.html', context)        
@@ -147,11 +151,13 @@ def post_delete(request):
 
         post_form = forms.CreatePost()
         gear_form = forms.CreateGear()
-
+        food_form = forms.CreateFood()
+    
         context = {
             'trip': trip,
             'post_form' : post_form,
-            'gear_form': gear_form
+            'gear_form': gear_form,
+            'food_form': food_form
         }
 
         return render(request, 'final_app/trip_detail.html',context )
@@ -198,11 +204,13 @@ def trip_edit(request,pk ):
 
             post_form = forms.CreatePost()
             gear_form = forms.CreateGear()
-
+            food_form = forms.CreateFood()
+   
             context = {
                 'trip': trip,
                 'post_form' : post_form,
-                'gear_form': gear_form
+                'gear_form': gear_form,
+                'food_form': food_form
             }
 
             return render(request, 'final_app/trip_detail.html', context)
@@ -226,11 +234,13 @@ def gear_create(request):
             trip = Trip.objects.get(pk=trip_id)
             post_form = forms.CreatePost()
             gear_form = forms.CreateGear()
-
+            food_form = forms.CreateFood()
+        
             context = {
                 'trip': trip,
                 'post_form' : post_form,
-                'gear_form': gear_form
+                'gear_form': gear_form,
+                'food_form': food_form
             }
             return render(request, 'final_app/trip_detail.html', context)    
 
@@ -252,11 +262,13 @@ def gear_edit(request,pk ):
 
             post_form = forms.CreatePost()
             gear_form = forms.CreateGear()
-
+            food_form = forms.CreateFood()
+        
             context = {
                 'trip': trip,
                 'post_form' : post_form,
-                'gear_form': gear_form
+                'gear_form': gear_form,
+                'food_form': food_form
             }
 
             return render(request, 'final_app/trip_detail.html', context)
@@ -274,11 +286,91 @@ def gear_delete(request,pk ):
     gear.delete()
     post_form = forms.CreatePost()
     gear_form = forms.CreateGear()
+    food_form = forms.CreateFood()
    
     context = {
         'trip': trip,
         'post_form' : post_form,
-        'gear_form': gear_form
+        'gear_form': gear_form,
+        'food_form': food_form
+    }
+
+    return render(request, 'final_app/trip_detail.html', context)
+
+
+
+def food_create(request):
+    if request.method == 'POST':
+        food_form = forms.CreateFood(request.POST)
+        trip_id = request.POST.get('trip_id')
+        
+        if food_form.is_valid():
+            instance = food_form.save(commit=False)
+            instance.trip = Trip.objects.get(pk=trip_id)
+            instance.save()
+
+            trip = Trip.objects.get(pk=trip_id)
+            post_form = forms.CreatePost()
+            gear_form = forms.CreateGear()
+            food_form = forms.CreateFood()
+        
+            context = {
+                'trip': trip,
+                'post_form' : post_form,
+                'gear_form': gear_form,
+                'food_form': food_form
+            }
+            return render(request, 'final_app/trip_detail.html', context)    
+
+        # print(gear_form.errors)
+        # return render(request, 'final_app/trip_detail.html', {'gear_form': gear_form})
+
+    return redirect('final_app:trip_detail')
+
+
+
+@login_required(login_url='/accounts/login/')
+def food_edit(request,pk ):
+    food = Food.objects.get(pk=pk)
+    trip = Trip.objects.get(trip_foods=food)
+    if request.method == "POST":
+        form = forms.CreateFood(data=request.POST, instance=food)
+        if form.is_valid():
+            form.save()   
+
+            post_form = forms.CreatePost()
+            gear_form = forms.CreateGear()
+            food_form = forms.CreateFood()
+        
+            context = {
+                'trip': trip,
+                'post_form' : post_form,
+                'gear_form': gear_form,
+                'food_form': food_form
+            }
+
+            return render(request, 'final_app/trip_detail.html', context)
+        # else:
+        #     return render(request, 'final_app/trip_edit.html', {'form': form})
+    else:
+        form = forms.CreateFood(instance=food)
+    return render(request, 'final_app/food_edit.html', {'form': form})
+
+
+@login_required(login_url='/accounts/login/')
+def food_delete(request,pk ):
+    food = Food.objects.get(pk=pk)
+    trip = Trip.objects.get(trip_foods=food)
+    food.delete()
+    post_form = forms.CreatePost()
+    gear_form = forms.CreateGear()
+    food_form = forms.CreateFood()
+   
+    context = {
+        'trip': trip,
+        'post_form' : post_form,
+        'gear_form': gear_form,
+        'food_form': food_form
     }
 
     return render(request, 'final_app/trip_detail.html', context)
