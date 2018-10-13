@@ -238,3 +238,47 @@ def gear_create(request):
         # return render(request, 'final_app/trip_detail.html', {'gear_form': gear_form})
 
     return redirect('final_app:trip_detail')
+
+
+
+@login_required(login_url='/accounts/login/')
+def gear_edit(request,pk ):
+    gear = Gear.objects.get(pk=pk)
+    trip = Trip.objects.get(trip_gears=gear)
+    if request.method == "POST":
+        form = forms.CreateGear(data=request.POST, instance=gear)
+        if form.is_valid():
+            form.save()   
+
+            post_form = forms.CreatePost()
+            gear_form = forms.CreateGear()
+
+            context = {
+                'trip': trip,
+                'post_form' : post_form,
+                'gear_form': gear_form
+            }
+
+            return render(request, 'final_app/trip_detail.html', context)
+        # else:
+        #     return render(request, 'final_app/trip_edit.html', {'form': form})
+    else:
+        form = forms.CreateGear(instance=gear)
+    return render(request, 'final_app/gear_edit.html', {'form': form})
+
+
+@login_required(login_url='/accounts/login/')
+def gear_delete(request,pk ):
+    gear = Gear.objects.get(pk=pk)
+    trip = Trip.objects.get(trip_gears=gear)
+    gear.delete()
+    post_form = forms.CreatePost()
+    gear_form = forms.CreateGear()
+   
+    context = {
+        'trip': trip,
+        'post_form' : post_form,
+        'gear_form': gear_form
+    }
+
+    return render(request, 'final_app/trip_detail.html', context)

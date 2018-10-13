@@ -23,5 +23,6 @@ urlpatterns = [
     path('post/delete', views.post_delete, name="post_delete"),
 
     path('gear/create', views.gear_create, name="gear_create"),
-
+    path('gear/<int:pk>/edit', views.gear_edit, name="gear_edit"),
+    path('gear/<int:pk>/delete', views.gear_delete, name="gear_delete"),
 ]

@@ -90,7 +90,12 @@
 
       {% for trip_gear in trip.trip_gears.all %}
      
-       <li><input type="checkbox" id=" {{ trip_gear.gear_name }}" name = "" value= "" {% if trip_gear.packed is True %} checked="checked"{% endif %}>{{trip_gear.gear_name}}</li>
+       <li><input type="checkbox" id=" {{ trip_gear.gear_name }}" name = "" value= "" {% if trip_gear.packed is True %} checked="checked"{% endif %}>{{trip_gear.gear_name}}
+      <a href= {% url 'final_app:gear_edit' pk=trip_gear.id %} >Edit</a>
+      <a href= {% url 'final_app:gear_delete' pk=trip_gear.id %} >Delete</a>
+      
+
+      </li>
         
       {% endfor %}
 
