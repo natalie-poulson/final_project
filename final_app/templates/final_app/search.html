@@ -1,0 +1,14 @@
+{% extends 'final_app/base_layout.html' %}
+{% block content %}
+
+<h3>Search Results</h3>
+{% if results %}
+    {% for result in results %}
+        <li>
+        Trail: {{result.trail}}  User: <a href={% url 'final_app:other_profile' pk=result.user.id %} >{{result.user}}</a>
+        </li>
+        
+    {% endfor %} 
+{% endif %}
+
+{% endblock %}

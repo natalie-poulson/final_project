@@ -30,4 +30,9 @@ urlpatterns = [
     path('food/<int:pk>/edit', views.food_edit, name="food_edit"),
     path('food/<int:pk>/delete', views.food_delete, name="food_delete"),
 
+    path('users/<int:pk>/profile', views.other_profile, name="other_profile"),
+    path('posts/other/<int:pk>', views.other_post_detail, name="other_post_detail"),
+    path('trips/other/<int:pk>', views.other_trip_detail, name="other_trip_detail"),
+
+    path('search', views.search, name='search')
 ]

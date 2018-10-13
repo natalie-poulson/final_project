@@ -33,8 +33,12 @@
                     </form> -->
                 </li>
                 <li>
-                    {{user.username}}
+                    {{request.user.username}}
                 </li>
+
+                <form name="myform" method="GET" action="{% url 'final_app:search' %}">  
+                        <input type="text" name="search" placeholder="Search" />
+                </form> 
                 {% else %}
                     <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
                     <li><a href="{% url 'accounts:login' %}">Log In</a></li>

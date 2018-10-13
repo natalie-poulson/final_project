@@ -6,7 +6,6 @@
 <h5> {{trip.user }} </h5>
 
 <hr>
-<a href = {% url 'final_app:trip_edit' pk=trip.id %}>Edit Trip</a>
 
 <form class="trip-delete" action="{% url 'final_app:trip_delete' %}" method="post">
     {% csrf_token %}
@@ -47,6 +46,8 @@
 
     <hr>
     <h4>Trip Info</h4>
+    <a href = {% url 'final_app:trip_edit' pk=trip.id %}>Edit Trip</a>
+
     <p><strong>Trail:</strong> {{ trip.trail }}</p>
     <p><strong>Dates:</strong> {{ trip.start_date }} - {{ trip.end_date}}</p>
 

@@ -1,0 +1,64 @@
+{% extends 'final_app/base_layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>{{ trip.trail }}</h1>
+<h5> {{trip.user }} </h5>
+
+<hr>
+
+
+
+    <hr>
+    <h4>Trip Info</h4>
+
+    <p><strong>Trail:</strong> {{ trip.trail }}</p>
+    <p><strong>Dates:</strong> {{ trip.start_date }} - {{ trip.end_date}}</p>
+
+    {% if trip.permit %}
+    <p><strong>Permit:</strong> {{ trip.permit }}</p>
+    {% endif %}
+
+    {% if trip.completed is False %}
+    <input type="checkbox" id=" {{ trip.trail }}" name = "future" value= ""  >Completed
+    {% else %}
+    <input type="checkbox" id=" {{ trip.trail }}" name = "completed" value= "" checked="checked">Complete
+    {% endif %}
+    <hr>
+
+    <hr>
+    <h4>Gear</h4>
+    
+      {% for trip_gear in trip.trip_gears.all %}
+     
+       <li><input type="checkbox" id=" {{ trip_gear.gear_name }}" name = "" value= "" {% if trip_gear.packed is True %} checked="checked"{% endif %}>{{trip_gear.gear_name}}
+      
+
+      </li>
+        
+      {% endfor %}
+
+    <hr>
+
+
+
+    <hr>
+    <h4>Food</h4>
+
+   
+ 
+    {% for trip_food in trip.trip_foods.all %}
+    <li><input type="checkbox" id=" {{ trip_food.food_name }}" name = "" value= "" {% if trip_food.packed is True %} checked="checked"{% endif %}>{{trip_food.food_name}}
+    </li>
+      {% endfor %}
+    <hr>
+
+    <hr>
+    <h4>Posts about {{trip.trail}} by {{ trip.user }}</h4>
+
+    {% for trip_post in trip.trip_posts.all %}
+      <h3><a href="{% url 'final_app:other_post_detail' pk=trip_post.id %}" >{{trip_post.title}}</a></h3>
+    {% endfor %}    
+    <hr>
+
+{% endblock %}

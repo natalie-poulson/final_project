@@ -13,6 +13,7 @@ def landing(request):
     signup_form = UserCreationForm()
     return render(request, 'final_app/landing.html',{'login_form': login_form, 'signup_form': signup_form})
 
+
 @login_required(login_url='/accounts/signup/')
 def profile_create(request):
     if request.method == "POST":        
@@ -61,6 +62,7 @@ def profile_edit(request):
     return render(request, 'final_app/profile_edit.html', {'form': form})
 
 
+@login_required(login_url='/accounts/login/')
 def trip_detail(request, pk):
     trip = Trip.objects.get(id=pk)
     post_form = forms.CreatePost()
@@ -76,12 +78,14 @@ def trip_detail(request, pk):
 
     return render(request, 'final_app/trip_detail.html', context)
 
-    
+
+@login_required(login_url='/accounts/login/')    
 def post_detail(request, pk):
     post = Post.objects.get(id=pk)
     return render(request, 'final_app/post_detail.html', {'post': post})
 
 
+@login_required(login_url='/accounts/login/')
 def post_create(request):
     if request.method == 'POST':
         post_form = forms.CreatePost(request.POST, request.FILES)
@@ -114,7 +118,7 @@ def post_create(request):
     return redirect('final_app:trip_detail')
 
 
-
+@login_required(login_url='/accounts/login/')
 def trip_create(request):
     if request.method == 'POST':
         trip_form = forms.CreateTrip(request.POST)
@@ -128,7 +132,6 @@ def trip_create(request):
         # print(trip_form.errors)
         # return render(request, 'final_app/profile.html', {'trip_form': trip_form})
     return redirect('final_app:profile')
-
 
 
 @login_required(login_url='/accounts/login/')
@@ -163,12 +166,14 @@ def post_delete(request):
         return render(request, 'final_app/trip_detail.html',context )
 
 
+@login_required(login_url='/accounts/login/')
 def trips_completed(request):
     trips = Trip.objects.filter(user=request.user).filter(completed=True)
 
     return render (request, 'final_app/trip_list.html', {'trips': trips})
 
 
+@login_required(login_url='/accounts/login/')
 def trips_future(request):
     trips = Trip.objects.filter(user=request.user).filter(completed=False)
 
@@ -221,6 +226,7 @@ def trip_edit(request,pk ):
     return render(request, 'final_app/trip_edit.html', {'form': form})
 
 
+@login_required(login_url='/accounts/login/')
 def gear_create(request):
     if request.method == 'POST':
         gear_form = forms.CreateGear(request.POST)
@@ -248,7 +254,6 @@ def gear_create(request):
         # return render(request, 'final_app/trip_detail.html', {'gear_form': gear_form})
 
     return redirect('final_app:trip_detail')
-
 
 
 @login_required(login_url='/accounts/login/')
@@ -298,7 +303,7 @@ def gear_delete(request,pk ):
     return render(request, 'final_app/trip_detail.html', context)
 
 
-
+@login_required(login_url='/accounts/login/')
 def food_create(request):
     if request.method == 'POST':
         food_form = forms.CreateFood(request.POST)
@@ -326,7 +331,6 @@ def food_create(request):
         # return render(request, 'final_app/trip_detail.html', {'gear_form': gear_form})
 
     return redirect('final_app:trip_detail')
-
 
 
 @login_required(login_url='/accounts/login/')
@@ -374,3 +378,37 @@ def food_delete(request,pk ):
     }
 
     return render(request, 'final_app/trip_detail.html', context)
+
+
+def other_profile(request, pk):
+    user = User.objects.get(id=pk)
+    trips = Trip.objects.filter(user=pk)
+    return render(request, 'final_app/other_profile.html', {'user': user, 'trips': trips})
+
+
+def other_trip_detail(request, pk):
+    trip = Trip.objects.get(id=pk)   
+    context = {
+        'trip': trip,
+    }
+
+    return render(request, 'final_app/other_trip_detail.html', context)
+
+
+@login_required(login_url='/accounts/login/')    
+def other_post_detail(request, pk):
+    post = Post.objects.get(id=pk)
+    return render(request, 'final_app/other_post_detail.html', {'post': post})
+
+
+def search(request):        
+    if request.method == 'GET':     
+        trip_search =  request.GET.get('search')      
+        try:
+            db_results = Trip.objects.filter(trail__icontains=trip_search).exclude(user=request.user)
+
+        except Trip.DoesNotExist:
+            db_results = None
+        return render(request,'final_app/search.html',{'results':db_results})
+    # else:
+    #     return render(request,"search.html",{})

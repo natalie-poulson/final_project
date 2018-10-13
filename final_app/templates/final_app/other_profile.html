@@ -1,0 +1,52 @@
+{% extends 'final_app/base_layout.html' %}
+
+
+{% block content %}
+
+    <img src="{{ user.profile.profile_picture.url }}" width="auto" height="250px" alt="">
+    <p><strong>Name:</strong> {{ user.profile.name }}</p>
+
+    {% if user.profile.current_city %}
+    <p><strong>Current City:</strong> {{ user.profile.current_city }}</p>
+    {% endif %}
+    
+    {% if user.profile.bio %}
+    <p><strong>Bio:</strong> {{ user.profile.bio }}</p>
+    {% endif %}
+
+    <p><strong>Date Joined:</strong> {{ user.profile.created_at }}</p>
+    
+
+
+    <h1> Trips by {{user.username}} </h1>
+        {% for trip in trips %}
+
+          {% if trip.completed %}
+          <h4></h4><a href={% url 'final_app:other_trip_detail' pk=trip.id %} >{{trip.trail}}</a><span>COMPLETED</span></h4>
+
+          {% else %}
+          <h4></h4><a href={% url 'final_app:other_trip_detail' pk=trip.id %} >{{trip.trail}}</a><span>
+              <!-- Completed?: {{trip.completed}} -->
+            </span></h4>
+          {% endif %}
+
+
+  
+        {% endfor %}  
+
+
+    <h1> Posts by {{user.username}} </h1>
+    {% for trip in trips %}
+            {% for trip_post in trip.trip_posts.all %}
+            <a href={% url 'final_app:other_post_detail' pk=trip_post.id %} >
+                <h4>{{trip_post.title}}</h4>
+            </a>
+            {% endfor %}
+    {% endfor %}  
+
+
+    
+
+{% endblock %}
+
+
