@@ -4,20 +4,13 @@
 
 {% block content %}
 
-
-
-<h4><a href="{% url 'final_app:trips_completed' %}">COMPLETED TRIPS</a></h4>
-
-<h4><a href="{% url 'final_app:trips_future' %}">FUTURE TRIPS</a></h4>
-
-
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
         Create A New Trip
-      </button>
+      </button> -->
       
       <!-- Modal -->
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -38,7 +31,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
 
     <img src="{{ user.profile.profile_picture.url }}" width="auto" height="250px" alt="">

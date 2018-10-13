@@ -22,7 +22,9 @@ def profile_create(request):
             instance = form.save(commit=False)
             instance.user = request.user
             instance.save()
-            return render(request, 'final_app/profile.html')
+            trip_form = forms.CreateTrip()
+
+            return render(request, 'final_app/profile.html', {'trip_form': trip_form})
         # else: 
         #     print(form.errors)
         #     return render(request, 'final_app/profile_create.html', {'form': form})
@@ -59,7 +61,9 @@ def profile_edit(request):
             return render(request, 'final_app/profile_edit.html', {'form': form})
     else:
         form = forms.CreateProfile(instance=request.user.profile)
-    return render(request, 'final_app/profile_edit.html', {'form': form})
+        trip_form = forms.CreateTrip()
+
+    return render(request, 'final_app/profile_edit.html', {'form': form, 'trip_form': trip_form})
 
 
 @login_required(login_url='/accounts/login/')
@@ -68,12 +72,15 @@ def trip_detail(request, pk):
     post_form = forms.CreatePost()
     gear_form = forms.CreateGear()
     food_form = forms.CreateFood()
-   
+    trip_form = forms.CreateTrip()
+
     context = {
         'trip': trip,
         'post_form' : post_form,
         'gear_form': gear_form,
-        'food_form': food_form
+        'food_form': food_form,
+        'trip_form': trip_form
+        
     }
 
     return render(request, 'final_app/trip_detail.html', context)
@@ -82,7 +89,9 @@ def trip_detail(request, pk):
 @login_required(login_url='/accounts/login/')    
 def post_detail(request, pk):
     post = Post.objects.get(id=pk)
-    return render(request, 'final_app/post_detail.html', {'post': post})
+    trip_form = forms.CreateTrip()
+
+    return render(request, 'final_app/post_detail.html', {'post': post, 'trip_form': trip_form})
 
 
 @login_required(login_url='/accounts/login/')
@@ -104,12 +113,15 @@ def post_create(request):
             post_form = forms.CreatePost()
             gear_form = forms.CreateGear()
             food_form = forms.CreateFood()
+            trip_form = forms.CreateTrip()
+
    
             context = {
                 'trip': trip,
                 'post_form' : post_form,
                 'gear_form': gear_form,
-                'food_form': food_form
+                'food_form': food_form,
+                'trip_form': trip_form
             }
 
             return render(request, 'final_app/trip_detail.html', context)        
@@ -155,12 +167,15 @@ def post_delete(request):
         post_form = forms.CreatePost()
         gear_form = forms.CreateGear()
         food_form = forms.CreateFood()
+        trip_form = forms.CreateTrip()
+
     
         context = {
             'trip': trip,
             'post_form' : post_form,
             'gear_form': gear_form,
-            'food_form': food_form
+            'food_form': food_form,
+            'trip_form': trip_form
         }
 
         return render(request, 'final_app/trip_detail.html',context )
@@ -169,15 +184,19 @@ def post_delete(request):
 @login_required(login_url='/accounts/login/')
 def trips_completed(request):
     trips = Trip.objects.filter(user=request.user).filter(completed=True)
+    trip_form = forms.CreateTrip()
 
-    return render (request, 'final_app/trip_list.html', {'trips': trips})
+
+    return render (request, 'final_app/trip_list.html', {'trips': trips, 'trip_form': trip_form})
 
 
 @login_required(login_url='/accounts/login/')
 def trips_future(request):
     trips = Trip.objects.filter(user=request.user).filter(completed=False)
+    trip_form = forms.CreateTrip()
 
-    return render (request, 'final_app/trip_list.html', {'trips': trips})
+
+    return render (request, 'final_app/trip_list.html', {'trips': trips, 'trip_form': trip_form})
 
 
 @login_required(login_url='/accounts/login/')
@@ -191,12 +210,17 @@ def post_edit(request,pk ):
             if 'image' in request.FILES:
                 form.image = request.FILES['image']
             form.save()
-            return render(request, 'final_app/post_detail.html', {'post': post})
+            trip_form = forms.CreateTrip()
+
+            return render(request, 'final_app/post_detail.html', {'post': post, 'trip_form': trip_form})
         else:
-            return render(request, 'final_app/post_edit.html', {'form': form})
+            trip_form = forms.CreateTrip()
+            return render(request, 'final_app/post_edit.html', {'form': form, 'trip_form': trip_form})
     else:
         form = forms.CreatePost(instance=post)
-    return render(request, 'final_app/profile_edit.html', {'form': form})
+        trip_form = forms.CreateTrip()
+
+    return render(request, 'final_app/profile_edit.html', {'form': form, 'trip_form': trip_form})
 
 
 @login_required(login_url='/accounts/login/')
@@ -210,12 +234,15 @@ def trip_edit(request,pk ):
             post_form = forms.CreatePost()
             gear_form = forms.CreateGear()
             food_form = forms.CreateFood()
+            trip_form = forms.CreateTrip()
+
    
             context = {
                 'trip': trip,
                 'post_form' : post_form,
                 'gear_form': gear_form,
-                'food_form': food_form
+                'food_form': food_form,
+                'trip_form': trip_form
             }
 
             return render(request, 'final_app/trip_detail.html', context)
@@ -241,12 +268,15 @@ def gear_create(request):
             post_form = forms.CreatePost()
             gear_form = forms.CreateGear()
             food_form = forms.CreateFood()
+            trip_form = forms.CreateTrip()
+
         
             context = {
                 'trip': trip,
                 'post_form' : post_form,
                 'gear_form': gear_form,
-                'food_form': food_form
+                'food_form': food_form,
+                'trip_form':trip_form
             }
             return render(request, 'final_app/trip_detail.html', context)    
 
@@ -268,12 +298,15 @@ def gear_edit(request,pk ):
             post_form = forms.CreatePost()
             gear_form = forms.CreateGear()
             food_form = forms.CreateFood()
+            trip_form = forms.CreateTrip()
+
         
             context = {
                 'trip': trip,
                 'post_form' : post_form,
                 'gear_form': gear_form,
-                'food_form': food_form
+                'food_form': food_form,
+                'trip_form': trip_form
             }
 
             return render(request, 'final_app/trip_detail.html', context)
@@ -292,12 +325,15 @@ def gear_delete(request,pk ):
     post_form = forms.CreatePost()
     gear_form = forms.CreateGear()
     food_form = forms.CreateFood()
+    trip_form = forms.CreateTrip()
+
    
     context = {
         'trip': trip,
         'post_form' : post_form,
         'gear_form': gear_form,
-        'food_form': food_form
+        'food_form': food_form,
+        'trip_form':trip_form
     }
 
     return render(request, 'final_app/trip_detail.html', context)
@@ -318,12 +354,15 @@ def food_create(request):
             post_form = forms.CreatePost()
             gear_form = forms.CreateGear()
             food_form = forms.CreateFood()
+            trip_form = forms.CreateTrip()
+
         
             context = {
                 'trip': trip,
                 'post_form' : post_form,
                 'gear_form': gear_form,
-                'food_form': food_form
+                'food_form': food_form,
+                'trip_form':trip_form
             }
             return render(request, 'final_app/trip_detail.html', context)    
 
@@ -345,12 +384,15 @@ def food_edit(request,pk ):
             post_form = forms.CreatePost()
             gear_form = forms.CreateGear()
             food_form = forms.CreateFood()
+            trip_form = forms.CreateTrip()
+
         
             context = {
                 'trip': trip,
                 'post_form' : post_form,
                 'gear_form': gear_form,
-                'food_form': food_form
+                'food_form': food_form,
+                'trip_form': trip_form
             }
 
             return render(request, 'final_app/trip_detail.html', context)
@@ -369,12 +411,15 @@ def food_delete(request,pk ):
     post_form = forms.CreatePost()
     gear_form = forms.CreateGear()
     food_form = forms.CreateFood()
+    trip_form = forms.CreateTrip()
+
    
     context = {
         'trip': trip,
         'post_form' : post_form,
         'gear_form': gear_form,
-        'food_form': food_form
+        'food_form': food_form,
+        'trip_form': trip_form
     }
 
     return render(request, 'final_app/trip_detail.html', context)
@@ -388,8 +433,11 @@ def other_profile(request, pk):
 
 def other_trip_detail(request, pk):
     trip = Trip.objects.get(id=pk)   
+    trip_form = forms.CreateTrip()
+
     context = {
         'trip': trip,
+        'trip_form':trip_form
     }
 
     return render(request, 'final_app/other_trip_detail.html', context)
@@ -398,17 +446,21 @@ def other_trip_detail(request, pk):
 @login_required(login_url='/accounts/login/')    
 def other_post_detail(request, pk):
     post = Post.objects.get(id=pk)
-    return render(request, 'final_app/other_post_detail.html', {'post': post})
+    trip_form = forms.CreateTrip()
+
+    return render(request, 'final_app/other_post_detail.html', {'post': post, 'trip_form': trip_form})
 
 
 def search(request):        
     if request.method == 'GET':     
-        trip_search =  request.GET.get('search')      
+        trip_search =  request.GET.get('search')  
+        trip_form = forms.CreateTrip()
+    
         try:
             db_results = Trip.objects.filter(trail__icontains=trip_search).exclude(user=request.user)
 
         except Trip.DoesNotExist:
             db_results = None
-        return render(request,'final_app/search.html',{'results':db_results})
+        return render(request,'final_app/search.html',{'results':db_results, 'trip_form': trip_form})
     # else:
     #     return render(request,"search.html",{})
