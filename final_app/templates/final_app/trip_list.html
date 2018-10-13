@@ -2,11 +2,26 @@
 
 {% block content %}
 
-<h1>Completed Trips</h1>
 
     {% for trip in trips %}
-        <h4><a href={% url 'final_app:trip_detail' pk=trip.id %} >{{trip.trail}}</a></h4>
+        {% if trip.completed is False %}
+        <h1>Future Trips</h1>
+        <li><a href={% url 'final_app:trip_detail' pk=trip.id %} >{{trip.trail}}</a></li>
+
+        {% else %}
+
+        <h1>Completed Trips</h1>
+        <li><a href={% url 'final_app:trip_detail' pk=trip.id %} >{{trip.trail}}</a></li>
+
+        {% endif %}
         <hr>
     {% endfor %}  
 
 {% endblock %}
+
+
+
+<ul>{% for todo in todos %}
+        <li>  <input type="checkbox" id="{{ todo.title }}"name="completed" value="" {% if todo.completed is True %} checked = "checked" {% endif %} >{{ todo.title }}   </li>
+    {% endfor %}
+    </ul>

@@ -17,6 +17,8 @@ class UserProfileInfo(models.Model):
 
 class Trip (models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE, related_name='trips') 
+    start_date = models.DateField()
+    end_date = models.DateField()
     trail =  models.CharField(max_length=300)
     permit = models.URLField(blank=True, null=True)
     completed = models.BooleanField(default=False) 
@@ -37,3 +39,12 @@ class Post(models.Model):
     
     def __str__ (self):
         return self.title
+
+
+class Gear(models.Model):
+    trip = models.ForeignKey(Trip, on_delete = models.CASCADE, related_name='trip_gears')
+    gear_name = models.CharField(max_length=200)
+    packed =  models.BooleanField(default=False) 
+
+    def __str__ (self):
+        return self.gear_name

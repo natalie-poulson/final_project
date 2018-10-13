@@ -1,4 +1,5 @@
 {% extends 'final_app/base_layout.html' %}
+
 {% load crispy_forms_tags %}
 
 {% block content %}
@@ -52,6 +53,7 @@
     {% endif %}
 
     <p><strong>Date Joined:</strong> {{ user.profile.created_at }}</p>
+    
     <a href = "{% url 'final_app:profile_edit' %}">Edit Profile</a>
 
 

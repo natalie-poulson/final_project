@@ -3,11 +3,15 @@
 {% block content %}
 <h1>Post Detail Page!</h1>
 
+
+<a href = {% url 'final_app:post_edit' pk=post.id %}>Edit Post</a>
+
 <form class="post-delete" action="{% url 'final_app:post_delete' %}" method="post">
         {% csrf_token %}
         <input type='hidden' name='post_id' required id='id_post_id' value='{{ post.id }}' />
         <button type='submit'>Delete This Post</button>
-    </form>
+</form>
+
 
 
     <p><strong>Title:</strong> {{ post.title }}</p>

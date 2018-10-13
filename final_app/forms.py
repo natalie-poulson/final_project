@@ -10,6 +10,7 @@ class CreateProfile(forms.ModelForm):
                 'placeholder': 'Name',
                 }
             ))
+
     current_city = forms.CharField(label='',
         required=False,
         widget=forms.TextInput( 
@@ -17,6 +18,7 @@ class CreateProfile(forms.ModelForm):
                 'placeholder':'Current City'
                 }
         ))
+
     bio = forms.CharField(label='',
         required=False,
         widget=forms.TextInput( 
@@ -24,6 +26,7 @@ class CreateProfile(forms.ModelForm):
                 'placeholder': 'Bio'
                 }
         ))
+
     profile_picture = forms.ImageField(label='',
         required=False,
         )
@@ -40,7 +43,23 @@ class CreatePost(forms.ModelForm):
 
 
 class CreateTrip(forms.ModelForm):
+    start_date = forms.DateField(
+        widget=forms.TextInput(     
+            attrs={'type': 'date'} 
+        )
+    )     
+    end_date = forms.DateField(
+        widget=forms.TextInput(     
+            attrs={'type': 'date'} 
+        )
+    )   
+
     class Meta():
         model = models.Trip
-        fields = ('trail', 'permit', 'completed')
+        fields = ('trail', 'permit', 'completed', 'start_date', 'end_date')
 
+
+class CreateGear(forms.ModelForm):
+    class Meta():
+        model = models.Gear
+        fields = ('gear_name', 'packed')

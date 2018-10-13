@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # third party apps
     'django_extensions',
     'crispy_forms',
+
     # my apps
     'accounts',
     'final_app',

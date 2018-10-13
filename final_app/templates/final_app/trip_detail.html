@@ -2,8 +2,11 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<h1>Trip Detail Page!</h1>
-<!-- <a href= "{% url 'final_app:trip_delete' %}">Delete This Trip</a> -->
+<h1>{{ trip.trail }}</h1>
+<h5> {{trip.user }} </h5>
+
+<hr>
+<a href = {% url 'final_app:trip_edit' pk=trip.id %}>Edit Trip</a>
 
 <form class="trip-delete" action="{% url 'final_app:trip_delete' %}" method="post">
     {% csrf_token %}
@@ -40,18 +43,65 @@
           </div>
         </div>
       </div>
+      <hr>
 
-
+    <hr>
+    <h4>Trip Info</h4>
     <p><strong>Trail:</strong> {{ trip.trail }}</p>
+    <p><strong>Dates:</strong> {{ trip.start_date }} - {{ trip.end_date}}</p>
+
     {% if trip.permit %}
     <p><strong>Permit:</strong> {{ trip.permit }}</p>
     {% endif %}
-    <p><strong>User:</strong> {{ trip.user }}</p>
-    <!-- <p><strong>Completed:</strong> {{ trip.completed }}</p> -->
-    <h2>Posts about this Trip by {{ trip.user }}</h2>
-    {% for trip_post in trip.trip_posts.all %}
 
+    {% if trip.completed is False %}
+    <input type="checkbox" id=" {{ trip.trail }}" name = "future" value= ""  >Completed
+    {% else %}
+    <input type="checkbox" id=" {{ trip.trail }}" name = "completed" value= "" checked="checked">Complete
+    {% endif %}
+    <hr>
+
+    <hr>
+    <h4>Gear</h4>
+    <!-- Small modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Add Gear</button>
+
+      <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+              <form class='gear-create-form' enctype="multipart/form-data" action="{% url 'final_app:gear_create' %}" method='post'>
+                  {% csrf_token %}
+                  {{ gear_form|crispy }}
+                  <input type='hidden' name='trip_id' required id='id_trip_id' value='{{ trip.id }}' />
+                  <button type="input" class="btn btn-success">Add</button>
+              </form>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+   
+        
+      <!-- {% if trip.completed is False %}
+      <p>
+        <input type="text" placeholder="Enter gear">
+        <input type="submit">
+      </p>
+      {% endif %} -->
+
+      {% for trip_gear in trip.trip_gears.all %}
+     
+       <li><input type="checkbox" id=" {{ trip_gear.gear_name }}" name = "" value= "" {% if trip_gear.packed is True %} checked="checked"{% endif %}>{{trip_gear.gear_name}}</li>
+        
+      {% endfor %}
+
+    <hr>
+
+    <hr>
+    <h4>Posts about {{trip.trail}} by {{ trip.user }}</h4>
+
+    {% for trip_post in trip.trip_posts.all %}
       <h3><a href="{% url 'final_app:post_detail' pk=trip_post.id %}" >{{trip_post.title}}</a></h3>
     {% endfor %}    
+    <hr>
 
 {% endblock %}

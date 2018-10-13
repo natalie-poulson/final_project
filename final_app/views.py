@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from . import forms
 from django.conf import settings
-from .models import User, UserProfileInfo, Trip, Post
+from .models import User, UserProfileInfo, Trip, Post, Gear
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 
@@ -22,9 +22,9 @@ def profile_create(request):
             instance.user = request.user
             instance.save()
             return render(request, 'final_app/profile.html')
-        else: 
-            print(form.errors)
-            return render(request, 'final_app/profile_create.html', {'form': form})
+        # else: 
+        #     print(form.errors)
+        #     return render(request, 'final_app/profile_create.html', {'form': form})
     else:
         form = forms.CreateProfile()
     return render(request, 'final_app/profile_create.html', {'form': form})
@@ -54,6 +54,8 @@ def profile_edit(request):
                 form.profile_picture = request.FILES['profile_picture']
             form.save()
             return redirect('final_app:profile')
+        else:
+            return render(request, 'final_app/profile_edit.html', {'form': form})
     else:
         form = forms.CreateProfile(instance=request.user.profile)
     return render(request, 'final_app/profile_edit.html', {'form': form})
@@ -62,10 +64,12 @@ def profile_edit(request):
 def trip_detail(request, pk):
     trip = Trip.objects.get(id=pk)
     post_form = forms.CreatePost()
+    gear_form = forms.CreateGear()
 
     context = {
         'trip': trip,
-        'post_form' : post_form
+        'post_form' : post_form,
+        'gear_form': gear_form
     }
 
     return render(request, 'final_app/trip_detail.html', context)
@@ -92,15 +96,17 @@ def post_create(request):
 
             trip = Trip.objects.get(pk=trip_id)
             post_form = forms.CreatePost()
+            gear_form = forms.CreateGear()
 
             context = {
                 'trip': trip,
-                'post_form' : post_form
+                'post_form' : post_form,
+                'gear_form': gear_form
             }
 
             return render(request, 'final_app/trip_detail.html', context)        
-        print(post_form.errors)
-        return render(request, 'final_app/trip_detail.html', {'post_form': post_form})
+        # print(post_form.errors)
+        # return render(request, 'final_app/trip_detail.html', {'post_form': post_form})
     return redirect('final_app:trip_detail')
 
 
@@ -115,8 +121,8 @@ def trip_create(request):
             instance.save()
 
             return redirect('final_app:profile')       
-        print(trip_form.errors)
-        return render(request, 'final_app/profile.html', {'trip_form': trip_form})
+        # print(trip_form.errors)
+        # return render(request, 'final_app/profile.html', {'trip_form': trip_form})
     return redirect('final_app:profile')
 
 
@@ -140,10 +146,12 @@ def post_delete(request):
         post.delete()
 
         post_form = forms.CreatePost()
+        gear_form = forms.CreateGear()
 
         context = {
             'trip': trip,
-            'post_form' : post_form
+            'post_form' : post_form,
+            'gear_form': gear_form
         }
 
         return render(request, 'final_app/trip_detail.html',context )
@@ -159,3 +167,74 @@ def trips_future(request):
     trips = Trip.objects.filter(user=request.user).filter(completed=False)
 
     return render (request, 'final_app/trip_list.html', {'trips': trips})
+
+
+@login_required(login_url='/accounts/login/')
+def post_edit(request,pk ):
+    post = Post.objects.get(pk=pk)
+
+    if request.method == "POST":
+        form = forms.CreatePost(data=request.POST, instance=post, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            if 'image' in request.FILES:
+                form.image = request.FILES['image']
+            form.save()
+            return render(request, 'final_app/post_detail.html', {'post': post})
+        else:
+            return render(request, 'final_app/post_edit.html', {'form': form})
+    else:
+        form = forms.CreatePost(instance=post)
+    return render(request, 'final_app/profile_edit.html', {'form': form})
+
+
+@login_required(login_url='/accounts/login/')
+def trip_edit(request,pk ):
+    trip = Trip.objects.get(pk=pk)
+    if request.method == "POST":
+        form = forms.CreateTrip(data=request.POST, instance=trip)
+        if form.is_valid():
+            form.save()   
+
+            post_form = forms.CreatePost()
+            gear_form = forms.CreateGear()
+
+            context = {
+                'trip': trip,
+                'post_form' : post_form,
+                'gear_form': gear_form
+            }
+
+            return render(request, 'final_app/trip_detail.html', context)
+        # else:
+        #     return render(request, 'final_app/trip_edit.html', {'form': form})
+    else:
+        form = forms.CreateTrip(instance=trip)
+    return render(request, 'final_app/trip_edit.html', {'form': form})
+
+
+def gear_create(request):
+    if request.method == 'POST':
+        gear_form = forms.CreateGear(request.POST)
+        trip_id = request.POST.get('trip_id')
+        
+        if gear_form.is_valid():
+            instance = gear_form.save(commit=False)
+            instance.trip = Trip.objects.get(pk=trip_id)
+            instance.save()
+
+            trip = Trip.objects.get(pk=trip_id)
+            post_form = forms.CreatePost()
+            gear_form = forms.CreateGear()
+
+            context = {
+                'trip': trip,
+                'post_form' : post_form,
+                'gear_form': gear_form
+            }
+            return render(request, 'final_app/trip_detail.html', context)    
+
+        # print(gear_form.errors)
+        # return render(request, 'final_app/trip_detail.html', {'gear_form': gear_form})
+
+    return redirect('final_app:trip_detail')
