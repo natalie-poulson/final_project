@@ -47,7 +47,7 @@
     <p><strong>Permit:</strong> {{ trip.permit }}</p>
     {% endif %}
     <p><strong>User:</strong> {{ trip.user }}</p>
-    <p><strong>Completed:</strong> {{ trip.completed }}</p>
+    <!-- <p><strong>Completed:</strong> {{ trip.completed }}</p> -->
     <h2>Posts about this Trip by {{ trip.user }}</h2>
     {% for trip_post in trip.trip_posts.all %}
 

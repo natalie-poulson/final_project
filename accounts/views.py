@@ -30,7 +30,7 @@ def login_view(request):
             else:
                 return redirect('final_app:profile')
         print(login_form.errors)          
-        return render(request, 'final_app/landing.html',{'login_form': login_form} )
+        return redirect(request, 'final_app/landing.html',{'login_form': login_form} )
     else:
         return redirect('final_app:landing')
 

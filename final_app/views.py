@@ -147,3 +147,15 @@ def post_delete(request):
         }
 
         return render(request, 'final_app/trip_detail.html',context )
+
+
+def trips_completed(request):
+    trips = Trip.objects.filter(user=request.user).filter(completed=True)
+
+    return render (request, 'final_app/trip_list.html', {'trips': trips})
+
+
+def trips_future(request):
+    trips = Trip.objects.filter(user=request.user).filter(completed=False)
+
+    return render (request, 'final_app/trip_list.html', {'trips': trips})

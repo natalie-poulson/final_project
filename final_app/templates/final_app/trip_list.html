@@ -1,0 +1,12 @@
+{% extends 'final_app/base_layout.html' %}
+
+{% block content %}
+
+<h1>Completed Trips</h1>
+
+    {% for trip in trips %}
+        <h4><a href={% url 'final_app:trip_detail' pk=trip.id %} >{{trip.trail}}</a></h4>
+        <hr>
+    {% endfor %}  
+
+{% endblock %}
