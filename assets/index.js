@@ -4,30 +4,30 @@ var input = document.getElementById("pac-input");
 var autocomplete = new google.maps.places.Autocomplete(input);
 
 
-$('.post-create-form').on ('submit', function (e) {
-    e.preventDefault();
+// $('.post-create-form').on ('submit', function (e) {
+//     e.preventDefault();
  
 
-    console.log('TEST')
-    var place = autocomplete.getPlace();
-    console.log(place)
-    console.log(place.formatted_address)
-    console.log(place.geometry.location.lat())
-    console.log(place.geometry.location.lng())
+//     console.log('TEST')
+//     var place = autocomplete.getPlace();
+//     console.log(place)
+//     console.log(place.formatted_address)
+//     console.log(place.geometry.location.lat())
+//     console.log(place.geometry.location.lng())
 
-    console.log($('#id_trail').val())
-    console.log($('#id_permit').val())
-    console.log($('#id_start_date').val())
-    console.log($('#id_end_date').val())
-    console.log($('#id_completed').val())
-
-
+//     console.log($('#id_trail').val())
+//     console.log($('#id_permit').val())
+//     console.log($('#id_start_date').val())
+//     console.log($('#id_end_date').val())
+//     console.log($('#id_completed').val())
 
 
 
 
 
-})
+
+
+// })
 // $(document).on('submit','#signup-form', function(e){
 
 //     e.preventDefault();

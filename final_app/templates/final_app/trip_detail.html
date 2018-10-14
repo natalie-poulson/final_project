@@ -10,7 +10,8 @@
 <form class="trip-delete" action="{% url 'final_app:trip_delete' %}" method="post">
     {% csrf_token %}
     <input type='hidden' name='trip_id' required id='id_trip_id' value='{{ trip.id }}' />
-    <button type='submit'>Delete This Trip</button>
+    <button class="trash-button"type='submit'><i class="far fa-trash-alt"></i></button>
+   
 </form>
 
 <!-- Button trigger modal -->

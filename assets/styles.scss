@@ -22,6 +22,12 @@ $logo-stack: 'Josefin Sans', sans-serif;
             font-size:5em;
             color:white;
         }
+        h4 {
+            color:white;
+            font-family:$logo-stack;
+            font-size:2em;
+
+        }
        .login-wrapper {
            display:flex;
            justify-content: space-between;
@@ -48,7 +54,65 @@ $logo-stack: 'Josefin Sans', sans-serif;
     }
 }
 
+.modal-btn {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    color:black;
+}
 
+.user_profile_icon {
+    width:40px;
+    border-radius: 50%;
+    object-fit:cover;
+}
+
+a {
+    text-decoration:none;
+    color:black;
+}
+li {
+    list-style: none;
+}
+#icon-future {
+    color:red;
+}
+#icon-incomplete {
+    color:green;
+}
+
+nav {
+    display:flex;
+    justify-content: flex-end;
+    ul{
+        display:flex;
+        align-items: center;
+        margin-right:2em;
+    }
+    li {
+        margin:.5em 1em;
+    }
+}
+.search {
+    border-bottom:.5px solid black;
+    background: transparent;
+    border-top: transparent !important;
+    border-left: transparent !important;
+    border-right: transparent !important;
+    outline:none;
+}
+.trash-button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    color:black;
+}
 
 #pac-input {
     width:60vw;;

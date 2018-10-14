@@ -34,23 +34,6 @@ class Trip (models.Model):
     def total_days(self):
         return (self.end_date - self.start_date).days
 
-    # def day_lists(self):
-    #     day_lists = []
-    #     nxt = self.start_date
-    #     while nxt <= self.end_date:
-    #         day_lists.append(nxt)
-         
-    #     return day_lists
-    # def dateranges(self):
-    #     date_list = []
-    #     start_date= self.start_date
-    #     end_date = self.end_date
-    #     for n in range( (end_date - start_date).days + 1):
-    #         date_list.append(n)
-    #     return date_list
-      
-
-
 
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE, related_name='posts') 
