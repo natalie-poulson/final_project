@@ -9,12 +9,13 @@ from django.contrib import messages
 def signup_view(request):
     if request.method == 'POST':
         signup_form = UserCreationForm(request.POST)
+        login_form = AuthenticationForm()
         if signup_form.is_valid():
             user = signup_form.save()
             login(request, user)
             return redirect('final_app:profile_create')
         print(signup_form.errors)
-        return render(request, 'final_app/landing.html',{'signup_form': signup_form} )
+        return render(request, 'final_app/landing.html',{'signup_form': signup_form, 'login_form': login_form} )
     else:
         return redirect('final_app:landing')
 
@@ -22,6 +23,7 @@ def signup_view(request):
 def login_view(request):
     if request.method == 'POST':
         login_form = AuthenticationForm(request, request.POST)
+        signup_form = UserCreationForm()
         if login_form.is_valid():
             user = login_form.get_user()
             login(request,user)
@@ -29,8 +31,9 @@ def login_view(request):
                 return redirect(request.POST.get('next'))
             else:
                 return redirect('final_app:profile')
-        print(login_form.errors)          
-        return redirect(request, 'final_app/landing.html',{'login_form': login_form} )
+        else:
+            print(login_form.errors)        
+            return render(request, 'final_app/landing.html',{'login_form': login_form, 'signup_form': signup_form} )
     else:
         return redirect('final_app:landing')
 

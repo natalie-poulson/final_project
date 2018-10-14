@@ -50,6 +50,7 @@
 
     <p><strong>Trail:</strong> {{ trip.trail }}</p>
     <p><strong>Dates:</strong> {{ trip.start_date }} - {{ trip.end_date}}</p>
+    <p><strong> Total days:</strong> {{trip.total_days}}</p>
 
     {% if trip.permit %}
     <p><strong>Permit:</strong> {{ trip.permit }}</p>
@@ -102,7 +103,13 @@
 
     <hr>
 
+<hr>
+<h1>test </h1> * {{trip.total_days}}
 
+
+
+
+<hr>
 
     <hr>
     <h4>Food</h4>

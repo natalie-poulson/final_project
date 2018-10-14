@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
+from datetime import datetime
 
 
 class UserProfileInfo(models.Model):
@@ -22,10 +23,33 @@ class Trip (models.Model):
     trail =  models.CharField(max_length=300)
     permit = models.URLField(blank=True, null=True)
     completed = models.BooleanField(default=False) 
+    location = models.CharField(blank=True, max_length=400)
+    lat = models.DecimalField(blank=True, null=True, max_digits=9, decimal_places=6)
+    lng = models.DecimalField(blank=True, null=True, max_digits=9, decimal_places=6)
     created_at = models.DateField(auto_now_add =True)
 
     def __str__ (self):
         return self.trail
+
+    def total_days(self):
+        return (self.end_date - self.start_date).days
+
+    # def day_lists(self):
+    #     day_lists = []
+    #     nxt = self.start_date
+    #     while nxt <= self.end_date:
+    #         day_lists.append(nxt)
+         
+    #     return day_lists
+    # def dateranges(self):
+    #     date_list = []
+    #     start_date= self.start_date
+    #     end_date = self.end_date
+    #     for n in range( (end_date - start_date).days + 1):
+    #         date_list.append(n)
+    #     return date_list
+      
+
 
 
 class Post(models.Model):

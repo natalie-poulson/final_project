@@ -1,3 +1,131 @@
-/* body {
-    background-color:blue;
-} */
+.landing-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.landing-wrapper #video {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  z-index: -100;
+  opacity: 0.8;
+}
+.landing-wrapper .landing-content h1 {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 5em;
+  color: white;
+}
+.landing-wrapper .landing-content .login-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.landing-wrapper .landing-content .landing-button {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  color: white;
+}
+.landing-wrapper .landing-content .modal-btn {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  color: black;
+}
+
+#pac-input {
+  width: 60vw;
+}
+#pac-input .pac-container {
+  background-color: white;
+  position: absolute !important;
+  z-index: 10000;
+  border-radius: 2px;
+  border-top: 1px solid #d9d9d9;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+#pac-input .pac-logo:after {
+  content: "";
+  padding: 1px 1px 1px 0;
+  height: 16px;
+  text-align: right;
+  display: block;
+  background-image: url(https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white3.png);
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: 120px 14px;
+}
+#pac-input .hdpi.pac-logo:after {
+  background-image: url(https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white3_hdpi.png);
+}
+#pac-input .pac-item {
+  cursor: default;
+  padding: 0 4px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 30px;
+  text-align: left;
+  border-bottom: 1px solid #000000;
+  font-size: 11px;
+  color: black !important;
+}
+#pac-input .pac-item:hover {
+  background-color: lightgray;
+}
+#pac-input .pac-item-selected, #pac-input .pac-item-selected:hover {
+  background-color: #ebf2fe;
+}
+#pac-input .pac-matched {
+  font-weight: 700;
+}
+#pac-input .pac-item-query {
+  font-size: 13px;
+  padding-right: 3px;
+  color: #000;
+  z-index: 20000;
+  margin: 0;
+}
+#pac-input .pac-icon {
+  display: none;
+  width: 15px;
+  height: 20px;
+  margin-right: 7px;
+  margin-top: 6px;
+  display: inline-block;
+  vertical-align: top;
+  background-image: url(https://maps.gstatic.com/mapfiles/api-3/images/autocomplete-icons.png);
+  background-size: 34px;
+}
+#pac-input .pac-item-selected .pac-icon-search {
+  background-position: -18px -1px;
+}
+#pac-input .pac-icon-marker {
+  background-position: -1px -161px;
+  display: none;
+}
+#pac-input .pac-item-selected .pac-icon-marker {
+  background-position: -18px -161px;
+}
+#pac-input .pac-placeholder {
+  color: gray;
+}
+#pac-input .pac-item span {
+  color: #000 !important;
+  margin: 0;
+}
+
+/*# sourceMappingURL=styles.css.map */

@@ -52,7 +52,8 @@ class CreateTrip(forms.ModelForm):
         widget=forms.TextInput(     
             attrs={'type': 'date'} 
         )
-    )   
+    )
+    
 
     class Meta():
         model = models.Trip

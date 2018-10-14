@@ -8,6 +8,7 @@ from .models import User, UserProfileInfo, Trip, Post, Gear, Food
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 
+
 def landing(request):
     login_form = AuthenticationForm()
     signup_form = UserCreationForm()
@@ -69,6 +70,8 @@ def profile_edit(request):
 @login_required(login_url='/accounts/login/')
 def trip_detail(request, pk):
     trip = Trip.objects.get(id=pk)
+
+    
     post_form = forms.CreatePost()
     gear_form = forms.CreateGear()
     food_form = forms.CreateFood()
