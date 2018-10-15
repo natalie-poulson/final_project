@@ -32,7 +32,11 @@ class Trip (models.Model):
         return self.trail
 
     def total_days(self):
-        return (self.end_date - self.start_date).days
+        return (self.end_date - self.start_date).days 
+
+    def day_lists(self):
+        return range ((self.end_date - self.start_date).days)
+
 
 
 class Post(models.Model):
@@ -40,7 +44,7 @@ class Post(models.Model):
     slug = models.SlugField(unique=True)
     trip = models.ForeignKey(Trip, on_delete = models.CASCADE, related_name='trip_posts') 
     title = models.CharField(max_length=200)
-    image = models.ImageField( blank=True, default='',null=True, upload_to='post_pictures/%Y/%m')
+    image = models.ImageField( upload_to='post_pictures/%Y/%m')
     caption = models.CharField(blank=True, max_length=200)
     body = models.TextField(blank=True)
     created_at = models.DateField(auto_now_add =True)
@@ -62,6 +66,7 @@ class Food(models.Model):
     trip = models.ForeignKey(Trip, on_delete = models.CASCADE, related_name='trip_foods')
     food_name = models.CharField(max_length=200)
     packed =  models.BooleanField(default=False) 
+    day = models.IntegerField(default=0)
 
     def __str__ (self):
         return self.food_name

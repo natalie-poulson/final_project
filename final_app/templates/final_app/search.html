@@ -1,7 +1,14 @@
 {% extends 'final_app/base_layout.html' %}
 {% block content %}
 
-<h3>Search Results</h3>
+<div class="search-page">
+
+<div>
+        <h3>Search Results</h3>
+</div>
+<div>
+
+
 {% if results %}
     {% for result in results %}
         <li>
@@ -12,5 +19,6 @@
 {% else %}
         <h6>Your serach returned no results</h6>
 {% endif %}
-
+</div>
+</div>
 {% endblock %}

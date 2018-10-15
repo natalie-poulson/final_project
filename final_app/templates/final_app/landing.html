@@ -20,16 +20,20 @@
         <div class ="landing-wrapper">
             <video playsinline autoplay muted  loop  id="video" ><source src="../../../media/video.MP4" type="video/mp4"></video>
             <div class="landing-content">
-                <h1> OutPACK</h1>
+                <div class="logo">
+                    <h1> OutPACK</h1>
+                </div>
                 {% if user.is_authenticated %}
+                <div>
                     <h4> Welcome Back, {{user.username}}</h4>
-                    <div class="login-wrapper">
-                        <a class="landing-button" href="#">Enter</a>
-                        <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
-                            {% csrf_token %}
-                            <button class ="landing-button"type='submit'>Logout</button>
-                        </form>
-                    </div>
+                </div>
+                <div class="login-wrapper">
+                    <a class="landing-button" href="{% url 'final_app:profile' %}">Enter</a>
+                    <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                        {% csrf_token %}
+                        <button class ="landing-button"type='submit'>Logout</button>
+                    </form>
+                </div>
                 {% else %}
                 <div class ="login-wrapper">
                     <!-- Button trigger modal -->

@@ -10,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>OutPACK</title>
 
+
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
 
@@ -21,8 +22,9 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:100" rel="stylesheet">
     <link href="{% static 'styles.css' %}" rel="stylesheet" type="text/css"/>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous" defer></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous" defer></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous" defer></script>
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg&libraries=places" defer></script>
 
    
@@ -30,19 +32,19 @@
     <script src="{% static 'index.js' %}" defer></script>
 </head>
 <body>
+
     <header>
         <nav>
             <ul>
-
                 {% if user.is_authenticated  %}
-                <li><a href= "{% url 'final_app:profile' %}"><i class="fas fa-user-alt"></i></a></li>
-                <li><a href= "{% url 'final_app:trips' %}"> <i class="fas fa-hiking"></i></a></li>
+                <li><a href= "{% url 'final_app:profile' %}" data-toggle="tooltip" data-placement="bottom" title="Profile"><i class="fas fa-user-alt"></i></a></li>
+                <li><a href= "{% url 'final_app:trips' %}"data-toggle="tooltip" data-placement="bottom" title="Trips"> <i class="fas fa-hiking"></i></a></li>
                 <!-- Button trigger modal -->
-                <li><button type="button" class="modal-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-plus"></i></button></li>
-                <li><a href= "{% url 'accounts:logout' %}"><i class="fas fa-sign-out-alt"></i></a></li>
+                <li><span data-toggle="tooltip" data-placement="bottom" title="Start A New Trip"><button type="button" class="modal-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-plus"></i></button></span></li>
+                <li><a href= "{% url 'accounts:logout' %}"data-toggle="tooltip" data-placement="bottom" title="Logout"><i class="fas fa-sign-out-alt"></i></a></li>
                 <li><img class="user_profile_icon" src="{{request.user.profile.profile_picture.url}}" width="auto" height="40px"></li>
                 <!-- Search -->
-                <li><form name="myform" method="GET" action="{% url 'final_app:search' %}">  <input type="text" class="search" name="search" placeholder="Search for trip ideas" /><i class="fas fa-search"></i></form> </li>
+                <li><form name="myform" method="GET" action="{% url 'final_app:search' %}">  <input type="text" class="search" name="search" placeholder="Search for trip ideas" /><i class="fas fa-search"data-toggle="tooltip" data-placement="bottom" title="Search"></i></form> </li>
 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -136,13 +138,13 @@
         {% block content %}
         {% endblock %}
     </main>
+    <footer>
+        <nav>
+            <p>&copy; 2018 all rights reserved</p>
+            <ul>
+                <li><i class="fab fa-github"></i></li>
+            </ul>
+        </nav>
+    </footer>
 </body>
-<footer>
-    <nav>
-        <p>&copy; 2018 all rights reserved</p>
-        <ul>
-            <li><i class="fab fa-github"></i></li>
-        </ul>
-    </nav>
-</footer>
 </html>

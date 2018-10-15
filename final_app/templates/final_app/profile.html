@@ -2,54 +2,57 @@
 
 
 {% block content %}
-
-
-    <div class = "profile-picture">
+<div class = "profile">
+    
+    <div class = "profile-aside">
+        <a href = "{% url 'final_app:profile_edit' %}">Edit </a>
+        <div class = "profile-picture">
             <img src="{{ user.profile.profile_picture.url }}" width="auto" height="250px" alt="">
+        </div>
+
+        <div class = "profile-info">
+            <p><strong>Name:</strong> {{ user.profile.name }}</p>
+
+            {% if user.profile.current_city %}
+            <p><strong>Current City:</strong> {{ user.profile.current_city }}</p>
+            {% endif %}
+            
+            {% if user.profile.bio %}
+            <p><strong>Bio:</strong> {{ user.profile.bio }}</p>
+            {% endif %}
+        
+            <p><strong>Date Joined:</strong> {{ user.profile.created_at }}</p>
+        </div>
     </div>
-    <p><strong>Name:</strong> {{ user.profile.name }}</p>
 
-    {% if user.profile.current_city %}
-    <p><strong>Current City:</strong> {{ user.profile.current_city }}</p>
-    {% endif %}
-    
-    {% if user.profile.bio %}
-    <p><strong>Bio:</strong> {{ user.profile.bio }}</p>
-    {% endif %}
+    <div class='profile-main'>
+        <div>
+            <h1> Trips</h1>
+                {% for trip in trips %}
 
-    <p><strong>Date Joined:</strong> {{ user.profile.created_at }}</p>
-    
-    <a href = "{% url 'final_app:profile_edit' %}">Edit Profile</a>
+                {% if trip.completed %}
+                <li><i class="fas fa-calendar-check"></i>  <a href={% url 'final_app:trip_detail' slug=trip.slug %} >{{trip.trail}}</a></li>
 
+                {% else %}
+                <li><a href={% url 'final_app:trip_detail' slug=trip.slug %} >{{trip.trail}}</a></li>
+                {% endif %}
 
-    <h1> Trips by {{user.username}} </h1>
-        {% for trip in trips %}
+                {% endfor %}  
+        </div>
+        <div class ="profile-post">
+            <h1> Posts by {{user.username}} </h1>
+            {% for trip in trips %}
+                    {% for trip_post in trip.trip_posts.all %}
+                    <a href={% url 'final_app:post_detail' slug=trip_post.slug %} >
+                    <img id ="hover-img" src="{{ trip_post.image.url }}" width="250px" height="250px" alt="">
 
-          {% if trip.completed %}
-          <h4></h4><a href={% url 'final_app:trip_detail' slug=trip.slug %} >{{trip.trail}}</a><span>COMPLETED</span></h4>
-
-          {% else %}
-          <h4></h4><a href={% url 'final_app:trip_detail' slug=trip.slug %} >{{trip.trail}}</a><span>
-              <!-- Completed?: {{trip.completed}} -->
-            </span></h4>
-          {% endif %}
-
-
-  
-        {% endfor %}  
-
-
-    <h1> Posts by {{user.username}} </h1>
-    {% for trip in trips %}
-            {% for trip_post in trip.trip_posts.all %}
-            <a href={% url 'final_app:post_detail' slug=trip_post.slug %} >
-                <h4>{{trip_post.title}}</h4>
-            </a>
-            {% endfor %}
-    {% endfor %}  
-
-
-       
+                        <!-- <h4>{{trip_post.title}}</h4> -->
+                    </a>
+                    {% endfor %}
+            {% endfor %}  
+        </div>
+    </div>
+</div>   
 
 {% endblock %}
 

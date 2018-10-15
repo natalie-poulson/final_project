@@ -2,23 +2,25 @@
 
 
 {% block content %}
-<div class="trips-header">
-    <div>
-        <a id="icon-incomplete"href="{% url 'final_app:trips_completed' %}"><i class="fas fa-hiking"></i></a> 
-        <h4>Completed Trips</h4>
-    </div>
-    <div>
-        <a id="icon-future"href="{% url 'final_app:trips_future' %}"><i class="fas fa-hiking"></i></a> 
-        <h4>Future Trips</h4>
-    </div>
-</div>
 
+
+<div class="trips-header">
+        <div>
+            <a id="icon-incomplete"href="{% url 'final_app:trips_completed' %}"><i class="fas fa-hiking"></i></a> 
+            <h4>Completed Trips</h4>
+        </div>
+        <div>
+            <a id="icon-future"href="{% url 'final_app:trips_future' %}"><i class="fas fa-hiking"></i></a> 
+            <h4>Future Trips</h4>
+        </div>
+    </div>
+    
 <div class="trips-aside">
     {% block aside %}
     {% endblock %}
 <div class="trips-main">
 
-        <div id='map' style='width: 100vw; height: 60vh;'>  </div>
+        <div id='map' style='width: 100vw; height: 80vh;'>  </div>
                 <script>
                         mapboxgl.accessToken = 'pk.eyJ1IjoibmF0YWxpZXBsc24iLCJhIjoiY2psZm8ybnFnMHl4NDNwcG16eGFmMTdwaCJ9.2xYdBHCpcf5cdap8BvhVgQ';
                         var map = new mapboxgl.Map({
@@ -64,4 +66,5 @@
         </div>
     </div>
 
+  
 {% endblock %}

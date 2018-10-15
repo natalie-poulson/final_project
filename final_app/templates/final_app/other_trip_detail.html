@@ -2,10 +2,11 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<h1>{{ trip.trail }}</h1>
-<h5> {{trip.user }} </h5>
 
-<hr>
+<h1>{{ trip.trail }}</h1>
+<img class="user_profile_icon" src="{{trip.user.profile.profile_picture.url}}" width="auto" height="40px">
+
+
 
 
 

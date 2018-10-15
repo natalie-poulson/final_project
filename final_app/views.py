@@ -347,10 +347,15 @@ def food_create(request):
     if request.method == 'POST':
         food_form = forms.CreateFood(request.POST)
         trip_id = request.POST.get('trip_id')
+        food_day = request.POST.get('food_day')
+        print (food_day)
+
         
         if food_form.is_valid():
             instance = food_form.save(commit=False)
             instance.trip = Trip.objects.get(pk=trip_id)
+            instance.day = food_day
+
             instance.save()
 
             trip = Trip.objects.get(pk=trip_id)
@@ -476,4 +481,4 @@ def trips(request):
     trip_form = forms.CreateTrip()
     mapbox_access_token = 'pk.eyJ1IjoibmF0YWxpZXBsc24iLCJhIjoiY2psZm8ybnFnMHl4NDNwcG16eGFmMTdwaCJ9.2xYdBHCpcf5cdap8BvhVgQ'
 
-    return render (request, 'final_app/trip_list.html', {'trips': trips, 'trip_form': trip_form, 'mapbox_access_token': mapbox_access_token })
+    return render (request, 'final_app/trips.html', {'trips': trips, 'trip_form': trip_form, 'mapbox_access_token': mapbox_access_token })

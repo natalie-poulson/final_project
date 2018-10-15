@@ -1,5 +1,28 @@
+@import 'reset';
+
 $logo-stack: 'Josefin Sans', sans-serif;
 
+
+body {
+    height:100vh;
+    width:100vw;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between
+}
+
+footer nav {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:.5em;
+    p {
+        margin-left:1em;
+    }
+    ul {
+        margin-right:1em;
+    }
+}
 
 #geocoder-container > div {
     min-width:50%;
@@ -22,15 +45,18 @@ $logo-stack: 'Josefin Sans', sans-serif;
         opacity:.8;
     }
     .landing-content {
+        display:flex;
+        flex-direction: column;
         h1 {
             font-family:$logo-stack;
             font-size:5em;
             color:white;
+            text-align: center;
         }
         h4 {
             color:white;
             font-family:$logo-stack;
-            font-size:2em;
+            font-size:3em;
 
         }
        .login-wrapper {
@@ -45,6 +71,9 @@ $logo-stack: 'Josefin Sans', sans-serif;
             overflow: hidden;
             outline:none;
             color:white;
+            font-family:$logo-stack;
+            font-size:2em;
+
         }
        .modal-btn {
             background-color: Transparent;
@@ -55,7 +84,147 @@ $logo-stack: 'Josefin Sans', sans-serif;
             outline:none;
             color:black;
         }
+    }
+}
+.trip-detail {
+    margin: 3em 1em;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    h1 {
+        font-family:$logo-stack;
+        font-size:3.3em;
+        margin-left:1em;
+    }
+    h4 {
+        font-family:$logo-stack;
+        font-size:2em;
+    }
+    .trip-header {
+        display:flex;
+        width:100vw;
+        // align-items: center;
+        .trip-title{
+            display:flex;
+            width:60vw;
+            margin-left:4em;
+            // align-items: center;
+        }
+        .trip-icons {
+            width:40vw;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-right:4em;
+            div {
+                margin: 0 .7em;
+            }
+        }
+    }
+    .trip-info {
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        // width:100vw;
+        div {
+            margin: .3em 0;
+        }
+        h1, p {
+            text-align: center;
+            margin:0;
+        }
+        i {
+            margin-left:1em;
+        }
+        .trip-dates {
+            display:flex;
+        }
+    }
+    .trip-pack{
+        display:flex;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100vw;
+        margin: 3em 0;
+        .pack-line {
+            display:flex;
+            justify-content: space-between;
+            width:20vw;
+            margin:.4em 0;
+        }
+        .trip-gear {
+          margin-right:4em;
+          display:flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          .gear-head {
+              display:flex;
+              justify-content: space-between;
+              width:20vw;
+              margin-bottom:1em;
+          }
+        }
+        .trip-food {
+            margin-left:4em;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            .food-head {
+                display:flex;
+                justify-content: space-between;
+                width:20vw;
+                margin-bottom:1em;
+            }
+            .food-wrapper {
+                margin-bottom:1em;
+                .food-box {
+                    display:flex;
+                    h6 {
+                        margin-left:.5em;
+                        margin-bottom:.3em;
+                    }
+                }
+            }
+            form {
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+            }
+        }
+    }
+    .trip-posts {
+        h4{
+            font-family:$logo-stack;
+            font-size:2em;
+            text-align: center;
+            margin:1em 0 .5em 0;
+        } 
+        img {
+            object-fit: cover;
+            border-radius: 5px;
+            margin:.3em;
+            &:hover {
+                opacity:.5;
+            }
+        }
+    }
+}
 
+.search-page {
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
+    margin-top:3em;
+    margin-left:3em;
+    h3 {
+        font-family:$logo-stack;
+        font-size:3em;
     }
 }
 
@@ -78,6 +247,11 @@ $logo-stack: 'Josefin Sans', sans-serif;
 a {
     text-decoration:none;
     color:black;
+}
+a:hover 
+{
+     text-decoration:none; 
+     cursor:pointer;  
 }
 li {
     list-style: none;
@@ -118,11 +292,106 @@ nav {
     outline:none;
     color:black;
 }
-.profile-picture img {
-    border-radius:50%;
-    width:250px;
-    object-fit:contain;
+
+.profile {
+    // font-size:1.5em;
+    display:flex;
+    justify-content: center;
+    .profile-aside {
+        font-size: 1.3em;
+        display:flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        width:30vw;
+        .profile-picture img {
+            border-radius:50%;
+            width:250px;
+            object-fit:cover;
+            margin:1.5em 0;
+        }
+        .profile-info {
+            p {
+                margin: .5em 0;
+            }
+        }
+    }
+    .profile-main {
+        width:60vw;
+        margin-left:4em;
+        display:flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        .trip-list-container {
+            display:flex;
+            justify-content: space-around;
+            width:60vw;
+        }
+        h1 {
+            font-family:$logo-stack;
+        }
+        li {
+            margin:1em 0;
+            a {
+                font-size: 1.2em;
+            }
+        }
+        .profile-post {
+            img {
+                object-fit: cover;
+                border-radius: 5px;
+                margin:.3em;
+                &:hover {
+                    opacity:.5;
+                }
+            }
+        }
+    }
 }
+.post-detail {
+    margin:4em 0;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    .post-header {
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        width:80vw;
+        margin-bottom:1em 0;
+        h1 {
+            font-family:$logo-stack;
+        }
+        .icons {
+            display:flex;
+            align-items: center;
+        }
+    }
+    .post-main {
+        display:flex;
+        flex-direction:column;
+        align-items: flex-start;
+        h4, p {
+            font-size: 1.1em;
+        }
+        div {
+            margin-top:.5em;
+            width:80vw;
+            display:flex;
+            justify-content: space-between;
+        }
+        img {
+            width:80vw;
+            height:70vh;
+            object-fit: contain;
+            margin: 1em 0;
+        }
+    }
+}
+
+
 .trips-header {
     width:100vw;
     display:flex;
