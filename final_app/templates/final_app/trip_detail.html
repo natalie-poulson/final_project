@@ -15,16 +15,16 @@
 </form>
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#post-modal">
         Create A New Post for This Trip
       </button>
       
       <!-- Modal -->
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal fade" id="post-modal" tabindex="-1" role="dialog" aria-labelledby="post-modalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Create A Post</h5>
+              <h5 class="modal-title" id="post-modalLongTitle">Create A Post</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -47,7 +47,7 @@
 
     <hr>
     <h4>Trip Info</h4>
-    <a href = {% url 'final_app:trip_edit' pk=trip.id %}>Edit Trip</a>
+    <a href = {% url 'final_app:trip_edit' slug=trip.slug %}>Edit Trip</a>
 
     <p><strong>Trail:</strong> {{ trip.trail }}</p>
     <p><strong>Dates:</strong> {{ trip.start_date }} - {{ trip.end_date}}</p>
@@ -152,7 +152,7 @@
     <h4>Posts about {{trip.trail}} by {{ trip.user }}</h4>
 
     {% for trip_post in trip.trip_posts.all %}
-      <h3><a href="{% url 'final_app:post_detail' pk=trip_post.id %}" >{{trip_post.title}}</a></h3>
+      <h3><a href="{% url 'final_app:post_detail' slug=trip_post.slug %}" >{{trip_post.title}}</a></h3>
     {% endfor %}    
     <hr>
 

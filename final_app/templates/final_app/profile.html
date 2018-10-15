@@ -26,10 +26,10 @@
         {% for trip in trips %}
 
           {% if trip.completed %}
-          <h4></h4><a href={% url 'final_app:trip_detail' pk=trip.id %} >{{trip.trail}}</a><span>COMPLETED</span></h4>
+          <h4></h4><a href={% url 'final_app:trip_detail' slug=trip.slug %} >{{trip.trail}}</a><span>COMPLETED</span></h4>
 
           {% else %}
-          <h4></h4><a href={% url 'final_app:trip_detail' pk=trip.id %} >{{trip.trail}}</a><span>
+          <h4></h4><a href={% url 'final_app:trip_detail' slug=trip.slug %} >{{trip.trail}}</a><span>
               <!-- Completed?: {{trip.completed}} -->
             </span></h4>
           {% endif %}
@@ -42,7 +42,7 @@
     <h1> Posts by {{user.username}} </h1>
     {% for trip in trips %}
             {% for trip_post in trip.trip_posts.all %}
-            <a href={% url 'final_app:post_detail' pk=trip_post.id %} >
+            <a href={% url 'final_app:post_detail' slug=trip_post.slug %} >
                 <h4>{{trip_post.title}}</h4>
             </a>
             {% endfor %}

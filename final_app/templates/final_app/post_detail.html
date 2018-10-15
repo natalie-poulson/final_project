@@ -4,7 +4,7 @@
 <h1>Post Detail Page!</h1>
 
 
-<a href = {% url 'final_app:post_edit' pk=post.id %}>Edit Post</a>
+<a href = {% url 'final_app:post_edit' slug=post.slug %}>Edit Post</a>
 
 <form class="post-delete" action="{% url 'final_app:post_delete' %}" method="post">
         {% csrf_token %}
@@ -18,7 +18,7 @@
     <p><strong>User:</strong> {{ post.user }}</p>
 
 
-    <p><strong>Trip:</strong><a href={% url 'final_app:trip_detail' pk=post.trip.id %}> {{ post.trip }}  </a></p>
+    <p><strong>Trip:</strong><a href={% url 'final_app:trip_detail' slug=post.trip.slug %}> {{ post.trip }}  </a></p>
 
     {% if post.image %}
     <p><strong>Image:</strong> <img src="{{ post.image.url }}" width="auto" height="250px" alt=""></p>

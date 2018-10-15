@@ -11,15 +11,15 @@ urlpatterns = [
     path('profile', views.profile_view, name="profile"),
 
     path ('trips', views.trips, name="trips"),
-    path('trips/<int:pk>', views.trip_detail, name="trip_detail"),
-    path('trips/<int:pk>/edit', views.trip_edit, name="trip_edit"),
+    path('trips/<slug>', views.trip_detail, name="trip_detail"),
+    path('trips/<slug>/edit', views.trip_edit, name="trip_edit"),
     path('trip/create', views.trip_create, name="trip_create"),
     path('trip/delete', views.trip_delete, name="trip_delete"),
     path('trips/completed', views.trips_completed, name="trips_completed"),
     path('trips/future', views.trips_future, name="trips_future"),
 
-    path('posts/<int:pk>', views.post_detail, name="post_detail"),
-    path('posts/<int:pk>/edit', views.post_edit, name="post_edit"),
+    path('posts/<slug>', views.post_detail, name="post_detail"),
+    path('posts/<slug>/edit', views.post_edit, name="post_edit"),
     path('post/create', views.post_create, name="post_create"),
     path('post/delete', views.post_delete, name="post_delete"),
 
@@ -32,8 +32,8 @@ urlpatterns = [
     path('food/<int:pk>/delete', views.food_delete, name="food_delete"),
 
     path('users/<int:pk>/profile', views.other_profile, name="other_profile"),
-    path('posts/other/<int:pk>', views.other_post_detail, name="other_post_detail"),
-    path('trips/other/<int:pk>', views.other_trip_detail, name="other_trip_detail"),
+    path('posts/other/<slug>', views.other_post_detail, name="other_post_detail"),
+    path('trips/other/<slug>', views.other_trip_detail, name="other_trip_detail"),
 
     path('search', views.search, name='search')
 ]

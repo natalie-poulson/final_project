@@ -68,8 +68,8 @@ def profile_edit(request):
 
 
 @login_required(login_url='/accounts/login/')
-def trip_detail(request, pk):
-    trip = Trip.objects.get(id=pk)
+def trip_detail(request, slug):
+    trip = Trip.objects.get(slug=slug)
 
     
     post_form = forms.CreatePost()
@@ -90,8 +90,8 @@ def trip_detail(request, pk):
 
 
 @login_required(login_url='/accounts/login/')    
-def post_detail(request, pk):
-    post = Post.objects.get(id=pk)
+def post_detail(request, slug):
+    post = Post.objects.get(slug=slug)
     trip_form = forms.CreateTrip()
 
     return render(request, 'final_app/post_detail.html', {'post': post, 'trip_form': trip_form})
@@ -203,8 +203,8 @@ def trips_future(request):
 
 
 @login_required(login_url='/accounts/login/')
-def post_edit(request,pk ):
-    post = Post.objects.get(pk=pk)
+def post_edit(request,slug ):
+    post = Post.objects.get(slug=slug)
 
     if request.method == "POST":
         form = forms.CreatePost(data=request.POST, instance=post, files=request.FILES)
@@ -227,8 +227,8 @@ def post_edit(request,pk ):
 
 
 @login_required(login_url='/accounts/login/')
-def trip_edit(request,pk ):
-    trip = Trip.objects.get(pk=pk)
+def trip_edit(request,slug ):
+    trip = Trip.objects.get(slug=slug)
     if request.method == "POST":
         form = forms.CreateTrip(data=request.POST, instance=trip)
         if form.is_valid():
@@ -434,8 +434,8 @@ def other_profile(request, pk):
     return render(request, 'final_app/other_profile.html', {'user': user, 'trips': trips})
 
 
-def other_trip_detail(request, pk):
-    trip = Trip.objects.get(id=pk)   
+def other_trip_detail(request, slug):
+    trip = Trip.objects.get(slug=slug)   
     trip_form = forms.CreateTrip()
 
     context = {
@@ -447,8 +447,8 @@ def other_trip_detail(request, pk):
 
 
 @login_required(login_url='/accounts/login/')    
-def other_post_detail(request, pk):
-    post = Post.objects.get(id=pk)
+def other_post_detail(request, slug):
+    post = Post.objects.get(slug=slug)
     trip_form = forms.CreateTrip()
 
     return render(request, 'final_app/other_post_detail.html', {'post': post, 'trip_form': trip_form})
