@@ -139,6 +139,15 @@
       {% endfor %}
     <hr>
 
+
+
+    <hr>
+  
+    <h1>SOCIAL SHARE </h1>
+
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href='https://plus.google.com/share?url={{ request.build_absolute_uri }}'target="_blank"><i class="fab fa-google-plus-g"></i></a>
+
     <hr>
     <h4>Posts about {{trip.trail}} by {{ trip.user }}</h4>
 

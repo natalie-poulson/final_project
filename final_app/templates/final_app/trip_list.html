@@ -1,9 +1,8 @@
-{% extends 'final_app/base_layout.html' %}
+{% extends 'final_app/trips.html' %}
 
-{% block content %}
+{% block aside %}
 
-
-    {% for trip in trips %}
+    <!-- {% for trip in trips %}
         {% if trip.completed is False %}
         <h1>Future Trips</h1>
         <li><a href={% url 'final_app:trip_detail' pk=trip.id %} >{{trip.trail}}</a></li>
@@ -15,7 +14,7 @@
 
         {% endif %}
         <hr>
-    {% endfor %}  
+    {% endfor %}   -->
 
 {% endblock %}
 

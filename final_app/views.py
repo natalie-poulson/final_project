@@ -467,3 +467,13 @@ def search(request):
         return render(request,'final_app/search.html',{'results':db_results, 'trip_form': trip_form})
     # else:
     #     return render(request,"search.html",{})
+
+
+
+@login_required(login_url='/accounts/login/')
+def trips(request):
+    trips = Trip.objects.filter(user=request.user)
+    trip_form = forms.CreateTrip()
+    mapbox_access_token = 'pk.eyJ1IjoibmF0YWxpZXBsc24iLCJhIjoiY2psZm8ybnFnMHl4NDNwcG16eGFmMTdwaCJ9.2xYdBHCpcf5cdap8BvhVgQ'
+
+    return render (request, 'final_app/trip_list.html', {'trips': trips, 'trip_form': trip_form, 'mapbox_access_token': mapbox_access_token })

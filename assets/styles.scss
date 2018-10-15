@@ -1,6 +1,11 @@
 $logo-stack: 'Josefin Sans', sans-serif;
 
 
+#geocoder-container > div {
+    min-width:50%;
+    margin-left:25%;
+}
+
 .landing-wrapper {
     width:100vw;
     height:100vh;
@@ -112,6 +117,19 @@ nav {
     overflow: hidden;
     outline:none;
     color:black;
+}
+.profile-picture img {
+    border-radius:50%;
+    width:250px;
+    object-fit:contain;
+}
+.trips-header {
+    width:100vw;
+    display:flex;
+    justify-content: space-around;
+    div {
+        display:flex;
+    }
 }
 
 #pac-input {
