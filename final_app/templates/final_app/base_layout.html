@@ -8,9 +8,6 @@
 
 {{ trip_form.media }}
 
-{% load crispy_forms_tags %}
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -70,8 +67,8 @@
                         <div class="modal-body">
                             <form class='post-create-form'  action="{% url 'final_app:trip_create' %}" method='post'>
 
-                                {% csrf_token %}      
-                                {{ trip_form|crispy }}
+                                {% csrf_token %}  
+                                {{ trip_form }}    
 
                                 <input type="hidden" id="location" name="location" />
                                 <input type="hidden" id="lat" name="lat" />

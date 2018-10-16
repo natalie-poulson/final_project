@@ -1,5 +1,4 @@
 {% extends 'final_app/base_layout.html' %}
-{% load crispy_forms_tags %}
 
 {% block content %}
 
@@ -46,7 +45,7 @@
           <div class="modal-body">
               <form class='post-create-form' enctype="multipart/form-data" action="{% url 'final_app:post_create' %}" method='post'>
                   {% csrf_token %}
-                  {{ post_form|crispy }}
+                  {{ post_form }}
                   <input type='hidden' name='trip_id' required id='id_trip_id' value='{{ trip.id }}' />
           </div>
           <div class="modal-footer">
@@ -100,7 +99,7 @@
 
                         <form class='create-form' action="{% url 'final_app:gear_create' %}" method='post'>
                             {% csrf_token %}
-                            {{ gear_form|crispy }}
+                            {{ gear_form }}
                             <input type='hidden' name='trip_id' required id='id_trip_id' value='{{ trip.id }}' />
                             <div class="modal-footer">
                                 <button type="input" class="modal-btn">Add</button>
@@ -140,7 +139,7 @@
   
                         <form class='create-form' action="{% url 'final_app:food_create' %}" method='post'>
                             {% csrf_token %}
-                            {{ food_form|crispy }}
+                             {{ food_form }}
                             <input type='hidden' name='trip_id' required id='id_trip_id' value='{{ trip.id }}' />
                             <div class="modal-footer">
                                 <button type="input" class="modal-btn">Add</button>

@@ -1,6 +1,5 @@
 {% extends 'final_app/base_layout.html' %}
-{% load crispy_forms_tags %}
-{% crispy form %}
+
 
 
 {% block content %}
@@ -8,7 +7,7 @@
         <h1>Edit Your Profile</h1>
         <form enctype="multipart/form-data" method="POST">
             {% csrf_token %}
-            {{ profile_form|crispy }}
+            {{ profile_form }}
             <input class = "profile-edit-submit" type="submit" value="Submit">
         </form>
 </div>

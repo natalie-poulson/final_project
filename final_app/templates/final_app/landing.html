@@ -1,5 +1,4 @@
 {% load static from staticfiles %}
-{% load crispy_forms_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +52,7 @@
                                     <div class="modal-body">
                                         <form class='login-form'  action="{% url 'accounts:login' %}" method='post'>
                                             {% csrf_token %}
-                                            {{ login_form|crispy }}
+                                            {{ login_form }}
                                                 {% if request.GET.next %}
                                                     <input type="hidden" name="next" value="{{request.GET.next}}">
                                                 {% endif %} 
@@ -85,7 +84,7 @@
                                 <div class="modal-body">
                                     <form class='signup-form'  action="{% url 'accounts:signup' %}" method='post'>
                                     {% csrf_token %}
-                                    {{ signup_form|crispy }}
+                                    {{ signup_form }}
                                 </div>
                                 <div class="modal-footer">
                                         <button type="input" class='modal-btn'>Sign Up</button>

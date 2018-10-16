@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # third party apps
-    'crispy_forms',
     "bootstrap4",
     'bootstrap_datepicker_plus',
     'leaflet',
@@ -151,10 +150,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
-# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
     
 # The address to visit to find the static files 
@@ -168,7 +165,6 @@ STATICFILES_DIRS = (
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, 'static')),
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
