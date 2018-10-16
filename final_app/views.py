@@ -23,12 +23,8 @@ def profile_create(request):
             instance = form.save(commit=False)
             instance.user = request.user
             instance.save()
-            trip_form = forms.CreateTrip()
-
-            return render(request, 'final_app/profile.html', {'trip_form': trip_form})
-        # else: 
-        #     print(form.errors)
-        #     return render(request, 'final_app/profile_create.html', {'form': form})
+            return redirect('final_app:profile')
+    
     else:
         form = forms.CreateProfile()
     return render(request, 'final_app/profile_create.html', {'form': form})
@@ -37,7 +33,7 @@ def profile_create(request):
 @login_required(login_url='/accounts/login/')
 def profile_view(request):
     user = request.user
-    trips = Trip.objects.filter(user=request.user).order_by('-created_at')
+    trips = Trip.objects.filter(user=request.user).order_by('-start_date')
     trip_form = forms.CreateTrip()
 
     context = {
@@ -51,20 +47,20 @@ def profile_view(request):
 @login_required(login_url='/accounts/login/')
 def profile_edit(request):
     if request.method == "POST":
-        form = forms.CreateProfile(data=request.POST, instance=request.user.profile, files=request.FILES)
-        if form.is_valid():
-            form.save()
+        profile_form = forms.CreateProfile(data=request.POST, instance=request.user.profile, files=request.FILES)
+        if profile_form.is_valid():
+            profile_form.save()
             if 'profile_picture' in request.FILES:
-                form.profile_picture = request.FILES['profile_picture']
-            form.save()
+                profile_form.profile_picture = request.FILES['profile_picture']
+            profile_form.save()
             return redirect('final_app:profile')
         else:
-            return render(request, 'final_app/profile_edit.html', {'form': form})
+            return render(request, 'final_app/profile_edit.html', {'profile_form': profile_form})
     else:
-        form = forms.CreateProfile(instance=request.user.profile)
+        profile_form = forms.CreateProfile(instance=request.user.profile)
         trip_form = forms.CreateTrip()
 
-    return render(request, 'final_app/profile_edit.html', {'form': form, 'trip_form': trip_form})
+    return render(request, 'final_app/profile_edit.html', {'profile_form': profile_form, 'trip_form': trip_form})
 
 
 @login_required(login_url='/accounts/login/')
@@ -103,9 +99,6 @@ def post_create(request):
         post_form = forms.CreatePost(request.POST, request.FILES)
         trip_id = request.POST.get('trip_id')
 
-        print("TRIP:", trip_id)
-        print("USER:", request.user)
-        
         if post_form.is_valid():
             instance = post_form.save(commit=False)
             instance.user = request.user
@@ -113,24 +106,7 @@ def post_create(request):
             instance.save()
 
             trip = Trip.objects.get(pk=trip_id)
-            post_form = forms.CreatePost()
-            gear_form = forms.CreateGear()
-            food_form = forms.CreateFood()
-            trip_form = forms.CreateTrip()
-
-   
-            context = {
-                'trip': trip,
-                'post_form' : post_form,
-                'gear_form': gear_form,
-                'food_form': food_form,
-                'trip_form': trip_form
-            }
-
-            return render(request, 'final_app/trip_detail.html', context)        
-        # print(post_form.errors)
-        # return render(request, 'final_app/trip_detail.html', {'post_form': post_form})
-    return redirect('final_app:trip_detail')
+            return redirect('final_app:post_detail', slug=instance.slug)       
 
 
 @login_required(login_url='/accounts/login/')
@@ -142,10 +118,9 @@ def trip_create(request):
             instance = trip_form.save(commit=False)
             instance.user = request.user
             instance.save()
-
-            return redirect('final_app:profile')       
-        # print(trip_form.errors)
-        # return render(request, 'final_app/profile.html', {'trip_form': trip_form})
+            trip = Trip.objects.get(id = instance.id)
+        print(trip_form.errors)
+        return redirect('final_app:trip_detail', slug =trip.slug)
     return redirect('final_app:profile')
 
 
@@ -167,39 +142,22 @@ def post_delete(request):
 
         post.delete()
 
-        post_form = forms.CreatePost()
-        gear_form = forms.CreateGear()
-        food_form = forms.CreateFood()
-        trip_form = forms.CreateTrip()
-
-    
-        context = {
-            'trip': trip,
-            'post_form' : post_form,
-            'gear_form': gear_form,
-            'food_form': food_form,
-            'trip_form': trip_form
-        }
-
-        return render(request, 'final_app/trip_detail.html',context )
+        return redirect('final_app:trip_detail', slug=trip.slug)
 
 
 @login_required(login_url='/accounts/login/')
-def trips_completed(request):
-    trips = Trip.objects.filter(user=request.user).filter(completed=True)
+def trips(request):
+    trips_completed = Trip.objects.filter(user=request.user).filter(completed=True)
+    trips_future = Trip.objects.filter(user=request.user).filter(completed=False)
     trip_form = forms.CreateTrip()
 
+    context = {
+        'trips_completed':trips_completed,
+        'trips_future': trips_future,
+        'trip_form': trip_form
+    }
 
-    return render (request, 'final_app/trip_list.html', {'trips': trips, 'trip_form': trip_form})
-
-
-@login_required(login_url='/accounts/login/')
-def trips_future(request):
-    trips = Trip.objects.filter(user=request.user).filter(completed=False)
-    trip_form = forms.CreateTrip()
-
-
-    return render (request, 'final_app/trip_list.html', {'trips': trips, 'trip_form': trip_form})
+    return render (request, 'final_app/trips.html', context)
 
 
 @login_required(login_url='/accounts/login/')
@@ -207,23 +165,19 @@ def post_edit(request,slug ):
     post = Post.objects.get(slug=slug)
 
     if request.method == "POST":
-        form = forms.CreatePost(data=request.POST, instance=post, files=request.FILES)
-        if form.is_valid():
-            form.save()
+        post_edit_form = forms.CreatePost(data=request.POST, instance=post, files=request.FILES)
+        if post_edit_form.is_valid():
+            post_edit_form.save()
             if 'image' in request.FILES:
-                form.image = request.FILES['image']
-            form.save()
+                post_edit_form.image = request.FILES['image']
+            post_edit_form.save()
             trip_form = forms.CreateTrip()
-
-            return render(request, 'final_app/post_detail.html', {'post': post, 'trip_form': trip_form})
-        else:
-            trip_form = forms.CreateTrip()
-            return render(request, 'final_app/post_edit.html', {'form': form, 'trip_form': trip_form})
+            return redirect('final_app:post_detail', slug =post.slug)
     else:
-        form = forms.CreatePost(instance=post)
+        post_edit_form = forms.CreatePost(instance=post)
         trip_form = forms.CreateTrip()
 
-    return render(request, 'final_app/profile_edit.html', {'form': form, 'trip_form': trip_form})
+    return render(request, 'final_app/post_edit.html', {'post_edit_form': post_edit_form, 'trip_form': trip_form})
 
 
 @login_required(login_url='/accounts/login/')
@@ -233,24 +187,7 @@ def trip_edit(request,slug ):
         form = forms.CreateTrip(data=request.POST, instance=trip)
         if form.is_valid():
             form.save()   
-
-            post_form = forms.CreatePost()
-            gear_form = forms.CreateGear()
-            food_form = forms.CreateFood()
-            trip_form = forms.CreateTrip()
-
-   
-            context = {
-                'trip': trip,
-                'post_form' : post_form,
-                'gear_form': gear_form,
-                'food_form': food_form,
-                'trip_form': trip_form
-            }
-
-            return render(request, 'final_app/trip_detail.html', context)
-        # else:
-        #     return render(request, 'final_app/trip_edit.html', {'form': form})
+        return redirect('final_app:trip_detail', slug =trip.slug)
     else:
         form = forms.CreateTrip(instance=trip)
     return render(request, 'final_app/trip_edit.html', {'form': form})
@@ -268,24 +205,8 @@ def gear_create(request):
             instance.save()
 
             trip = Trip.objects.get(pk=trip_id)
-            post_form = forms.CreatePost()
-            gear_form = forms.CreateGear()
-            food_form = forms.CreateFood()
-            trip_form = forms.CreateTrip()
-
-        
-            context = {
-                'trip': trip,
-                'post_form' : post_form,
-                'gear_form': gear_form,
-                'food_form': food_form,
-                'trip_form':trip_form
-            }
-            return render(request, 'final_app/trip_detail.html', context)    
-
-        # print(gear_form.errors)
-        # return render(request, 'final_app/trip_detail.html', {'gear_form': gear_form})
-
+            return redirect('final_app:trip_detail', slug =trip.slug)
+ 
     return redirect('final_app:trip_detail')
 
 
@@ -297,24 +218,7 @@ def gear_edit(request,pk ):
         form = forms.CreateGear(data=request.POST, instance=gear)
         if form.is_valid():
             form.save()   
-
-            post_form = forms.CreatePost()
-            gear_form = forms.CreateGear()
-            food_form = forms.CreateFood()
-            trip_form = forms.CreateTrip()
-
-        
-            context = {
-                'trip': trip,
-                'post_form' : post_form,
-                'gear_form': gear_form,
-                'food_form': food_form,
-                'trip_form': trip_form
-            }
-
-            return render(request, 'final_app/trip_detail.html', context)
-        # else:
-        #     return render(request, 'final_app/trip_edit.html', {'form': form})
+        return redirect('final_app:trip_detail', slug =trip.slug)
     else:
         form = forms.CreateGear(instance=gear)
     return render(request, 'final_app/gear_edit.html', {'form': form})
@@ -325,21 +229,8 @@ def gear_delete(request,pk ):
     gear = Gear.objects.get(pk=pk)
     trip = Trip.objects.get(trip_gears=gear)
     gear.delete()
-    post_form = forms.CreatePost()
-    gear_form = forms.CreateGear()
-    food_form = forms.CreateFood()
-    trip_form = forms.CreateTrip()
 
-   
-    context = {
-        'trip': trip,
-        'post_form' : post_form,
-        'gear_form': gear_form,
-        'food_form': food_form,
-        'trip_form':trip_form
-    }
-
-    return render(request, 'final_app/trip_detail.html', context)
+    return redirect('final_app:trip_detail', slug =trip.slug)
 
 
 @login_required(login_url='/accounts/login/')
@@ -347,37 +238,15 @@ def food_create(request):
     if request.method == 'POST':
         food_form = forms.CreateFood(request.POST)
         trip_id = request.POST.get('trip_id')
-        food_day = request.POST.get('food_day')
-        print (food_day)
-
         
         if food_form.is_valid():
             instance = food_form.save(commit=False)
             instance.trip = Trip.objects.get(pk=trip_id)
-            instance.day = food_day
 
             instance.save()
 
             trip = Trip.objects.get(pk=trip_id)
-            post_form = forms.CreatePost()
-            gear_form = forms.CreateGear()
-            food_form = forms.CreateFood()
-            trip_form = forms.CreateTrip()
-
-        
-            context = {
-                'trip': trip,
-                'post_form' : post_form,
-                'gear_form': gear_form,
-                'food_form': food_form,
-                'trip_form':trip_form
-            }
-            return render(request, 'final_app/trip_detail.html', context)    
-
-        # print(gear_form.errors)
-        # return render(request, 'final_app/trip_detail.html', {'gear_form': gear_form})
-
-    return redirect('final_app:trip_detail')
+            return redirect('final_app:trip_detail', slug =trip.slug)
 
 
 @login_required(login_url='/accounts/login/')
@@ -388,24 +257,8 @@ def food_edit(request,pk ):
         form = forms.CreateFood(data=request.POST, instance=food)
         if form.is_valid():
             form.save()   
+        return redirect('final_app:trip_detail', slug =trip.slug)
 
-            post_form = forms.CreatePost()
-            gear_form = forms.CreateGear()
-            food_form = forms.CreateFood()
-            trip_form = forms.CreateTrip()
-
-        
-            context = {
-                'trip': trip,
-                'post_form' : post_form,
-                'gear_form': gear_form,
-                'food_form': food_form,
-                'trip_form': trip_form
-            }
-
-            return render(request, 'final_app/trip_detail.html', context)
-        # else:
-        #     return render(request, 'final_app/trip_edit.html', {'form': form})
     else:
         form = forms.CreateFood(instance=food)
     return render(request, 'final_app/food_edit.html', {'form': form})
@@ -416,30 +269,20 @@ def food_delete(request,pk ):
     food = Food.objects.get(pk=pk)
     trip = Trip.objects.get(trip_foods=food)
     food.delete()
-    post_form = forms.CreatePost()
-    gear_form = forms.CreateGear()
-    food_form = forms.CreateFood()
+    return redirect('final_app:trip_detail', slug =trip.slug)
+
+
+
+def other_profile(request, username):
+    user = User.objects.get(username=username)
+    trips = Trip.objects.filter(user=user).order_by('-start_date')
     trip_form = forms.CreateTrip()
 
-   
-    context = {
-        'trip': trip,
-        'post_form' : post_form,
-        'gear_form': gear_form,
-        'food_form': food_form,
-        'trip_form': trip_form
-    }
-
-    return render(request, 'final_app/trip_detail.html', context)
+    return render(request, 'final_app/other_profile.html', {'user': user, 'trips': trips,'trip_form': trip_form
+})
 
 
-def other_profile(request, pk):
-    user = User.objects.get(id=pk)
-    trips = Trip.objects.filter(user=pk)
-    return render(request, 'final_app/other_profile.html', {'user': user, 'trips': trips})
-
-
-def other_trip_detail(request, slug):
+def other_trip_detail(request,username, slug):
     trip = Trip.objects.get(slug=slug)   
     trip_form = forms.CreateTrip()
 
@@ -452,7 +295,7 @@ def other_trip_detail(request, slug):
 
 
 @login_required(login_url='/accounts/login/')    
-def other_post_detail(request, slug):
+def other_post_detail(request, username, slug):
     post = Post.objects.get(slug=slug)
     trip_form = forms.CreateTrip()
 
@@ -473,12 +316,3 @@ def search(request):
     # else:
     #     return render(request,"search.html",{})
 
-
-
-@login_required(login_url='/accounts/login/')
-def trips(request):
-    trips = Trip.objects.filter(user=request.user)
-    trip_form = forms.CreateTrip()
-    mapbox_access_token = 'pk.eyJ1IjoibmF0YWxpZXBsc24iLCJhIjoiY2psZm8ybnFnMHl4NDNwcG16eGFmMTdwaCJ9.2xYdBHCpcf5cdap8BvhVgQ'
-
-    return render (request, 'final_app/trips.html', {'trips': trips, 'trip_form': trip_form, 'mapbox_access_token': mapbox_access_token })

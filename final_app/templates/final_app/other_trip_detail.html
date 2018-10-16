@@ -3,63 +3,94 @@
 
 {% block content %}
 
-<h1>{{ trip.trail }}</h1>
-<img class="user_profile_icon" src="{{trip.user.profile.profile_picture.url}}" width="auto" height="40px">
+<div class="trip-detail">
 
+    <div class="trip-header">
+        <div class ="trip-title">
+        </div>
+      </div>
+    <div class ="trip-info">
+        <div class ="trip-head">
+            <h1>{{ trip.trail }}</h1>
+            <a href={% url 'final_app:other_profile' username=trip.user.username %} ><img class="user_profile_icon" src="{{trip.user.profile.profile_picture.url}}" width="auto" height="40px"></a>
+        </div>
+        <div class="trip-dates">
+            <p>{{ trip.start_date }} - {{ trip.end_date}}</p>
+            {% if trip.completed is False %}
+            {% else %}
+            <i class="fas fa-calendar-check"></i>
+            {% endif %}
+        </div>
+        <div>
+            <p><strong> Trip Length:</strong> {{trip.total_days}} days</p>
+        </div>
+        <div>
+            {% if trip.permit %}
+            <a href = "{{trip.permit}}" target="_blank"><strong>Permit Info</strong></a>
+            {% endif %}
+        </div>
+    </div>  
+          
+    <div class="trip-pack"> 
+        <div class="trip-gear">
+          <div class="gear-head">
+              <h4>Gear</h4>                
+          </div>
+  
+                {% for trip_gear in trip.trip_gears.all %}
+                <div class='pack-line'>
+                    <div>
+                        <p {% if trip_gear.packed is True %} style="text-decoration: line-through" {% endif %}>{{trip_gear.gear_name}}</p>
+                    </div>
+                    <div>
+                        <a href= {% url 'final_app:gear_edit' pk=trip_gear.id %} ><i class="fas fa-edit"></i></a>
+                        <a href= {% url 'final_app:gear_delete' pk=trip_gear.id %} ><i class="far fa-trash-alt"></i></a>
+                    </div>
+                </div>
+                {% endfor %}
+    </div>
 
-
-
-
-    <hr>
-    <h4>Trip Info</h4>
-
-    <p><strong>Trail:</strong> {{ trip.trail }}</p>
-    <p><strong>Dates:</strong> {{ trip.start_date }} - {{ trip.end_date}}</p>
-
-    {% if trip.permit %}
-    <p><strong>Permit:</strong> {{ trip.permit }}</p>
-    {% endif %}
-
-    {% if trip.completed is False %}
-    <input type="checkbox" id=" {{ trip.trail }}" name = "future" value= ""  >Completed
-    {% else %}
-    <input type="checkbox" id=" {{ trip.trail }}" name = "completed" value= "" checked="checked">Complete
-    {% endif %}
-    <hr>
-
-    <hr>
-    <h4>Gear</h4>
-    
-      {% for trip_gear in trip.trip_gears.all %}
-     
-       <li><input type="checkbox" id=" {{ trip_gear.gear_name }}" name = "" value= "" {% if trip_gear.packed is True %} checked="checked"{% endif %}>{{trip_gear.gear_name}}
-      
-
-      </li>
+        <div class="trip-food">
+          <div class="food-head">
+              <h4>Food</h4>
+          </div>
         
-      {% endfor %}
+                <div class='food-wrapper'>
+                    {% for day_list in trip.day_lists %}
+                    <div class="food-box">
+                        <i class="far fa-calendar"></i>
+                        <h6>Day {{day_list |add:"1" }}</h6>  
+                    </div>  
+                    {% endfor %}
+                </div>
 
-    <hr>
+                {% for trip_food in trip.trip_foods.all %}
+                <div class='pack-line'>
+                    <div>
+                        <p {% if trip_food.packed is True %} style="text-decoration: line-through" {% endif %}>{{trip_food.food_name}}</p>
+                    </div>
+                    <div>
+                        <a href= {% url 'final_app:food_edit' pk=trip_food.id %} ><i class="fas fa-edit"></i></a>
+                        <a href= {% url 'final_app:food_delete' pk=trip_food.id %} ><i class="far fa-trash-alt"></i></a>
+                    </div>
+                </div>
+                {% endfor %}       
+        </div>
+    </div>
+    
 
+    <div class="trip-posts">
+        <h4>Posts about this trip</h4>
 
+        {% for trip_post in trip.trip_posts.all %}
+        <a href={% url 'final_app:other_post_detail' username=trip_post.user.username slug=trip_post.slug %} >
+            <img id ="hover-img" src="{{ trip_post.image.url }}" width="250px" height="250px" alt="">
+        </a>        
+        {% endfor %}    
+    </div>
+</div>
+  
 
-    <hr>
-    <h4>Food</h4>
-
-   
- 
-    {% for trip_food in trip.trip_foods.all %}
-    <li><input type="checkbox" id=" {{ trip_food.food_name }}" name = "" value= "" {% if trip_food.packed is True %} checked="checked"{% endif %}>{{trip_food.food_name}}
-    </li>
-      {% endfor %}
-    <hr>
-
-    <hr>
-    <h4>Posts about {{trip.trail}} by {{ trip.user }}</h4>
-
-    {% for trip_post in trip.trip_posts.all %}
-      <h3><a href="{% url 'final_app:other_post_detail' pk=trip_post.id %}" >{{trip_post.title}}</a></h3>
-    {% endfor %}    
-    <hr>
 
 {% endblock %}
+

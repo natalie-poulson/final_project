@@ -2,13 +2,39 @@
 
 $logo-stack: 'Josefin Sans', sans-serif;
 
-
+.profile-edit {
+    display:flex;
+    flex-direction:column;
+    height:100vh;
+    align-items: center;
+    h1 {
+        font-family:$logo-stack;
+        margin: 2em 0 .5em 0;
+    }
+    h4 {
+        font-family:$logo-stack;
+        margin: 1em 0 .5em 0;
+    }
+    
+    .profile-edit-submit{
+        background-color: Transparent;
+        background-repeat:no-repeat;
+        border: none;
+        cursor:pointer;
+        overflow: hidden;
+        outline:none;
+        color:black;
+        font-size:1.5em;
+        font-family:$logo-stack;
+        margin-top:1em;
+    }
+}
 body {
     height:100vh;
     width:100vw;
     display:flex;
     flex-direction: column;
-    justify-content: space-between
+    justify-content: space-between;
 }
 
 footer nav {
@@ -16,8 +42,10 @@ footer nav {
     justify-content: space-between;
     align-items: center;
     margin-bottom:.5em;
+    background:rgba(0, 0, 0, 0.009);
     p {
         margin-left:1em;
+        font-size:.9em;
     }
     ul {
         margin-right:1em;
@@ -36,13 +64,14 @@ footer nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: rgba(0, 0, 0, 0.5);
     #video {
         position: fixed;
         height:100vh;
         width:100vw;
         object-fit:cover;
         z-index: -100;
-        opacity:.8;
+        // opacity: .9;
     }
     .landing-content {
         display:flex;
@@ -117,6 +146,7 @@ footer nav {
             align-items: center;
             justify-content: flex-end;
             margin-right:4em;
+            margin-bottom:2em;
             div {
                 margin: 0 .7em;
             }
@@ -226,6 +256,15 @@ footer nav {
         font-family:$logo-stack;
         font-size:3em;
     }
+    .search-result-line {
+        display:flex;
+        align-items: center;
+        margin:1.5em 0;
+        a {
+            display:flex;
+            align-items: center;
+        }
+    }
 }
 
 .modal-btn {
@@ -266,6 +305,7 @@ li {
 nav {
     display:flex;
     justify-content: flex-end;
+    background:rgba(0, 0, 0, 0.009);
     ul{
         display:flex;
         align-items: center;
@@ -297,6 +337,7 @@ nav {
     // font-size:1.5em;
     display:flex;
     justify-content: center;
+    margin: 3em 0;
     .profile-aside {
         font-size: 1.3em;
         display:flex;
@@ -323,6 +364,9 @@ nav {
         flex-direction: column;
         align-items: flex-start;
         justify-content: space-between;
+        div {
+            margin: 1em 0;
+        }
         .trip-list-container {
             display:flex;
             justify-content: space-around;
@@ -392,13 +436,29 @@ nav {
 }
 
 
-.trips-header {
+.trips-page {
     width:100vw;
     display:flex;
     justify-content: space-around;
+    align-items: flex-start;
+    height:90vh;
+    margin-top:8em;
     div {
-        display:flex;
+        margin:0 3em;
     }
+    h4 {
+        display:flex;
+        justify-content: center;
+        margin-bottom:1em;
+    }
+}
+.create-form {
+    margin:1em;
+}
+.trip-head {
+    display:flex;
+    flex-direction:column;
+    align-items: center;
 }
 
 #pac-input {

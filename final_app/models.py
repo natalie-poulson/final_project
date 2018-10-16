@@ -4,6 +4,7 @@ from django.conf import settings
 from datetime import datetime
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
+from djgeojson.fields import PointField
 
 
 class UserProfileInfo(models.Model):
@@ -19,6 +20,7 @@ class UserProfileInfo(models.Model):
     
 
 class Trip (models.Model):
+    location = PointField()
     user = models.ForeignKey(User, on_delete = models.CASCADE, related_name='trips') 
     slug = models.SlugField(unique=True)
     start_date = models.DateField()
@@ -37,6 +39,9 @@ class Trip (models.Model):
     def day_lists(self):
         return range ((self.end_date - self.start_date).days)
 
+    def popupContent(self):
+      return '<p><{}</p>'.format(
+          self.trail)
 
 
 class Post(models.Model):
@@ -66,7 +71,6 @@ class Food(models.Model):
     trip = models.ForeignKey(Trip, on_delete = models.CASCADE, related_name='trip_foods')
     food_name = models.CharField(max_length=200)
     packed =  models.BooleanField(default=False) 
-    day = models.IntegerField(default=0)
 
     def __str__ (self):
         return self.food_name

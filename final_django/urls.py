@@ -19,12 +19,17 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from django.conf import settings
 from django.urls import path
+# from djgeojson.views import GeoJSONLayerView
+from django.conf.urls import url
+# from .models import Trip
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
-    path('', include ('final_app.urls')),
+    path('', include ('final_app.urls')),   
+    # path('data.geojson/', GeoJSONLayerView.as_view(model=Trip, properties=('trail')), name='data'),
 ]
 
 # allows Django to append to url patterns to serve static files

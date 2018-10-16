@@ -26,17 +26,19 @@
             <p><strong>Trip:</strong><a href={% url 'final_app:trip_detail' slug=post.trip.slug %}> {{ post.trip }}  </a></p>
             <h4>{{ post.created_at }}</h4>
         </div>
-           
+        <div>
             <img src="{{ post.image.url }}" width="auto" height="250px" alt="">
-
-
+        </div>
+        <div>
             {% if post.caption %}
             <p>{{ post.caption }}</p>
             {% endif %}
-
+        </div>
+        <div>
             {% if post.body %}
             <p>{{ post.body }}</p>
             {% endif %}
+        </div>
     </div>
 
     

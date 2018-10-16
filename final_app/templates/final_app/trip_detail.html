@@ -7,7 +7,6 @@
 
     <div class="trip-header">
         <div class ="trip-title">
-              <img class="user_profile_icon" src="{{trip.user.profile.profile_picture.url}}" width="auto" height="40px">
         </div>
         <div class ="trip-icons">
               <div>
@@ -60,8 +59,9 @@
     </div>
 
     <div class ="trip-info">
-        <div>
+        <div class ="trip-head">
             <h1>{{ trip.trail }}</h1>
+            <img class="user_profile_icon" src="{{trip.user.profile.profile_picture.url}}" width="auto" height="40px">
         </div>
         <div class="trip-dates">
             <p>{{ trip.start_date }} - {{ trip.end_date}}</p>
@@ -86,87 +86,92 @@
               <h4>Gear</h4>                
               <button id="gear" type="button" class="modal-btn" data-toggle="modal" data-target=".bd-gear-modal-sm"><i class="fas fa-plus"></i></button>
           </div>
- 
-
               <!-- Small modal -->
-          
                 <div id="gear" class="modal fade bd-gear-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-sm">
                     <div class="modal-content">
-                        <form class='gear-create-form' action="{% url 'final_app:gear_create' %}" method='post'>
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Add Gear</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                        <form class='create-form' action="{% url 'final_app:gear_create' %}" method='post'>
                             {% csrf_token %}
                             {{ gear_form|crispy }}
                             <input type='hidden' name='trip_id' required id='id_trip_id' value='{{ trip.id }}' />
-                            <button type="input" class="btn btn-success">Add</button>
+                            <div class="modal-footer">
+                                <button type="input" class="modal-btn">Add</button>
+                            </div>
                         </form>
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                   </div>
                 </div>
-           
-              {% for trip_gear in trip.trip_gears.all %}
-      <div class='pack-line'>
-        <div>
-            <p {% if trip_gear.packed is True %} style="text-decoration: line-through" {% endif %}>{{trip_gear.gear_name}}</p>
-        </div>
-        <div>
-            <a href= {% url 'final_app:gear_edit' pk=trip_gear.id %} ><i class="fas fa-edit"></i></a>
-            <a href= {% url 'final_app:gear_delete' pk=trip_gear.id %} ><i class="far fa-trash-alt"></i></a>
-        </div>
+                {% for trip_gear in trip.trip_gears.all %}
+                <div class='pack-line'>
+                    <div>
+                        <p {% if trip_gear.packed is True %} style="text-decoration: line-through" {% endif %}>{{trip_gear.gear_name}}</p>
+                    </div>
+                    <div>
+                        <a href= {% url 'final_app:gear_edit' pk=trip_gear.id %} ><i class="fas fa-edit"></i></a>
+                        <a href= {% url 'final_app:gear_delete' pk=trip_gear.id %} ><i class="far fa-trash-alt"></i></a>
+                    </div>
+                </div>
+                {% endfor %}
+    </div>
 
-      
-      </div>
-             
-            {% endfor %}
-        </div>
         <div class="trip-food">
           <div class="food-head">
               <h4>Food</h4>
               <button id="food" type="button" class="modal-btn" data-toggle="modal" data-target=".bd-food-modal-sm"><i class="fas fa-plus"></i></button>
           </div>
               <!-- Small modal -->
-                      
-              <div id="food" class="modal fade bd-food-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-sm">
+            <div id="food" class="modal fade bd-food-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
                     <div class="modal-content">
-                        <form class='food-create-form' action="{% url 'final_app:food_create' %}" method='post'>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Add Food</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+  
+                        <form class='create-form' action="{% url 'final_app:food_create' %}" method='post'>
                             {% csrf_token %}
                             {{ food_form|crispy }}
                             <input type='hidden' name='trip_id' required id='id_trip_id' value='{{ trip.id }}' />
-                            <button type="input" class="btn btn-success">Add</button>
+                            <div class="modal-footer">
+                                <button type="input" class="modal-btn">Add</button>
+                            </div>
                         </form>
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
                     </div>
-                  </div>
+                </div>
+              
+                <div class='food-wrapper'>
+                    {% for day_list in trip.day_lists %}
+                    <div class="food-box">
+                        <i class="far fa-calendar"></i>
+                        <h6>Day {{day_list |add:"1" }}</h6>  
+                    </div>  
+                    {% endfor %}
                 </div>
 
-                   
-           
-              
-            <div class='food-wrapper'>
-              {% for day_list in trip.day_lists %}
-              <div class="food-box">
-                  <i class="far fa-calendar"></i>
-                  <h6>Day {{day_list |add:"1" }}</h6>  
-              </div>  
-              {% endfor %}
-          </div>
-            {% for trip_food in trip.trip_foods.all %}
-            
-            <div class='pack-line'>
-              <div>
-                  <p {% if trip_food.packed is True %} style="text-decoration: line-through" {% endif %}>{{trip_food.food_name}}</p>
-              </div>
-              <div>
-                  <a href= {% url 'final_app:food_edit' pk=trip_food.id %} ><i class="fas fa-edit"></i></a>
-                  <a href= {% url 'final_app:food_delete' pk=trip_food.id %} ><i class="far fa-trash-alt"></i></a>
-              </div>
-
-            </div>
-
-            {% endfor %}       
+                {% for trip_food in trip.trip_foods.all %}
+                <div class='pack-line'>
+                    <div>
+                        <p {% if trip_food.packed is True %} style="text-decoration: line-through" {% endif %}>{{trip_food.food_name}}</p>
+                    </div>
+                    <div>
+                        <a href= {% url 'final_app:food_edit' pk=trip_food.id %} ><i class="fas fa-edit"></i></a>
+                        <a href= {% url 'final_app:food_delete' pk=trip_food.id %} ><i class="far fa-trash-alt"></i></a>
+                    </div>
+                </div>
+                {% endfor %}       
         </div>
     </div>
+    
 
     <div class="trip-posts">
         <h4>Posts about this trip</h4>
@@ -174,27 +179,11 @@
         {% for trip_post in trip.trip_posts.all %}
         <a href={% url 'final_app:post_detail' slug=trip_post.slug %} >
             <img id ="hover-img" src="{{ trip_post.image.url }}" width="250px" height="250px" alt="">
-
-                <!-- <h4>{{trip_post.title}}</h4> -->
-            </a>        {% endfor %}    
-      
+        </a>        
+        {% endfor %}    
     </div>
- 
 </div>
   
-   
-   
-        
-      <!-- {% if trip.completed is False %}
-      <p>
-        <input type="text" placeholder="Enter gear">
-        <input type="submit">
-      </p>
-      {% endif %} -->
 
-       
-
-   
-    
 
 {% endblock %}

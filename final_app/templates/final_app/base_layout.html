@@ -1,6 +1,16 @@
 {% load static from staticfiles %}
+{% load leaflet_tags %}
+{% load geojson_tags %}
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{{ trip_form.media }}
 
 {% load crispy_forms_tags %}
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +20,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>OutPACK</title>
 
-
+    {% leaflet_js plugins="forms" %}
+    {% leaflet_css plugins="forms" %}
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
 
@@ -40,78 +51,28 @@
                 <li><a href= "{% url 'final_app:profile' %}" data-toggle="tooltip" data-placement="bottom" title="Profile"><i class="fas fa-user-alt"></i></a></li>
                 <li><a href= "{% url 'final_app:trips' %}"data-toggle="tooltip" data-placement="bottom" title="Trips"> <i class="fas fa-hiking"></i></a></li>
                 <!-- Button trigger modal -->
-                <li><span data-toggle="tooltip" data-placement="bottom" title="Start A New Trip"><button type="button" class="modal-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-plus"></i></button></span></li>
+                <li><span data-toggle="tooltip" data-placement="bottom" title="Start A New Trip"><button type="button" class="modal-btn" data-toggle="modal" data-target="#mapModal"><i class="fas fa-plus"></i></button></span></li>
                 <li><a href= "{% url 'accounts:logout' %}"data-toggle="tooltip" data-placement="bottom" title="Logout"><i class="fas fa-sign-out-alt"></i></a></li>
                 <li><img class="user_profile_icon" src="{{request.user.profile.profile_picture.url}}" width="auto" height="40px"></li>
                 <!-- Search -->
                 <li><form name="myform" method="GET" action="{% url 'final_app:search' %}">  <input type="text" class="search" name="search" placeholder="Search for trip ideas" /><i class="fas fa-search"data-toggle="tooltip" data-placement="bottom" title="Search"></i></form> </li>
-
+                
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Create A Trip</h5>
+                        <h5 class="modal-title" id="mapModalLongTitle">Create A Trip</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                         </div>
                         <div class="modal-body">
-                          
-                                <div id='map-modal' style='width: 600px; height: 300px;'>  </div>
-                                <script>
-                                        mapboxgl.accessToken = 'pk.eyJ1IjoibmF0YWxpZXBsc24iLCJhIjoiY2psZm8ybnFnMHl4NDNwcG16eGFmMTdwaCJ9.2xYdBHCpcf5cdap8BvhVgQ';
-                                        var modalMap = new mapboxgl.Map({
-                                            container: 'map-modal',
-                                            style: 'mapbox://styles/mapbox/outdoors-v9',
-                                            center: [-119.538330, 37.865101],
-                                            zoom: 6
-                                        });
-                                        
-                                        var modalGeocoder = new MapboxGeocoder({
-                                            accessToken: mapboxgl.accessToken
-                                        });
-                                        
-                                        modalMap.addControl(modalGeocoder);
-                                        
-                                        // After the map style has loaded on the page, add a source layer and default
-                                        // styling for a single point.
-                                        modalMap.on('load', function() {
-                                            modalMap.addSource('single-point', {
-                                                "type": "geojson",
-                                                "data": {
-                                                    "type": "FeatureCollection",
-                                                    "features": []
-                                                }
-                                            });
-                                        
-                                            modalMap.addLayer({
-                                                "id": "point",
-                                                "source": "single-point",
-                                                "type": "circle",
-                                                "paint": {
-                                                    "circle-radius": 10,
-                                                    "circle-color": "#007cbf"
-                                                }
-                                            });
-                                        
-                                            // Listen for the `result` event from the MapboxGeocoder that is triggered when a user
-                                            // makes a selection and add a symbol that matches the result.
-                                            modalGeocoder.on('result', function(ev) {
-                                                modalMap.getSource('single-point').setData(ev.result.geometry);
-                                            });
-                                        });
-                                        </script>
-
-
                             <form class='post-create-form'  action="{% url 'final_app:trip_create' %}" method='post'>
+
                                 {% csrf_token %}      
-                                <!-- {{ trip_form.trail }}
-                                {{ trip_form.permit }}
-                                {{ trip_form.completed }}
-                                {{ trip_form.start_date }}
-                                {{ trip_form.end_date }} -->
                                 {{ trip_form|crispy }}
+
                                 <input type="hidden" id="location" name="location" />
                                 <input type="hidden" id="lat" name="lat" />
                                 <input type="hidden" id="lng" name="lng" /> 
@@ -142,7 +103,7 @@
         <nav>
             <p>&copy; 2018 all rights reserved</p>
             <ul>
-                <li><i class="fab fa-github"></i></li>
+                <li><a href="https://github.com/natalie-poulson/final_project" target="_blank"><i class="fab fa-github"></i></a></li>
             </ul>
         </nav>
     </footer>

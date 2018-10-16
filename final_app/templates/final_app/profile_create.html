@@ -4,11 +4,17 @@
 
 
 {% block content %}
+
+
+<div class='profile-edit'>
   <h1> Welcome, {{ user.username }}!</h1>
-  <h4> Please complete the following form:</h4>
-  <form class ='profile-form' enctype="multipart/form-data" action = "{% url 'final_app:profile_create'%}" method="POST">
-      {% csrf_token %}
-      {{ form|crispy }}
-      <input type='submit' value ="Submit">
-    </form>
+  <h4> Creae Your Profile </h4>
+    <div class="col-6">
+        <form enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input class="profile-edit-submit"type="submit" value="Submit">
+        </form>
+    </div>
+</div>
 {% endblock %}

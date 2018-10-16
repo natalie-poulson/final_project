@@ -1,27 +1,36 @@
 {% extends 'final_app/base_layout.html' %}
 
 {% block content %}
-<h1>Post Detail Page!</h1>
 
-    <p><strong>Title:</strong> {{ post.title }}</p>
-    <p><strong>User:</strong> {{ post.user }}</p>
+<div class="post-detail">
 
-
-    <p><strong>Trip:</strong><a href={% url 'final_app:other_trip_detail' pk=post.trip.id %}> {{ post.trip }}  </a></p>
-
-    {% if post.image %}
-    <p><strong>Image:</strong> <img src="{{ post.image.url }}" width="auto" height="250px" alt=""></p>
-    {% endif %}
-
-    {% if post.caption %}
-    <p><strong>Caption:</strong> {{ post.caption }}</p>
-    {% endif %}
-
-
-    {% if post.body %}
-    <p><strong>Body:</strong> {{ post.body }}</p>
-    {% endif %}
-
-    <p><strong>Date Posted:</strong> {{ post.created_at }}</p>
-
+    <div class="post-header">
+        <div>
+            <a href={% url 'final_app:other_profile' username=post.user.username %} ><img class="user_profile_icon" src="{{post.user.profile.profile_picture.url}}" width="auto" height="40px"></a>
+        </div>
+        <div>
+                <h1> {{ post.title }}</h1>
+        </div>
+    </div>
+    <div class ="post-main">
+        <div>
+            <p><strong>Trip:</strong><a href={% url 'final_app:other_trip_detail' username=post.user.username slug=post.trip.slug %}> {{ post.trip }}  </a></p>
+            <h4>{{ post.created_at }}</h4>
+        </div>
+        <div>
+            <img src="{{ post.image.url }}" width="auto" height="250px" alt="">
+        </div>
+        <div>
+            {% if post.caption %}
+            <p>{{ post.caption }}</p>
+            {% endif %}
+        </div>
+        <div>
+            {% if post.body %}
+            <p>{{ post.body }}</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}
+

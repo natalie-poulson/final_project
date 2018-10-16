@@ -43,6 +43,10 @@ INSTALLED_APPS = [
     # third party apps
     'django_extensions',
     'crispy_forms',
+    "bootstrap4",
+    'bootstrap_datepicker_plus',
+    'leaflet',
+    'djgeojson',
     # my apps
     'accounts',
     'final_app',
@@ -86,6 +90,14 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'final',
     }
+}
+
+LEAFLET_CONFIG = {
+    'DEFAULT_CENTER': (41.850033, -87.6500523),
+    'DEFAULT_ZOOM': 3,
+    'MIN_ZOOM': 1,
+    'MAX_ZOOM': 18,
+    'TILES': [('Outdoors', 'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=f5d4ab6c487e4dc1acaeee2b4b978238',{})]
 }
 
 

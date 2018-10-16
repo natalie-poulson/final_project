@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
 from . import models
+from bootstrap_datepicker_plus import DatePickerInput, TimePickerInput
+from leaflet.forms.widgets import LeafletWidget
 
 
 class CreateProfile(forms.ModelForm):
@@ -15,7 +17,7 @@ class CreateProfile(forms.ModelForm):
         required=False,
         widget=forms.TextInput( 
             attrs={
-                'placeholder':'Current City'
+                'placeholder':'Current City (optional)'
                 }
         ))
 
@@ -23,7 +25,7 @@ class CreateProfile(forms.ModelForm):
         required=False,
         widget=forms.TextInput( 
             attrs={
-                'placeholder': 'Bio'
+                'placeholder': 'Bio (optional)'
                 }
         ))
 
@@ -43,22 +45,15 @@ class CreatePost(forms.ModelForm):
 
 
 class CreateTrip(forms.ModelForm):
-    start_date = forms.DateField(
-        widget=forms.TextInput(     
-            attrs={'type': 'date'} 
-        )
-    )     
-    end_date = forms.DateField(
-        widget=forms.TextInput(     
-            attrs={'type': 'date'} 
-        )
-    )
     
-
     class Meta():
         model = models.Trip
-        fields = ('trail', 'permit', 'completed', 'start_date', 'end_date')
-
+        fields = ('location','trail', 'permit','start_date', 'end_date', 'completed',)
+        widgets = {
+                    'start_date':DatePickerInput().start_of('trip days'),
+                    'end_date':DatePickerInput().end_of('trip days'),
+                    'location': LeafletWidget()
+        }
 
 class CreateGear(forms.ModelForm):
     class Meta():

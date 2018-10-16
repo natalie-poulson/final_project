@@ -4,13 +4,12 @@
 
 
 {% block content %}
-<div class="row">
-    <div class="col-sm-6 col-md-3">
-    <form enctype="multipart/form-data" method="POST">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <input type="submit" value="Submit">
-    </form>
-    </div>
+<div class="profile-edit">
+        <h1>Edit Your Profile</h1>
+        <form enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            {{ profile_form|crispy }}
+            <input class = "profile-edit-submit" type="submit" value="Submit">
+        </form>
 </div>
 {% endblock %}
