@@ -20,7 +20,7 @@ class UserProfileInfo(models.Model):
     
 
 class Trip (models.Model):
-    location = PointField()
+    location = PointField(blank=True, null=True)
     user = models.ForeignKey(User, on_delete = models.CASCADE, related_name='trips') 
     slug = models.SlugField(unique=True)
     start_date = models.DateField()

@@ -25,7 +25,7 @@
     </div>
 
     <div class='profile-main'>
-        <div id='map' style='width: 56vw; height: 40vh;'>  </div>
+        <div id='map' style='width: 56vw; height: 40vh;border-radius:15px'>  </div>
             <script>
                     mapboxgl.accessToken = 'pk.eyJ1IjoibmF0YWxpZXBsc24iLCJhIjoiY2psZm8ybnFnMHl4NDNwcG16eGFmMTdwaCJ9.2xYdBHCpcf5cdap8BvhVgQ';
                     var map = new mapboxgl.Map({
@@ -36,24 +36,30 @@
                     });
             </script>
         <div>
+            {% if trips %}
             <h1> Trips</h1>
+            {% endif %}
                 {% for trip in trips %}
+    
 
                 {% if trip.completed %}
-                <li><i class="fas fa-calendar-check"></i>  <a href={% url 'final_app:trip_detail' slug=trip.slug %} >{{trip.trail}}</a><span class='trip-date-line'>({{trip.start_date}} - {{trip.end_date}})</span></li>
+                <li><i class="fas fa-calendar-check"></i>  <a href={% url 'final_app:trip_detail' slug=trip.slug %} >{{trip.trail}}</a><span class='trip-date-line'>{{trip.start_date}} - {{trip.end_date}}</span></li>
 
                 {% else %}
-                <li><a href={% url 'final_app:trip_detail' slug=trip.slug %} >{{trip.trail}}</a> <span class='trip-date-line'>({{trip.start_date}} - {{trip.end_date}})</span></li>
+                <li><a href={% url 'final_app:trip_detail' slug=trip.slug %} >{{trip.trail}}</a> <span class='trip-date-line'>{{trip.start_date}} - {{trip.end_date}}</span></li>
                 {% endif %}
 
                 {% endfor %}  
         </div>
         <div class ="profile-post">
-            <h1> Posts by {{user.username}} </h1>
+                
+            {% if trip.trip_posts %}
+            <h1> Posts by </h1>
+            {% endif %}
             {% for trip in trips %}
                     {% for trip_post in trip.trip_posts.all %}
                     <a href={% url 'final_app:post_detail' slug=trip_post.slug %} >                 
-                    <img id ="hover-img" src="{{ trip_post.image.url }}" width="250px" height="250px" alt="">
+                    <img id ="hover-img" src="{{ trip_post.image.url }}" width="250px" height="250px" alt="">                    
                     </a>
                     {% endfor %}
             {% endfor %}  

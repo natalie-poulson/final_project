@@ -12,7 +12,7 @@
     <div class ="trip-info">
         <div class ="trip-head">
             <h1>{{ trip.trail }}</h1>
-            <a href={% url 'final_app:other_profile' username=trip.user.username %} ><img class="user_profile_icon" src="{{trip.user.profile.profile_picture.url}}" width="auto" height="40px"></a>
+            <a href={% url 'final_app:other_profile' username=trip.user.username %} ><img data-toggle="tooltip" data-placement="bottom" title="{{trip.user.username}}"class="user_profile_icon" src="{{trip.user.profile.profile_picture.url}}" width="auto" height="40px"></a>
         </div>
         <div class="trip-dates">
             <p>{{ trip.start_date }} - {{ trip.end_date}}</p>

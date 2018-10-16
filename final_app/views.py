@@ -8,7 +8,6 @@ from .models import User, UserProfileInfo, Trip, Post, Gear, Food
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 
-
 def landing(request):
     login_form = AuthenticationForm()
     signup_form = UserCreationForm()
@@ -119,6 +118,8 @@ def trip_create(request):
             instance.user = request.user
             instance.save()
             trip = Trip.objects.get(id = instance.id)
+            print(trip)
+            print(trip.location)
         print(trip_form.errors)
         return redirect('final_app:trip_detail', slug =trip.slug)
     return redirect('final_app:profile')
@@ -313,6 +314,5 @@ def search(request):
         except Trip.DoesNotExist:
             db_results = None
         return render(request,'final_app/search.html',{'results':db_results, 'trip_form': trip_form})
-    # else:
-    #     return render(request,"search.html",{})
+    
 

@@ -6,7 +6,7 @@
 
     <div class="post-header">
         <div>
-            <a href={% url 'final_app:other_profile' username=post.user.username %} ><img class="user_profile_icon" src="{{post.user.profile.profile_picture.url}}" width="auto" height="40px"></a>
+            <a href={% url 'final_app:other_profile' username=post.user.username %} ><img data-toggle="tooltip" data-placement="bottom" title="{{post.user.username}}" class="user_profile_icon" src="{{post.user.profile.profile_picture.url}}" width="auto" height="40px"></a>
         </div>
         <div>
                 <h1> {{ post.title }}</h1>

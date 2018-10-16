@@ -35,20 +35,27 @@
                     });
             </script>
         <div>
+            {% if trips %}
             <h1> Trips</h1>
+            {% endif %}
+
                 {% for trip in trips %}
 
                 {% if trip.completed %}
-                <li><i class="fas fa-calendar-check"></i>  <a href={% url 'final_app:other_trip_detail' username=trip.user.username slug=trip.slug %} >{{trip.trail}} </a><span class='trip-date-line'>({{trip.start_date}} - {{trip.end_date}})</span></li>
+                <li><i class="fas fa-calendar-check"></i>  <a href={% url 'final_app:other_trip_detail' username=trip.user.username slug=trip.slug %} >{{trip.trail}} </a><span class='trip-date-line'>{{trip.start_date}} - {{trip.end_date}}</span></li>
 
                 {% else %}
-                <li><a href={% url 'final_app:other_trip_detail' username=trip.user.username slug=trip.slug %} >{{trip.trail}}</a> <span class='trip-date-line'> ({{trip.start_date}} - {{trip.end_date}})</span></li>
+                <li><a href={% url 'final_app:other_trip_detail' username=trip.user.username slug=trip.slug %} >{{trip.trail}}</a> <span class='trip-date-line'> {{trip.start_date}} - {{trip.end_date}}</span></li>
                 {% endif %}
 
                 {% endfor %}  
         </div>
         <div class ="profile-post">
-            <h1> Posts by {{user.username}} </h1>
+
+            {% if trip.trip_posts %}
+            <h1> Posts </h1>
+            {% endif %}
+
             {% for trip in trips %}
                     {% for trip_post in trip.trip_posts.all %}
                     <a href={% url 'final_app:other_post_detail' username=trip_post.user.username slug=trip_post.slug %} >
