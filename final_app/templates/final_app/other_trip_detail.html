@@ -80,7 +80,9 @@
     
 
     <div class="trip-posts">
-        <h4>Posts about this trip</h4>
+        {% if trip.trip_posts %}
+            <h4>Posts about this trip</h4>
+        {% endif %}
 
         {% for trip_post in trip.trip_posts.all %}
         <a href={% url 'final_app:other_post_detail' username=trip_post.user.username slug=trip_post.slug %} >

@@ -10,10 +10,10 @@
             <img src="{{ user.profile.profile_picture.url }}" width="auto" height="250px" alt="">
         </div>
         <div class = "profile-info">
-            <p><strong>Name:</strong> {{ user.profile.name }}</p>
+            <p> {{ user.profile.name }}</p>
 
             {% if user.profile.current_city %}
-            <p><strong>Current City:</strong> {{ user.profile.current_city }}</p>
+            <p> {{ user.profile.current_city }}</p>
             {% endif %}
             
             {% if user.profile.bio %}
@@ -52,10 +52,7 @@
                 {% endfor %}  
         </div>
         <div class ="profile-post">
-                
-            {% if trip.trip_posts %}
-            <h1> Posts by </h1>
-            {% endif %}
+           
             {% for trip in trips %}
                     {% for trip_post in trip.trip_posts.all %}
                     <a href={% url 'final_app:post_detail' slug=trip_post.slug %} >                 

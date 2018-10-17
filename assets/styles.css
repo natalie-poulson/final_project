@@ -197,9 +197,15 @@ footer nav ul {
 .trip-detail .trip-info div {
   margin: 0.3em 0;
 }
-.trip-detail .trip-info h1, .trip-detail .trip-info p {
+.trip-detail .trip-info h1 {
   text-align: center;
   margin: 0;
+  font-family: "Josefin Sans", sans-serif;
+}
+.trip-detail .trip-info p {
+  text-align: center;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
 }
 .trip-detail .trip-info i {
   margin-left: 1em;
@@ -219,6 +225,9 @@ footer nav ul {
   justify-content: space-between;
   width: 20vw;
   margin: 0.4em 0;
+}
+.trip-detail .trip-pack .pack-line p {
+  font-family: "Raleway", sans-serif;
 }
 .trip-detail .trip-pack .trip-gear {
   margin-right: 4em;
@@ -255,6 +264,7 @@ footer nav ul {
 .trip-detail .trip-pack .trip-food .food-wrapper .food-box h6 {
   margin-left: 0.5em;
   margin-bottom: 0.3em;
+  font-family: "Raleway", sans-serif;
 }
 .trip-detail .trip-pack .trip-food form {
   display: flex;
@@ -334,6 +344,12 @@ footer nav ul {
 .search-page .search-result-line a {
   display: flex;
   align-items: center;
+  font-family: "Raleway", sans-serif;
+  font-size: 1.2em;
+}
+.search-page .search-result-line span {
+  font-family: "Raleway", sans-serif;
+  font-size: 0.8em;
 }
 
 .modal-btn {
@@ -376,8 +392,17 @@ li {
 
 nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   background: rgba(0, 0, 0, 0.009);
+  align-items: center;
+}
+nav .logo {
+  width: 40px;
+  border-radius: 50%;
+}
+nav h4 {
+  margin-left: 1em;
+  font-family: "Josefin Sans", sans-serif;
 }
 nav ul {
   display: flex;
@@ -420,6 +445,9 @@ nav li {
   align-items: center;
   width: 30vw;
 }
+.profile .profile-aside a {
+  font-family: "Josefin Sans", sans-serif;
+}
 .profile .profile-aside .profile-picture img {
   border-radius: 50%;
   width: 250px;
@@ -428,14 +456,21 @@ nav li {
 }
 .profile .profile-aside .profile-info p {
   margin: 0.5em 0;
+  font-family: "Josefin Sans", sans-serif;
 }
 .profile .profile-main {
   width: 60vw;
   margin-left: 4em;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
+}
+.profile .profile-main a, .profile .profile-main span {
+  font-family: "Raleway", sans-serif;
+}
+.profile .profile-main span {
+  font-size: 0.8em;
 }
 .profile .profile-main div {
   margin: 1em 0;
@@ -447,6 +482,7 @@ nav li {
 }
 .profile .profile-main h1 {
   font-family: "Josefin Sans", sans-serif;
+  text-align: center;
 }
 .profile .profile-main li {
   margin: 1em 0;
@@ -491,6 +527,7 @@ nav li {
 }
 .post-detail .post-main h4, .post-detail .post-main p {
   font-size: 1.1em;
+  font-family: "Raleway", sans-serif;
 }
 .post-detail .post-main div {
   margin-top: 0.5em;
@@ -503,6 +540,16 @@ nav li {
   height: 70vh;
   object-fit: contain;
   margin: 1em 0;
+}
+
+.post-create-form {
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: uppercase;
+}
+.post-create-form button {
+  margin-top: 2em;
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: uppercase;
 }
 
 .trips-page {
@@ -520,12 +567,18 @@ nav li {
   display: flex;
   justify-content: center;
   margin-bottom: 1em;
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: uppercase;
 }
 .trips-page li {
   margin: 1em 0;
 }
 .trips-page li a {
   font-size: 1.3em;
+  font-family: "Raleway", sans-serif;
+}
+.trips-page li span {
+  font-size: 0.8em;
 }
 
 .trip-head {

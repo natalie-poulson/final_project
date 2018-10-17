@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
 from . import models
-# from leaflet.forms.widgets import LeafletWidget
 from mapwidgets.widgets import GooglePointFieldWidget
 
 

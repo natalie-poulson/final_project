@@ -13,7 +13,7 @@
     {% for result in results %}
         <li class="search-result-line">
         <a href={% url 'final_app:other_profile' username=result.user.username %} ><img data-toggle="tooltip" data-placement="bottom" title="{{result.user.username}}"class="user_profile_icon" src="{{result.user.profile.profile_picture.url}}" width="auto" height="40px"></a>&emsp;
-        <a href={% url 'final_app:other_trip_detail' username=result.user.username slug=result.slug %}> {{result.trail}}</a>&emsp; {{result.start_date}} - {{result.end_date}}
+        <a href={% url 'final_app:other_trip_detail' username=result.user.username slug=result.slug %}> {{result.trail}}</a><span>&emsp; {{result.start_date}} - {{result.end_date}}</span>
         </li>
         
     {% endfor %} 
