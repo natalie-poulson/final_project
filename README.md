@@ -1,4 +1,4 @@
-# OutPACK app
+# OutPACK
 
 
 ## Scope:
