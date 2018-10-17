@@ -244,6 +244,22 @@ footer nav {
         }
     }
 }
+.trip-wrapper {
+    width:100vw;
+    display:flex;
+    justify-content: center;
+    .trip-create {
+        margin:4em;
+        display:flex;
+        flex-direction: column;
+        width:60vw;
+        font-family:$logo-stack;
+        font-size: 1.2em;
+        h1 {
+            text-align: center;
+        }
+    }
+}
 
 .post_overlay {
     display:none;
@@ -467,10 +483,15 @@ nav {
         justify-content: center;
         margin-bottom:1em;
     }
+    li {
+        margin:1em 0;
+        a {
+            font-size:1.3em;
+        }
+
+    }
 }
-.create-form {
-    margin:1em;
-}
+
 .trip-head {
     display:flex;
     flex-direction:column;

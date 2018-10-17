@@ -120,9 +120,12 @@ def trip_create(request):
             trip = Trip.objects.get(id = instance.id)
             print(trip)
             print(trip.location)
+
         print(trip_form.errors)
         return redirect('final_app:trip_detail', slug =trip.slug)
-    return redirect('final_app:profile')
+    else:
+        trip_form = forms.CreateTrip()
+    return render(request, 'final_app/trip_create.html', {'trip_form': trip_form})
 
 
 @login_required(login_url='/accounts/login/')
@@ -148,8 +151,8 @@ def post_delete(request):
 
 @login_required(login_url='/accounts/login/')
 def trips(request):
-    trips_completed = Trip.objects.filter(user=request.user).filter(completed=True)
-    trips_future = Trip.objects.filter(user=request.user).filter(completed=False)
+    trips_completed = Trip.objects.filter(user=request.user).filter(completed=True).order_by('-start_date')
+    trips_future = Trip.objects.filter(user=request.user).filter(completed=False).order_by('-start_date')
     trip_form = forms.CreateTrip()
 
     context = {

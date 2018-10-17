@@ -277,6 +277,23 @@ footer nav ul {
   opacity: 0.5;
 }
 
+.trip-wrapper {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+.trip-wrapper .trip-create {
+  margin: 4em;
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1.2em;
+}
+.trip-wrapper .trip-create h1 {
+  text-align: center;
+}
+
 .post_overlay {
   display: none;
   width: 300px;
@@ -504,9 +521,11 @@ nav li {
   justify-content: center;
   margin-bottom: 1em;
 }
-
-.create-form {
-  margin: 1em;
+.trips-page li {
+  margin: 1em 0;
+}
+.trips-page li a {
+  font-size: 1.3em;
 }
 
 .trip-head {
