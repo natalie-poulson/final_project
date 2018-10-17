@@ -19,11 +19,18 @@ To run OutPACK on your local machine, clone the repository, then run:
 
 **Javascript/JQuery** 
 
-**HTML/CSS** 
-
-**SASS** 
+**HTML/CSS/SASS** 
 
 **PostgreSQL/PostGIS** 
+
+# Third Party Apps:
+
+**crispy_forms** 
+
+**mapwidgets** 
+
+**Google Maps API**
+
 
 
 ## Users:
