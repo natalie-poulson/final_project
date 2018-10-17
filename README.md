@@ -64,7 +64,7 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
     * User can logout and will be redirected to the landing page
   
   
-### Unsolved Problems...
+## Unsolved Problems...
 * Modal glitches and design challenges with Django forms
 * Google Maps Widget on load isn't correct size
 * Deploying with GIS to Heroku
@@ -73,7 +73,7 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 * Make delete confirmation notices more elegant
   
 
-### Still to Come...
+## Still to Come...
 * Allow user's to opt out of sharing their trips and/or profile with other users
 * Make the search feature dynamic and implement autocomplete
 * Display a map on each user's profile page that displays pins from all of their completed trips
