@@ -85,7 +85,7 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 * Add commenting
 * Add likes
 * Add follows and a feed page
-
+* Integrate a Weather API
 
 ## Links:
 
