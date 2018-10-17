@@ -107,7 +107,8 @@ DATABASES = {
 #     'MAX_ZOOM': 18,
 #     'TILES': [('Outdoors', 'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=f5d4ab6c487e4dc1acaeee2b4b978238',{})]
 # }
-
+GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH')
+GEOS_LIBRARY_PATH = os.getenv('GEOS_LIBRARY_PATH')
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
