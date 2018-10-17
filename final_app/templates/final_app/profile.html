@@ -25,11 +25,11 @@
     </div>
 
     <div class='profile-main'>
-        <div id='map' style='width: 56vw; height: 40vh;border-radius:15px'>  </div>
+        <div id='profileMap' style='width: 56vw; height: 40vh;border-radius:15px'>  </div>
             <script>
                     mapboxgl.accessToken = 'pk.eyJ1IjoibmF0YWxpZXBsc24iLCJhIjoiY2psZm8ybnFnMHl4NDNwcG16eGFmMTdwaCJ9.2xYdBHCpcf5cdap8BvhVgQ';
-                    var map = new mapboxgl.Map({
-                        container: 'map',
+                    var profileMap = new mapboxgl.Map({
+                        container: 'profileMap',
                         style: 'mapbox://styles/mapbox/outdoors-v9',
                         center: [-119.538330, 37.865101],
                         zoom: 6

@@ -41,13 +41,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
     # third party apps
     'django_extensions',
     'crispy_forms',
     "bootstrap4",
     'bootstrap_datepicker_plus',
-    'leaflet',
-    'djgeojson',
+    # 'leaflet',
+    # 'djgeojson',
+    'mapwidgets',
+
     # my apps
     'accounts',
     'final_app',
@@ -85,23 +88,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'final_django.wsgi.application'
 
+POSTGIS_VERSION = (2, 0, 3)
+
+
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'final',
     }
+
 }
 
-LEAFLET_CONFIG = {
-    'DEFAULT_CENTER': (41.850033, -87.6500523),
-    'DEFAULT_ZOOM': 3,
-    'MIN_ZOOM': 1,
-    'MAX_ZOOM': 18,
-    'TILES': [('Outdoors', 'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=f5d4ab6c487e4dc1acaeee2b4b978238',{})]
-}
+# LEAFLET_CONFIG = {
+#     'DEFAULT_CENTER': (41.850033, -87.6500523),
+#     'DEFAULT_ZOOM': 3,
+#     'MIN_ZOOM': 1,
+#     'MAX_ZOOM': 18,
+#     'TILES': [('Outdoors', 'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=f5d4ab6c487e4dc1acaeee2b4b978238',{})]
+# }
 
 
 # Password validation
@@ -141,6 +148,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 
+GOOGLE_MAP_API_KEY = "AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg"
+
+MAP_WIDGETS = {
+    "GooglePointFieldWidget": (
+        ("zoom", 4),
+        ("mapCenterLocation", [39.8283,  -98.5795]),
+        ("markerFitZoom", 11),
+        # ("mapTypeId", "google.maps.MapTypeId.TERRAIN")
+    ),
+    "GOOGLE_MAP_API_KEY": GOOGLE_MAP_API_KEY,
+}
 
 
 
@@ -172,6 +190,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, 'static')),
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 
 
 django_heroku.settings(locals())

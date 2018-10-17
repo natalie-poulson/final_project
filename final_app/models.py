@@ -4,7 +4,9 @@ from django.conf import settings
 from datetime import datetime
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
-from djgeojson.fields import PointField
+
+from django.contrib.gis.db import models as gismodels
+from django.contrib.gis.geos import Point
 
 
 class UserProfileInfo(models.Model):
@@ -20,7 +22,7 @@ class UserProfileInfo(models.Model):
     
 
 class Trip (models.Model):
-    location = PointField(blank=True, null=True)
+    location = gismodels.PointField(blank=True, null=True)
     user = models.ForeignKey(User, on_delete = models.CASCADE, related_name='trips') 
     slug = models.SlugField(unique=True)
     start_date = models.DateField()
@@ -42,7 +44,6 @@ class Trip (models.Model):
     def popupContent(self):
       return '<p><{}</p>'.format(
           self.trail)
-
 
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE, related_name='posts') 
@@ -111,5 +112,4 @@ def pre_save_trip_receiver(sender, instance, *args, **kwargs):
         instance.slug = create_trip_slug(instance)
 
 pre_save.connect(pre_save_trip_receiver, sender=Trip)
-
 
