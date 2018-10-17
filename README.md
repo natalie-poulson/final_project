@@ -28,9 +28,9 @@ To run OutPACK on your local machine, clone the repository, then run:
 
 ## Third Party Apps:
 
-**crispy_forms** 
+crispy_forms
 
-**mapwidgets**
+mapwidgets
 
 
 
