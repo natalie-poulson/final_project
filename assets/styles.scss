@@ -241,6 +241,12 @@ footer nav {
         }
     }
     .trip-posts {
+        display:flex;
+        flex-direction:column;
+        align-items: center;
+        justify-content: center;
+        flex-wrap:wrap;
+        width:80vw;
         h4{
             font-family:$logo-stack;
             font-size:2em;
@@ -492,7 +498,6 @@ nav {
         h4, p {
             font-size: 1.1em;
             font-family:$body-stack;
-
         }
         div {
             margin-top:.5em;

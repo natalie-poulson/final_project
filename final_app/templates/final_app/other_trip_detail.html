@@ -80,15 +80,18 @@
     
 
     <div class="trip-posts">
-        {% if trip.trip_posts %}
+        <div>
+            {% if trip.trip_posts %}
             <h4>Posts about this trip</h4>
-        {% endif %}
-
-        {% for trip_post in trip.trip_posts.all %}
-        <a href={% url 'final_app:other_post_detail' username=trip_post.user.username slug=trip_post.slug %} >
-            <img id ="hover-img" src="{{ trip_post.image.url }}" width="250px" height="250px" alt="">
-        </a>        
-        {% endfor %}    
+            {% endif %}
+        </div>
+        <div>
+            {% for trip_post in trip.trip_posts.all %}
+            <a href={% url 'final_app:other_post_detail' username=trip_post.user.username slug=trip_post.slug %} >
+                <img id ="hover-img" src="{{ trip_post.image.url }}" width="250px" height="250px" alt="">
+            </a>        
+            {% endfor %} 
+        </div>   
     </div>
 </div>
   

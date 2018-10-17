@@ -272,6 +272,14 @@ footer nav ul {
   justify-content: center;
   align-items: flex-start;
 }
+.trip-detail .trip-posts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 80vw;
+}
 .trip-detail .trip-posts h4 {
   font-family: "Josefin Sans", sans-serif;
   font-size: 2em;
