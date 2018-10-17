@@ -73,7 +73,7 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 * Add follows and a feed page
 * Display a map on each user's profile page that displays pins from all of their completed trips
 * Display maps on each trip page to show the general location of the trip
-* Allow user's to draw lines (instead of use a point) to capture their trip more precisely, especially useful for section hiking
+* Allow user's to draw lines (instead of a point) to capture their trip more precisely, especially useful for section hiking
 
 ## Links
 
