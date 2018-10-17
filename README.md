@@ -23,7 +23,7 @@ To run OutPACK on your local machine, clone the repository, then run:
 
 **PostgreSQL/PostGIS** 
 
-# Third Party Apps:
+### Third Party Apps:
 
 **crispy_forms** 
 
