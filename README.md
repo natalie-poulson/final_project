@@ -29,6 +29,7 @@ To run OutPACK on your local machine, clone the repository, then run:
 ## Users:
 Our user is someone who enjoys the outdoors, traveling, planning, keeping track of memories, & sharing and receiving ideas for their next adventure. 
 
+
 ## Features:
 * User signup, login, logout
 * User profile create & edit
