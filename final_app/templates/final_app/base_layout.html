@@ -1,16 +1,5 @@
 {% load static from staticfiles %}
-<<<<<<< HEAD
-{% load leaflet_tags %}
-{% load geojson_tags %}
-
-{% load bootstrap4 %}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
-
-{{ trip_form.media }}
-=======
 {% load crispy_forms_tags %}
->>>>>>> b3b6f49c58ed6f53d02d02ae8b6754d73d40f96c
 
 
 <!DOCTYPE html>
@@ -51,45 +40,8 @@
                 <li><a href= "{% url 'accounts:logout' %}"data-toggle="tooltip" data-placement="bottom" title="Logout"><i class="fas fa-sign-out-alt"></i></a></li>
                 <li><img class="user_profile_icon" src="{{request.user.profile.profile_picture.url}}" width="auto" height="40px"></li>
                 <li><form name="myform" method="GET" action="{% url 'final_app:search' %}">  <input type="text" class="search" name="search" placeholder="Search for trip ideas" /><i class="fas fa-search"data-toggle="tooltip" data-placement="bottom" title="Search"></i></form> </li>
-<<<<<<< HEAD
-                
-                <!-- Modal -->
-                <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="mapModalLongTitle">Create A Trip</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                        <div class="modal-body">
-                            <form class='post-create-form'  action="{% url 'final_app:trip_create' %}" method='post'>
-
-                                {% csrf_token %}  
-                                {{ trip_form }}    
-
-                                <input type="hidden" id="location" name="location" />
-                                <input type="hidden" id="lat" name="lat" />
-                                <input type="hidden" id="lng" name="lng" /> 
-                        </div>
-                        <div class="modal-footer">
-                                <button type="input" class="btn btn-success">Submit</button>
-                            </form>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                    </div>
-                </div>
 
 
-                {% else %}
-                    <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
-                    <li><a href="{% url 'accounts:login' %}">Log In</a></li>
-                {% endif %}
-
-=======
->>>>>>> b3b6f49c58ed6f53d02d02ae8b6754d73d40f96c
             </ul>
         </nav>
     </header>
