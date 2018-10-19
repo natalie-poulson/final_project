@@ -16,8 +16,6 @@ import django_heroku
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# MEDIA_DIR = os.path.join('final_app/profile_pictures')
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -45,12 +43,7 @@ INSTALLED_APPS = [
     # third party apps
     'django_extensions',
     'crispy_forms',
-    "bootstrap4",
-    'bootstrap_datepicker_plus',
-    # 'leaflet',
-    # 'djgeojson',
     'mapwidgets',
-
     # my apps
     'accounts',
     'final_app',
@@ -64,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # django
     'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
@@ -86,13 +80,14 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'final_django.wsgi.application'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-POSTGIS_VERSION = (2, 0, 3)
+WSGI_APPLICATION = 'final_django.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
+POSTGIS_VERSION = (2, 0, 3)
 
 DATABASES = {
     'default': {
@@ -101,14 +96,6 @@ DATABASES = {
     }
 
 }
-
-# LEAFLET_CONFIG = {
-#     'DEFAULT_CENTER': (41.850033, -87.6500523),
-#     'DEFAULT_ZOOM': 3,
-#     'MIN_ZOOM': 1,
-#     'MAX_ZOOM': 18,
-#     'TILES': [('Outdoors', 'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=f5d4ab6c487e4dc1acaeee2b4b978238',{})]
-# }
 
 
 # Password validation
@@ -155,11 +142,9 @@ MAP_WIDGETS = {
         ("zoom", 4),
         ("mapCenterLocation", [39.8283,  -98.5795]),
         ("markerFitZoom", 11),
-        # ("mapTypeId", "google.maps.MapTypeId.TERRAIN")
     ),
     "GOOGLE_MAP_API_KEY": GOOGLE_MAP_API_KEY,
 }
-
 
 
 
@@ -169,11 +154,6 @@ MEDIA_URL = '/media/'
 # MEDIA_ROOT = MEDIA_DIR
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
-
-# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
     
 # The address to visit to find the static files 
@@ -187,10 +167,8 @@ STATICFILES_DIRS = (
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, 'static')),
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 
 
 

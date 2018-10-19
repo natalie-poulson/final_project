@@ -1,6 +1,9 @@
 appnope==0.1.0
 astroid==2.0.4
+attrs==18.2.0
+Automat==0.7.0
 backcall==0.1.0
+constantly==15.1.0
 decorator==4.3.0
 dj-database-url==0.5.0
 Django==2.0.5
@@ -10,7 +13,11 @@ django-crispy-forms==1.7.2
 django-extensions==2.1.3
 django-heroku==0.3.1
 django-map-widgets==0.2.0
+GDAL==2.3.1
 gunicorn==19.9.0
+hyperlink==18.0.0
+idna==2.7
+incremental==17.5.0
 ipython==7.0.1
 ipython-genutils==0.2.0
 isort==4.3.4
@@ -18,6 +25,8 @@ jedi==0.13.1
 jsonfield==2.0.2
 lazy-object-proxy==1.3.1
 mccabe==0.6.1
+nose==1.3.7
+numpy==1.15.2
 parso==0.3.1
 pexpect==4.6.0
 pickleshare==0.7.5
@@ -26,11 +35,15 @@ prompt-toolkit==2.0.5
 psycopg2==2.7.5
 ptyprocess==0.6.0
 Pygments==2.2.0
+PyHamcrest==1.9.0
 pylint==2.1.1
 pytz==2018.5
 simplegeneric==0.8.1
 six==1.11.0
 traitlets==4.3.2
+Twisted==18.9.0
+virtualenv==16.0.0
 wcwidth==0.1.7
 whitenoise==4.1
 wrapt==1.10.11
+zope.interface==4.5.0
