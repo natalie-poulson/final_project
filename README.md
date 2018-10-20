@@ -11,12 +11,12 @@ To run OutPACK on your local machine, clone the repository, then run:
 
 
 * Install PostGIS (https://postgis.net/install/):
- * `brew install postgis`
+  * `brew install postgis`
 
 * Make Migrations:
- * `python3 manage.py makemigrations`
- * `python3 manage.py migrate`
- * `python3 manage.py runserver`
+  * `python3 manage.py makemigrations`
+  * `python3 manage.py migrate`
+  * `python3 manage.py runserver`
 
 
 ## Built With:
