@@ -1,6 +1,4 @@
 # OutPACK
-### Created By
-* [Natalie Poulson](https://github.com/natalie-poulson)
 
 
 ## Scope:
@@ -111,3 +109,5 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 * https://outpack.herokuapp.com/
 
 
+### Created By
+* [Natalie Poulson](https://github.com/natalie-poulson)
