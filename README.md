@@ -21,20 +21,20 @@ To run OutPACK on your local machine, clone the repository, then:
 
 ## Built With:
 
-Django/Python
+* Django/Python
 
-Javascript/JQuery
+* Javascript/JQuery
 
-HTML/CSS/SASS
+* HTML/CSS/SASS
 
-PostgreSQL/PostGIS
+* PostgreSQL/PostGIS
 
 
 ## Third Party Apps:
 
-crispy_forms
+* crispy_forms
 
-mapwidgets
+* mapwidgets
 
 
 ## Users:
