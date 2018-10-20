@@ -1,4 +1,6 @@
 # OutPACK
+### Created By
+* [Natalie Poulson](https://github.com/natalie-poulson)
 
 
 ## Scope:
@@ -104,8 +106,6 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 ### Wireframes/Project Planning
 * https://paper.dropbox.com/doc/Final-Project-WDI--APdH9CZr9rzLQ3cY~tvCj1AxAQ-ee5oZiI4VxL1sV6RabXTv
 
-### Created By
-* [Natalie Poulson](https://github.com/natalie-poulson)
 
 ### Herkou Link
 * https://outpack.herokuapp.com/
