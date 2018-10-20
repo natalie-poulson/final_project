@@ -10,7 +10,6 @@ To run OutPACK on your local machine, clone the repository, then:
 * Install requirements:
   * `pip3 install -r requirements.txt`
 
-
 * Install PostGIS (https://postgis.net/install/):
   * `brew install postgis`
 
@@ -22,14 +21,13 @@ To run OutPACK on your local machine, clone the repository, then:
 
 ## Built With:
 
-**Django/Python** 
+Django/Python
 
-**Javascript/JQuery** 
+Javascript/JQuery
 
-**HTML/CSS/SASS** 
+HTML/CSS/SASS
 
-**PostgreSQL/PostGIS** 
-
+PostgreSQL/PostGIS
 
 
 ## Third Party Apps:
@@ -37,7 +35,6 @@ To run OutPACK on your local machine, clone the repository, then:
 crispy_forms
 
 mapwidgets
-
 
 
 ## Users:
@@ -100,6 +97,7 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 * Add likes
 * Add follows and a feed page
 * Integrate a Weather API
+
 
 ## Links:
 
