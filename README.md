@@ -102,7 +102,7 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 ## Links:
 
 ### Wireframes/Project Planning
-* https://paper.dropbox.com/doc/Final-Project-WDI--APdH9CZr9rzLQ3cY~tvCj1AxAQ-ee5oZiI4VxL1sV6RabXTv
+* [download this](OutPACK.pdf)
 
 
 ### Herkou Link
