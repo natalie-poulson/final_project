@@ -105,9 +105,5 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 * [OutPACK](OutPACK.pdf)
 
 
-### Herkou Link
-* https://outpack.herokuapp.com/
-
-
 ### Created By
 * [Natalie Poulson](https://github.com/natalie-poulson)
