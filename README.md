@@ -75,7 +75,15 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
   * Logout:
     * User can logout and will be redirected to the landing page
   
-  
+## Screenshots:
+
+<img src="./screenshots/2.png">
+
+<img src="./screenshots/3.png">
+
+<img src="./screenshots/4.png">
+
+
 ## Unsolved Problems...
 * Modal glitches and design challenges with Django forms
 * Google Maps Widget on load isn't correct size
