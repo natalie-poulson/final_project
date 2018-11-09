@@ -85,6 +85,7 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 
 
 ## Unsolved Problems...
+* Figure out default profile picture location so not ignored
 * Modal glitches and design challenges with Django forms
 * Google Maps Widget on load isn't correct size
 * Deploying with GIS to Heroku
