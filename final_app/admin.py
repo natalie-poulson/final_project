@@ -1,5 +1,4 @@
 from django.contrib import admin
-# from leaflet.admin import LeafletGeoAdmin
 from . import models
 from django.contrib.gis.db import models as gismodels
 from mapwidgets.widgets import GooglePointFieldWidget

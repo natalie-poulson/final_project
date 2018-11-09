@@ -25,6 +25,7 @@
                     <h3>...the place for outdoor trip planning and sharing! </h3>
                 </div>
                 {% if user.is_authenticated %}
+                <h2>Welcome back, {{user.username}} </h2>
                 <div class="login-wrapper">
                     <a class="landing-button" href="{% url 'final_app:profile' %}">Enter</a>
                     <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">

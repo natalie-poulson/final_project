@@ -36,7 +36,7 @@ def login_view(request):
     else:
         return redirect('final_app:landing')
 
-# Logouts
+# Logout:
 @login_required(login_url='/accounts/login/')
 def logout_view(request):
     logout(request)

@@ -150,10 +150,10 @@
                 </div>
               
                 <div class='food-wrapper'>
-                    {% for day_list in trip.day_lists %}
+                    {% for day in trip.day_range %}
                     <div class="food-box">
                         <i class="far fa-calendar"></i>
-                        <h6>Day {{day_list |add:"1" }}</h6>  
+                        <h6>Day {{day |add:"1" }}</h6>  
                     </div>  
                     {% endfor %}
                 </div>
