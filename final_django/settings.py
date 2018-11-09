@@ -161,7 +161,7 @@ STATIC_URL = '/static/'
 
 # Tells Django where to find static files
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR,'assets'),
+    os.path.join(BASE_DIR,'static'),
 )
 
 
