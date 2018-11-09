@@ -4,7 +4,6 @@ from . import models
 from mapwidgets.widgets import GooglePointFieldWidget
 
 
-
 class CreateProfile(forms.ModelForm):
     name = forms.CharField(label='', 
         widget=forms.TextInput( 
@@ -12,7 +11,6 @@ class CreateProfile(forms.ModelForm):
                 'placeholder': 'Name',
                 }
             ))
-
     current_city = forms.CharField(label='',
         required=False,
         widget=forms.TextInput( 
@@ -20,7 +18,6 @@ class CreateProfile(forms.ModelForm):
                 'placeholder':'Current City (optional)'
                 }
         ))
-
     bio = forms.CharField(label='',
         required=False,
         widget=forms.TextInput( 
@@ -28,7 +25,6 @@ class CreateProfile(forms.ModelForm):
                 'placeholder': 'Bio (optional)'
                 }
         ))
-
     profile_picture = forms.ImageField(label='',
         required=False,
         )

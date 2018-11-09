@@ -1,19 +1,15 @@
 {% extends 'final_app/base_layout.html' %}
 
 {% block content %}
-
 <div class="post-detail">
-
     <div class="post-header">
         <div>
             <a href={% url 'final_app:other_profile' username=post.user.username %} ><img data-toggle="tooltip" data-placement="bottom" title="{{post.user.username}}" class="user_profile_icon" src="{{post.user.profile.profile_picture.url}}" width="auto" height="40px"></a>
         </div>
         <div>
-                <h1> {{ post.title }}</h1>
+            <h1> {{ post.title }}</h1>
         </div>
-        <div>
-            
-        </div>
+        <div></div>
     </div>
     <div class ="post-main">
         <div>
@@ -25,12 +21,12 @@
         </div>
         <div>
             {% if post.caption %}
-            <p>{{ post.caption }}</p>
+                <p>{{ post.caption }}</p>
             {% endif %}
         </div>
         <div>
             {% if post.body %}
-            <p>{{ post.body }}</p>
+                <p>{{ post.body }}</p>
             {% endif %}
         </div>
     </div>

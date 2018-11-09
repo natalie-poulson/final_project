@@ -87,7 +87,7 @@ footer nav p {
   margin-left: 1em;
   font-size: 0.9em;
 }
-footer nav ul {
+footer nav a {
   margin-right: 1em;
 }
 
@@ -184,13 +184,8 @@ footer nav ul {
   display: flex;
   width: 100vw;
 }
-.trip-detail .trip-header .trip-title {
-  display: flex;
-  width: 60vw;
-  margin-left: 4em;
-}
 .trip-detail .trip-header .trip-icons {
-  width: 40vw;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: flex-end;

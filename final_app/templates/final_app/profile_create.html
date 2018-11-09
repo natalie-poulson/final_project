@@ -2,13 +2,11 @@
 {% load crispy_forms_tags %}
 {% crispy form %}
 
-
 {% block content %}
 
-
 <div class='profile-edit'>
-  <h1> Welcome, {{ user.username }}!</h1>
-  <h4> Creae Your Profile </h4>
+    <h1> Welcome, {{ user.username }}!</h1>
+    <h4> Creae Your Profile </h4>
     <div class="col-6">
         <form enctype="multipart/form-data" method="POST">
             {% csrf_token %}
