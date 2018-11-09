@@ -122,6 +122,12 @@ footer nav ul {
   color: white;
   text-align: center;
 }
+.landing-wrapper .landing-content h3 {
+  color: white;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1.7em;
+  margin-bottom: 1em;
+}
 .landing-wrapper .landing-content h4 {
   color: white;
   font-family: "Josefin Sans", sans-serif;
