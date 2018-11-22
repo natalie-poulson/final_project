@@ -91,7 +91,7 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 * Google Maps Widget on load isn't correct size
 * Deploying with GIS to Heroku
 * Allow user's to break food planning down by day
-* Add logic to check trip date and automatically change status of trip complete if date has passed
+* ~~Add logic to check trip date and automatically change status of trip complete if date has passed~~ completed 11/21/2018
 * Make delete confirmation notices more elegant
   
 
