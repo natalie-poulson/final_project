@@ -12,7 +12,7 @@ class UserProfileInfo(models.Model):
     name = models.CharField(max_length=40)
     current_city = models.CharField(blank=True,max_length=100)
     bio = models.CharField(blank=True, max_length=200)
-    profile_picture = models.ImageField(default='./static/default.png', upload_to='profile_pictures/%Y/%m')
+    profile_picture = models.ImageField(default='../static/default.png', upload_to='profile_pictures/%Y/%m')
     created_at = models.DateField(auto_now_add =True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
 
