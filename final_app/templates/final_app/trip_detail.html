@@ -75,9 +75,15 @@
         <div class="trip-gear">
             <div class="gear-head">
                 <h4>Gear</h4>                
-                <button id="gear" type="button" class="modal-btn" data-toggle="modal" data-target=".bd-gear-modal-sm"><i data-toggle="tooltip" data-placement="bottom" title="Add Gear" class="fas fa-plus"></i></button>
+                <!-- <button id="gear" type="button" class="modal-btn" data-toggle="modal" data-target=".bd-gear-modal-sm"><i data-toggle="tooltip" data-placement="bottom" title="Add Gear" class="fas fa-plus"></i></button> -->
             </div>
-            <!-- Small modal -->
+            <form class='create-form' action="{% url 'final_app:gear_create' %}" method='post'>
+                {% csrf_token %}
+                {{ gear_form|crispy }}
+                <input type='hidden' name='trip_id' required id='id_trip_id' value='{{ trip.id }}' />
+                <button id="gear" type="input" class="modal-btn" data-toggle="modal" data-target=".bd-gear-modal-sm"><i data-toggle="tooltip" data-placement="bottom" title="Add Gear" class="fas fa-plus"></i></button>
+            </form>
+            <!-- Small modal
             <div id="gear" class="modal fade bd-gear-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-sm">
                 <div class="modal-content">
@@ -97,14 +103,15 @@
                     </form>
                 </div>
                 </div>
-            </div>
+            </div> -->
                 {% for trip_gear in trip.trip_gears.all %}
                     <div class='pack-line'>
-                        <div>
-                            <p {% if trip_gear.packed is True %} style="text-decoration: line-through" {% endif %}>{{trip_gear.gear_name}}</p>
+                        <div class='checkbox'>
+                            <input id="gear-checkbox"  type ="checkbox" {% if trip_gear.packed is True %} checked {% endif %} value={{trip_gear.gear_name}}>
+                            <p >{{trip_gear.gear_name}}</p>
                         </div>
                         <div>
-                            <a href= {% url 'final_app:gear_edit' pk=trip_gear.id %} ><i data-toggle="tooltip" data-placement="bottom" title="Edit" class="fas fa-edit"></i></a>
+                            <!-- <a href= {% url 'final_app:gear_edit' pk=trip_gear.id %} ><i data-toggle="tooltip" data-placement="bottom" title="Edit" class="fas fa-edit"></i></a> -->
                             <a href= {% url 'final_app:gear_delete' pk=trip_gear.id %} ><i data-toggle="tooltip" data-placement="bottom" title="Delete" class="far fa-trash-alt"></i></a>
                         </div>
                     </div>

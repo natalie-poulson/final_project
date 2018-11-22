@@ -233,8 +233,12 @@ footer nav a {
   width: 20vw;
   margin: 0.4em 0;
 }
+.trip-detail .trip-pack .pack-line .checkbox {
+  display: flex;
+}
 .trip-detail .trip-pack .pack-line p {
   font-family: "Raleway", sans-serif;
+  margin-left: 0.5em;
 }
 .trip-detail .trip-pack .trip-gear {
   margin-right: 4em;
@@ -555,6 +559,15 @@ nav li {
   height: 70vh;
   object-fit: contain;
   margin: 1em 0;
+}
+
+.create-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.create-form button {
+  margin-bottom: 1em;
 }
 
 .post-create-form {

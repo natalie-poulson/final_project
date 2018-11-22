@@ -204,8 +204,12 @@ footer nav {
             justify-content: space-between;
             width:20vw;
             margin:.4em 0;
+            .checkbox {
+                display:flex;
+            }
             p {
                 font-family: $body-stack;
+                margin-left:.5em;
             }
         }
         .trip-gear {
@@ -523,6 +527,14 @@ nav {
             object-fit: contain;
             margin: 1em 0;
         }
+    }
+}
+.create-form {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    button {
+        margin-bottom:1em;
     }
 }
 

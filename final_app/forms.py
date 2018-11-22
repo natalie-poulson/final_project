@@ -60,9 +60,12 @@ class CreateTrip(forms.ModelForm):
         }
 
 class CreateGear(forms.ModelForm):
+    gear_name = forms.CharField(label='', 
+        widget=forms.TextInput())
+        
     class Meta():
         model = models.Gear
-        fields = ('gear_name', 'packed')
+        fields = ('gear_name',)
 
 
 class CreateFood(forms.ModelForm):
