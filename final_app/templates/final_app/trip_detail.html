@@ -10,9 +10,6 @@
                 <a data-toggle="tooltip" data-placement="bottom" title="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
             </div>
             <div>
-                <a data-toggle="tooltip" data-placement="bottom" title="Share on Google" href='https://plus.google.com/share?url={{ request.build_absolute_uri }}'target="_blank"><i class="fab fa-google-plus-g"></i></a>
-            </div>
-            <div>
                 <li><a data-toggle="tooltip" data-placement="bottom" title="Edit" href={% url 'final_app:trip_edit' slug=trip.slug %} ><i class="fas fa-edit"></i></a>
             </div>
             <div>
