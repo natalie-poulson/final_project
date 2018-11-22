@@ -54,7 +54,7 @@ class CreateTrip(forms.ModelForm):
     
     class Meta():
         model = models.Trip
-        fields = ('location','trail', 'permit','start_date', 'end_date', 'completed',)
+        fields = ('location','trail', 'permit','start_date', 'end_date')
         widgets = {
                     'location': GooglePointFieldWidget,
         }

@@ -6,6 +6,7 @@ from . import forms
 from django.conf import settings
 from .models import User, UserProfileInfo, Trip, Post, Gear, Food
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from datetime import date
 
 
 def landing(request):
@@ -112,6 +113,8 @@ def trip_create(request):
         if trip_form.is_valid():
             instance = trip_form.save(commit=False)
             instance.user = request.user
+            if (instance.end_date) < date.today():
+                instance.completed = True
             instance.save()
             trip = Trip.objects.get(id = instance.id)
         return redirect('final_app:trip_detail', slug =trip.slug)
