@@ -88,26 +88,26 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 * ~~Figure out default profile picture location so not ignored~~ completed 11/21/2018
 * Clean up Sass code
 * Modal glitches and design challenges with Django forms
-* Google Maps Widget on load isn't correct size
-* Deploying with GIS to Heroku
-* Allow user's to break food planning down by day
+* ~~Google Maps Widget on load isn't correct size~~ completed 12/4/2018
 * ~~Add logic to check trip date and automatically change status of trip complete if date has passed~~ completed 11/21/2018
 * Make delete confirmation notices more elegant
   
 
 ## Still to Come...
+* Allow user's to upload videos
+* Sync with Google Calendar 
+* Integrate a Weather API
+* Allow user's to break food planning down by day
 * Allow user's to opt out of sharing their trips and/or profile with other users
 * Make the search feature dynamic and implement autocomplete
 * Display a map on each user's profile page that displays pins from all of their completed trips
 * Display maps on each trip page to show the general location of the trip
 * Allow user's to draw lines (instead of a point) to capture their trip more precisely, especially useful for section hiking
-* Sync with Google Calendar 
 * Allow users to add collaborators to a trip, allowing for mutual editing/editing/memory storing
-* Allow user's to upload videos
 * Add commenting
 * Add likes
 * Add follows and a feed page
-* Integrate a Weather API
+
 
 
 ## Links:
