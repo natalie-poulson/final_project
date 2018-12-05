@@ -94,7 +94,7 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
   
 
 ## Still to Come...
-* Allow user's to upload videos
+* ~~Allow user's to upload videos~~ completed 12/04/2018
 * Sync with Google Calendar 
 * Integrate a Weather API
 * Allow user's to break food planning down by day
