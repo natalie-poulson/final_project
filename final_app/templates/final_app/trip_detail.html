@@ -107,7 +107,7 @@
                 {% for trip_gear in trip.trip_gears.all %}
                     <div class='pack-line'>
                         <div class='checkbox'>
-                            <input id="gear-checkbox"  type ="checkbox" {% if trip_gear.packed is True %} checked {% endif %} value={{trip_gear.gear_name}}>
+                            <input id="gear-checkbox"  type ="checkbox" {% if trip_gear.packed is True %} checked {% endif %} value={{trip_gear.gear_nam>
                             <p >{{trip_gear.gear_name}}</p>
                         </div>
                         <div>
@@ -173,8 +173,17 @@
             {% endif %}
         </div>
         <div>
+            
             {% for trip_post in trip.trip_posts.all %}
+                {% if trip_post.image%}
                 <a href={% url 'final_app:post_detail' slug=trip_post.slug %} ><img id ="hover-img" src="{{ trip_post.image.url }}" width="250px" height="250px" alt=""></a>        
+                {% endif %}
+                {% if trip_post.video%}
+                <video width="250px" height="250px"controls>
+                        <source src="{{ trip_post.video.url }}" type="video/mp4">
+                            Your browser does not support the video tag
+                    </video>                
+                {% endif %}
             {% endfor %}   
         </div>
     </div>

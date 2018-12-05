@@ -4,7 +4,7 @@
 {% block content %}
 <div class = "profile">
     <div class = "profile-aside">
-        <a href = "{% url 'final_app:profile_edit' %}">Edit </a>
+        <a href = "{% url 'final_app:profile_edit' %}">edit </a>
         <div class = "profile-picture">
             <img src="{{ user.profile.profile_picture.url }}" width="auto" height="250px" alt="">
         </div>
@@ -33,26 +33,32 @@
                         zoom: 6
                     });
             </script>
-        <div>
+       
             {% if trips %}
+            <div class='profileTrips'>
                 <h1> Trips</h1>
             {% endif %}
 
                 {% for trip in trips %}
                     {% if trip.completed %}
-                        <li><i class="fas fa-calendar-check"></i>  <a href={% url 'final_app:trip_detail' slug=trip.slug %} >{{trip.trail}}</a><span class='trip-date-line'>{{trip.start_date}} - {{trip.end_date}}</span></li>
+                        <li><i class="fas fa-calendar-check"></i> &nbsp; <a href={% url 'final_app:trip_detail' slug=trip.slug %} >{{trip.trail}}</a><span class='trip-date-line'> &nbsp; {{trip.start_date}} - {{trip.end_date}}</span></li>
                     {% else %}
-                        <li><a href={% url 'final_app:trip_detail' slug=trip.slug %} >{{trip.trail}}</a> <span class='trip-date-line'>{{trip.start_date}} - {{trip.end_date}}</span></li>
+                        <li><a href={% url 'final_app:trip_detail' slug=trip.slug %} >{{trip.trail}}</a> <span class='trip-date-line'>&nbsp;{{trip.start_date}} - {{trip.end_date}}</span></li>
                     {% endif %}
                 {% endfor %} 
                 
         </div>
         <div class ="profile-post">
             {% for trip in trips %}
-                    {% for trip_post in trip.trip_posts.all %}
-                        <a href={% url 'final_app:post_detail' slug=trip_post.slug %} ><img id ="hover-img" src="{{ trip_post.image.url }}" width="250px" height="250px" alt=""></a>
-                    {% endfor %}
-            {% endfor %}  
+                {% for trip_post in trip.trip_posts.all %}
+                    {% if trip_post.image %}
+                        <a href={% url 'final_app:post_detail' slug=trip_post.slug %} ><img id ="hover-img" src="{{ trip_post.image.url }}" width="150px" height="150px" alt=""></a>
+                    {% endif %}
+                    {% if trip_post.video %}
+                    <a href={% url 'final_app:post_detail' slug=trip_post.slug %} ><video id ="hover-img" src="{{ trip_post.video.url }}" width="150px" height="150px" alt=""></a>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %} 
         </div>
     </div>
 </div>   

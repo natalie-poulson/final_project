@@ -24,7 +24,15 @@
             <h4>{{ post.created_at }}</h4>
         </div>
         <div>
-            <img src="{{ post.image.url }}" width="auto" height="250px" alt="">
+            {% if post.image %}
+            <img src="{{ post.image.url }}"  alt="">
+            {% endif %}
+            {% if post.video %}
+            <video controls>
+                <source src="{{ post.video.url }}" type="video/mp4">
+                    Your browser does not support the video tag
+            </video>
+            {% endif %}
         </div>
         <div>
             {% if post.caption %}

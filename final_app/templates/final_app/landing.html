@@ -24,19 +24,14 @@
             <video playsinline autoplay muted  loop  id="video" ><source src="{% static 'video.MP4' %}"></video>
             <div class="landing-content">
                 <div class="logo">
-                    <h1> OutPACK</h1>
-                    <h3>...the place for outdoor trip planning and sharing! </h3>
-                </div>
-                {% if user.is_authenticated %}
-                    <h2>Welcome back, {{user.username}} </h2>
-                    <div class="login-wrapper">
-                        <a class="landing-button" href="{% url 'final_app:profile' %}">Enter</a>
-                        <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
-                            {% csrf_token %}
-                            <button class ="landing-button"type='submit'>Logout</button>
-                        </form>
+                    {% if user.is_authenticated %} 
+                        <a href="{% url 'final_app:profile' %}"><h1> OutPACK</h1></a>
+                        <h3>the app for backpackers</h3>
                     </div>
-                {% else %}
+                    {% else %}
+                        <h1> OutPACK</h1>
+                        <h3>the app for backpackers</h3>
+                </div>
                 <div class ="login-wrapper">
                     <!-- Button trigger modal -->
                         <button class="landing-button" type="button"  data-toggle="modal" data-target="#login-modal">Login </button>

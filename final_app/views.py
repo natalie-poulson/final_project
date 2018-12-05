@@ -163,7 +163,9 @@ def post_edit(request,slug ):
         if post_edit_form.is_valid():
             post_edit_form.save()
             if 'image' in request.FILES:
-                post_edit_form.image = request.FILES['image']
+                post_edit_form.media = request.FILES['image']
+            if 'video' in request.FILES:
+                post_edit_form.media = request.FILES['video']
             post_edit_form.save()
             return redirect('final_app:post_detail', slug =post.slug)
     else:

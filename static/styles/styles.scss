@@ -3,6 +3,14 @@
 $logo-stack: 'Josefin Sans', sans-serif;
 $body-stack: 'Raleway', sans-serif;
 
+.tooltip > .tooltip-inner{
+    background-color:white; 
+    color: black; 
+    border: 1px solid black;
+    // padding: 15px;
+    // font-size: 20px;
+}
+
 
 .profile-edit {
     display:flex;
@@ -37,6 +45,7 @@ body {
     display:flex;
     flex-direction: column;
     justify-content: space-between;
+    background-color:rgba(0,0,0, .04);
 }
 
 footer nav {
@@ -44,7 +53,8 @@ footer nav {
     justify-content: space-between;
     align-items: center;
     margin-bottom:.5em;
-    background:rgba(0, 0, 0, 0.009);
+    padding:3em 0 .5em 0;
+    background-color:white;
     p {
         margin-left:1em;
         font-size:.9em;
@@ -66,7 +76,7 @@ footer nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(29, 41, 48, 0.9);
     #video {
         position: fixed;
         height:100vh;
@@ -78,17 +88,24 @@ footer nav {
     .landing-content {
         display:flex;
         flex-direction: column;
+        text-align: center;
         h1 {
             font-family:$logo-stack;
-            font-size:5em;
-            color:white;
+            font-size:17em;
+            color:#32FDDF;
             text-align: center;
+            text-shadow: -10px 10px 0px #FD8671,
+                -20px 20px 0px #1483CA,
+                -30px 30px 0px #CA1414;
         }
         h3 {
-            color:white;
+            color:#32FDDF;
             font-family:$logo-stack;
-            font-size:1.7em;
+            font-size:3em;
             margin-bottom: 1em;
+            text-align: center;
+            font-weight:bold;
+            text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
         }
         h2 {
             color:white;
@@ -113,9 +130,15 @@ footer nav {
             cursor:pointer;
             overflow: hidden;
             outline:none;
-            color:white;
+            color:#1483CA;
+            text-transform: uppercase;
             font-family:$logo-stack;
-            font-size:2em;
+            font-size:3em;
+            font-weight:bold;
+            &:hover {
+                transform:scale(1.3);
+            }
+
 
         }
        .modal-btn {
@@ -269,7 +292,7 @@ footer nav {
             text-align: center;
             margin:1em 0 .5em 0;
         } 
-        img {
+        img,video {
             object-fit: cover;
             border-radius: 5px;
             margin:.3em;
@@ -375,36 +398,63 @@ li {
 #icon-incomplete {
     color:green;
 }
-
+header {
+    position:sticky;
+    top:0;
+    z-index:1;
 nav {
     display:flex;
     justify-content: space-between;
-    background:rgba(0, 0, 0, 0.009);
-    align-items:center;
-    .logo {
-        width:40px;
-        border-radius:50%;
-    }
+    background:white;
+     align-items:center;
+    border-bottom:1px solid lightgrey;
     h4 {
+       
+        padding:.25em .5em;
         margin-left:1em;
         font-family:$logo-stack;
+        font-weight:300;
+        font-size:2.5em;
+        color:#1483CA;
+        letter-spacing:3px;
+        text-shadow: -3px 3px 0px #CA1414, 
+            -6px 6px 0px #FD8671,
+            -9px 9px 0px #32FDDF;
     }
+
     ul{
         display:flex;
         align-items: center;
         margin-right:2em;
-    }
-    li {
-        margin:.5em 1em;
+        li {
+            margin:.5em 1em;
+            a {
+                i {
+                    color:black;
+                    &:hover{
+                        transform: scale(1.5);
+                    }
+                }
+            }
+        }
     }
 }
+}
 .search {
-    border-bottom:.5px solid black;
+    border-bottom:2px solid BLACK;;
     background: transparent;
     border-top: transparent !important;
     border-left: transparent !important;
     border-right: transparent !important;
     outline:none;
+    color:#FD8671;
+    &::placeholder{
+        color:black;
+    }
+   
+}
+.fa-search{
+    color:black;
 }
 .trash-button {
     background-color: Transparent;
@@ -422,14 +472,30 @@ nav {
     justify-content: center;
     margin: 3em 0;
     .profile-aside {
+        border-radius: 5px;
         font-size: 1.3em;
+        padding: 2em 3em;
         display:flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        width:30vw;
+        height:50%;
+        border:1px solid lightgrey;
+
+        background-color:white;
+        // background-color:rgba(0,0,0,.025);
+        &:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 1px 8px grey;
+
+        }
         a {
             font-family:$logo-stack;
+            color:black;
+            &:hover{
+                color:#FD8671;
+            }
+
         }
         .profile-picture img {
             border-radius:50%;
@@ -441,6 +507,9 @@ nav {
             p {
                 margin: .5em 0;
                 font-family:$logo-stack;
+                font-weight:300;
+                color:black;
+                
             }
         }
     }
@@ -460,6 +529,25 @@ nav {
         div {
             margin: 1em 0;
         }
+        .profileTrips {
+            border-radius: 5px;
+            padding: 2em 3em;
+            background-color:white;
+            border:1px solid lightgrey;
+            color:black;
+            // background-color:rgba(0,0,0,.025);
+            &:hover {
+                transform: scale(1.1);
+                box-shadow: 0px 1px 8px grey;
+            }
+            a{
+                color:black;
+                &:hover{
+                    color:#FD8671;
+                }
+
+            }
+        }
         .trip-list-container {
             display:flex;
             justify-content: space-around;
@@ -476,12 +564,18 @@ nav {
             }
         }
         .profile-post {
-            img {
+            display:flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            img,video {
                 object-fit: cover;
                 border-radius: 5px;
-                margin:.3em;
+                margin:.5em;
                 &:hover {
                     opacity:.5;
+                    transform: scale(1.1);
+                    box-shadow: 0px 1px 8px grey;
+
                 }
             }
         }
@@ -521,7 +615,7 @@ nav {
             display:flex;
             justify-content: space-between;
         }
-        img {
+        img,video {
             width:80vw;
             height:70vh;
             object-fit: contain;
