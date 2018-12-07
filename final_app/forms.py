@@ -69,6 +69,9 @@ class CreateGear(forms.ModelForm):
 
 
 class CreateFood(forms.ModelForm):
+    food_name = forms.CharField(label='',
+        widget=forms.TextInput())
+
     class Meta():
         model = models.Food
-        fields = ('food_name', 'packed')
+        fields = ('food_name',)

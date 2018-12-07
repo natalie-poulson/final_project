@@ -9,6 +9,7 @@ local_settings.py
 db.sqlite3
 media
 staticfiles
+client_secret
 
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/

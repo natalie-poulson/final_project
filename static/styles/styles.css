@@ -41,6 +41,16 @@ table {
   border-spacing: 0;
 }
 
+#trip-map {
+  width: 50vw;
+  height: 50vh;
+}
+
+#profile-map {
+  width: 50vw;
+  height: 50vh;
+}
+
 .tooltip > .tooltip-inner {
   background-color: white;
   color: black;
@@ -242,7 +252,7 @@ footer nav a {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  width: 100vw;
+  width: 90vw;
   margin: 3em 0;
 }
 .trip-detail .trip-pack .pack-line {
@@ -260,10 +270,11 @@ footer nav a {
 }
 .trip-detail .trip-pack .trip-gear {
   margin-right: 4em;
+  width: 45%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 .trip-detail .trip-pack .trip-gear .gear-head {
   display: flex;
@@ -273,10 +284,11 @@ footer nav a {
 }
 .trip-detail .trip-pack .trip-food {
   margin-left: 4em;
+  width: 45%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 .trip-detail .trip-pack .trip-food .food-head {
   display: flex;
@@ -286,11 +298,20 @@ footer nav a {
 }
 .trip-detail .trip-pack .trip-food .food-wrapper {
   margin-bottom: 1em;
+  display: flex;
+  flex-wrap: wrap;
 }
 .trip-detail .trip-pack .trip-food .food-wrapper .food-box {
+  border: 1px solid black;
+  padding: 0.5em 1em;
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+}
+.trip-detail .trip-pack .trip-food .food-wrapper .food-box .food-day-box {
   display: flex;
 }
-.trip-detail .trip-pack .trip-food .food-wrapper .food-box h6 {
+.trip-detail .trip-pack .trip-food .food-wrapper .food-box .food-day-box h6 {
   margin-left: 0.5em;
   margin-bottom: 0.3em;
   font-family: "Raleway", sans-serif;

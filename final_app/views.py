@@ -232,9 +232,14 @@ def food_create(request):
     if request.method == 'POST':
         food_form = forms.CreateFood(request.POST)
         trip_id = request.POST.get('trip_id')
+        trip_day = request.POST.get('trip_day')
+
+        print ("PRINT:", request.POST.get('trip_day'))
+
         if food_form.is_valid():
             instance = food_form.save(commit=False)
             instance.trip = Trip.objects.get(pk=trip_id)
+            instance.day = trip_day
             instance.save()
             trip = Trip.objects.get(pk=trip_id)
             return redirect('final_app:trip_detail', slug =trip.slug)

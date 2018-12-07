@@ -21,7 +21,7 @@ class UserProfileInfo(models.Model):
     
 
 class Trip (models.Model):
-    location = gismodels.PointField(blank=True, null=True)
+    location = gismodels.PointField(blank=True, null=True, geography=True)
     user = models.ForeignKey(User, on_delete = models.CASCADE, related_name='trips') 
     slug = models.SlugField(unique=True)
     start_date = models.DateField()
@@ -38,7 +38,13 @@ class Trip (models.Model):
         return (self.end_date - self.start_date).days 
 
     def day_range(self):
-        return range ((self.end_date - self.start_date).days)
+        return range((self.end_date - self.start_date).days +1)
+
+    def lat(self):
+        return '%s ' % (self.location.y)
+
+    def lon(self):
+        return '%s ' % (self.location.x)
 
     # def popupContent(self):
     #   return '<p><{}</p>'.format(
@@ -72,6 +78,7 @@ class Food(models.Model):
     trip = models.ForeignKey(Trip, on_delete = models.CASCADE, related_name='trip_foods')
     food_name = models.CharField(max_length=200)
     packed =  models.BooleanField(default=False) 
+    day = models.IntegerField(null=True)
 
     def __str__ (self):
         return self.food_name
@@ -112,4 +119,3 @@ def pre_save_trip_receiver(sender, instance, *args, **kwargs):
         instance.slug = create_trip_slug(instance)
 
 pre_save.connect(pre_save_trip_receiver, sender=Trip)
-

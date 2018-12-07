@@ -4,6 +4,7 @@
 
 {% block content %}
 <div class="trip-detail">
+
     <div class="trip-header">
         <div class ="trip-icons">
             <div>
@@ -49,14 +50,38 @@
         </div>
         </div>
     </div>
+
+
     <div class ="trip-info">
+
         <div class ="trip-head">
             <h1>{{ trip.trail }}</h1>
             <img class="user_profile_icon" src="{{trip.user.profile.profile_picture.url}}" width="auto" height="40px">
         </div>
+
+        <div class ="trip-map">
+            <div id="trip-map"></div>
+
+            <script>
+                function initMap() {
+                    var trip = { lat: {{trip.lat}}, lng: {{trip.lon}} };
+
+                    var map = new google.maps.Map(document.getElementById('trip-map'), {
+                    center: trip,
+                    zoom: 14,
+                    mapTypeId: 'terrain'
+                    });
+
+                    var marker = new google.maps.Marker({position: trip, map: map});
+                }
+
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg&callback=initMap"
+            async defer></script>
+        </div>
+
         <div class="trip-dates">
             <p>{{ trip.start_date }} - {{ trip.end_date}}</p>
-
             {% if trip.completed is False %}
             {% else %}
                 <i class="fas fa-calendar-check"></i>
@@ -65,17 +90,19 @@
         <div>
             <p><strong> Trip Length:</strong> {{trip.total_days}} days</p>
         </div>
+
         <div>
             {% if trip.permit %}
                 <a href = "{{trip.permit}}" target="_blank"><strong>Permit Info</strong></a>
             {% endif %}
         </div>
-    </div>     
+    </div>  
+ 
     <div class="trip-pack"> 
+
         <div class="trip-gear">
             <div class="gear-head">
                 <h4>Gear</h4>                
-                <!-- <button id="gear" type="button" class="modal-btn" data-toggle="modal" data-target=".bd-gear-modal-sm"><i data-toggle="tooltip" data-placement="bottom" title="Add Gear" class="fas fa-plus"></i></button> -->
             </div>
             <form class='create-form' action="{% url 'final_app:gear_create' %}" method='post'>
                 {% csrf_token %}
@@ -83,89 +110,61 @@
                 <input type='hidden' name='trip_id' required id='id_trip_id' value='{{ trip.id }}' />
                 <button id="gear" type="input" class="modal-btn" data-toggle="modal" data-target=".bd-gear-modal-sm"><i data-toggle="tooltip" data-placement="bottom" title="Add Gear" class="fas fa-plus"></i></button>
             </form>
-            <!-- Small modal
-            <div id="gear" class="modal fade bd-gear-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Add Gear</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    <form class='create-form' action="{% url 'final_app:gear_create' %}" method='post'>
-                        {% csrf_token %}
-                        {{ gear_form|crispy }}
-                        <input type='hidden' name='trip_id' required id='id_trip_id' value='{{ trip.id }}' />
-                        <div class="modal-footer">
-                            <button type="input" class="modal-btn">Add</button>
-                        </div>
-                    </form>
-                </div>
-                </div>
-            </div> -->
-                {% for trip_gear in trip.trip_gears.all %}
-                    <div class='pack-line'>
-                        <div class='checkbox'>
-                            <input id="gear-checkbox"  type ="checkbox" {% if trip_gear.packed is True %} checked {% endif %} value={{trip_gear.gear_nam>
-                            <p >{{trip_gear.gear_name}}</p>
-                        </div>
-                        <div>
-                            <!-- <a href= {% url 'final_app:gear_edit' pk=trip_gear.id %} ><i data-toggle="tooltip" data-placement="bottom" title="Edit" class="fas fa-edit"></i></a> -->
-                            <a href= {% url 'final_app:gear_delete' pk=trip_gear.id %} ><i data-toggle="tooltip" data-placement="bottom" title="Delete" class="far fa-trash-alt"></i></a>
-                        </div>
+            {% for trip_gear in trip.trip_gears.all %}
+                <div class='pack-line'>
+                    <div class='checkbox'>
+                        <input class="gear-checkbox" value="{{ trip_gear.id }}" type ="checkbox" {% if trip_gear.packed is True %} checked {% endif %}>
+                        <p >{{trip_gear.gear_name}}</p>
                     </div>
-                {% endfor %}
-    </div>
-    <div class="trip-food">
-        <div class="food-head">
-            <h4>Food</h4>
-            <button id="food" type="button" class="modal-btn" data-toggle="modal" data-target=".bd-food-modal-sm"><i data-toggle="tooltip" data-placement="bottom" title="Add Food" class="fas fa-plus"></i></button>
+                    <div>
+                        <a href= {% url 'final_app:gear_delete' pk=trip_gear.id %} ><i data-toggle="tooltip" data-placement="bottom" title="Delete" class="far fa-trash-alt"></i></a>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-        <!-- Small modal -->
-        <div id="food" class="modal fade bd-food-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Add Food</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form class='create-form' action="{% url 'final_app:food_create' %}" method='post'>
-                        {% csrf_token %}
-                        {{ food_form|crispy }}
-                        <input type='hidden' name='trip_id' required id='id_trip_id' value='{{ trip.id }}' />
-                        <div class="modal-footer">
-                            <button type="input" class="modal-btn">Add</button>
-                        </div>
-                    </form>
-                </div>
+        <div class="trip-food">
+
+            <div class="food-head">
+                <h4>Food</h4>
             </div>
-        </div>
-        <div class='food-wrapper'>
+            <div class='food-wrapper'>
 
             {% for day in trip.day_range %}
                 <div class="food-box">
-                    <i class="far fa-calendar"></i>
-                    <h6>Day {{day |add:"1" }}</h6>  
-                </div>  
+                    <div class="food-day-box">
+                        <i class="far fa-calendar"></i>
+                        <h6>Day {{day |add:"1" }}</h6> 
+                        <form class='create-form' action="{% url 'final_app:food_create' %}" method='post'>
+                            <button class="modal-btn" id="food" type="input"><i data-toggle="tooltip" data-placement="bottom" title="Add Food" class="fas fa-plus"></i></button>
+                    </div>
+                    <div>
+                            {% csrf_token %}
+                            {{ food_form|crispy }}
+                            <input type='hidden' name='trip_id' required id='id_trip_id' value='{{ trip.id }}' />
+                            <input type='hidden' name='trip_day' value='{{day |add:"1" }}' />
+                        </form>
+                    </div>
+                    <div>
+                        {% for trip_food in trip.trip_foods.all %}
+                            {% if day|add:"1"   ==  trip_food.day %}
+                            <div class='pack-line'>
+                                    <div class='checkbox'>
+                                        <input id="food-checkbox"  type ="checkbox" {% if trip_food.packed is True %} checked {% endif %} value={{trip_food.food_name}}>
+                                        <p >{{trip_food.food_name}}</p>
+                                    </div>
+                                    <div>
+                                        <a href= {% url 'final_app:food_delete' pk=trip_food.id %} ><i data-toggle="tooltip" data-placement="bottom" title="Delete" class="far fa-trash-alt"></i></a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %} 
+                    </div>
+                </div>
             {% endfor %}
-
-        </div>
-        {% for trip_food in trip.trip_foods.all %}
-            <div class='pack-line'>
-                <div>
-                    <p {% if trip_food.packed is True %} style="text-decoration: line-through" {% endif %}>{{trip_food.food_name}}</p>
-                </div>
-                <div>
-                    <a href= {% url 'final_app:food_edit' pk=trip_food.id %} ><i data-toggle="tooltip" data-placement="bottom" title="Edit" class="fas fa-edit"></i></a>
-                    <a href= {% url 'final_app:food_delete' pk=trip_food.id %} ><i data-toggle="tooltip" data-placement="bottom" title="Delete" class="far fa-trash-alt"></i></a>
-                </div>
-            </div>
-        {% endfor %}       
+            </div> 
         </div>
     </div>
+
     <div class="trip-posts">
         <div>
             {% if trip.trip_posts %}
@@ -179,10 +178,7 @@
                 <a href={% url 'final_app:post_detail' slug=trip_post.slug %} ><img id ="hover-img" src="{{ trip_post.image.url }}" width="250px" height="250px" alt=""></a>        
                 {% endif %}
                 {% if trip_post.video%}
-                <video width="250px" height="250px"controls>
-                        <source src="{{ trip_post.video.url }}" type="video/mp4">
-                            Your browser does not support the video tag
-                    </video>                
+                <a href={% url 'final_app:post_detail' slug=trip_post.slug %} ><video id ="hover-img" src="{{ trip_post.video.url }}" width="250px" height="250px" alt=""></a>          
                 {% endif %}
             {% endfor %}   
         </div>

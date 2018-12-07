@@ -23,15 +23,31 @@
         </div>
     </div>
     <div class='profile-main'>
-        <div id='profileMap' style='width: 56vw; height: 40vh;border-radius:15px'>  </div>
+            <div id="profile-map"></div>
+
             <script>
-                    mapboxgl.accessToken = 'pk.eyJ1IjoibmF0YWxpZXBsc24iLCJhIjoiY2psZm8ybnFnMHl4NDNwcG16eGFmMTdwaCJ9.2xYdBHCpcf5cdap8BvhVgQ';
-                    var profileMap = new mapboxgl.Map({
-                        container: 'profileMap',
-                        style: 'mapbox://styles/mapbox/outdoors-v9',
-                        center: [-119.538330, 37.865101],
-                        zoom: 6
+                function initMap() {
+
+                    var map = new google.maps.Map(document.getElementById('profile-map'), {
+                    center: {lat: 39.8283, lng: -98.5795},
+                    zoom: 3,
+                    mapTypeId: 'terrain'
                     });
+                
+                {% if trips %}
+                    {% for trip in trips %}
+                        var trip = { lat: {{trip.lat}}, lng: {{trip.lon}} };
+
+                        var marker = new google.maps.Marker({position: trip, map: map});
+
+                    {% endfor %}
+                {% endif %}
+
+                }
+
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg&callback=initMap"
+            async defer></script>
             </script>
        
             {% if trips %}
