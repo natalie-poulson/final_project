@@ -97,7 +97,7 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 * ~~Allow user's to upload videos~~ completed 12/04/2018
 * Sync with Google Calendar 
 * Integrate a Weather API
-* Allow user's to break food planning down by day
+* ~~Allow user's to break food planning down by day~~ completed 12/07/2019
 * Allow user's to opt out of sharing their trips and/or profile with other users
 * Make the search feature dynamic and implement autocomplete
 * Display a map on each user's profile page that displays pins from all of their completed trips
