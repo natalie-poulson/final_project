@@ -52,7 +52,7 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
   * User's can select a point on a map to store the location of their trip
 * Create, edit, delete posts about trips
   * Upload photos or write about your trip after you get back
-* Search page allows users to view other user's trips to get ideas for their next adventure
+* Explore page allows users to view other user's trips to get ideas for their next adventure
 * Users can share trips and posts with friends and family on Facebook and Google+ 
 * Pretty URLs
 
@@ -69,9 +69,9 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
     * Displays all of the user's trips, both completed and upcoming
   * Start a New Trip:
     * User can create a trip by entereing a trail name, permit info (optional), dates, whether the trip has been completed, and the specific location by placing a marker on a map 
-  * Search:
-    * Users can search the trip database to see where other user's have gone to get ideas for their next adventure
-    * Search resutlts return a link to matching trips and the profile page of the user who took the trip
+  * Explore:
+    * Users can explore the trip database to see where other user's have gone to get ideas for their next adventure
+    * Trips are displayed as markers on a map and when clicked, display the trial name (linkes to trip detail page), name of the user who took the trip (linkes to profile page of user), and  the dates of the trip. 
   * Logout:
     * User can logout and will be redirected to the landing page
   
