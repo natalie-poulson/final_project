@@ -29,9 +29,19 @@ class CreateProfile(forms.ModelForm):
         required=False,
         )
 
+    PRIVATE = 'PRIVATE' 
+    PUBLIC = 'PUBLIC'
+    PRIVACY_CHOICES = (
+        (PRIVATE,"Private"),
+        (PUBLIC,"Public")
+    )
+    privacy_choice = forms.ChoiceField(choices=PRIVACY_CHOICES,label='Privacy Settings',
+    required=False,
+    )
+
     class Meta():
         model = models.UserProfileInfo
-        fields = ('name', 'current_city', 'bio', 'profile_picture')
+        fields = ('name', 'current_city', 'bio', 'profile_picture', 'privacy_choice')
 
 
 class CreatePost(forms.ModelForm):

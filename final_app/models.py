@@ -9,6 +9,13 @@ from django.contrib.gis.geos import Point
 
 
 class UserProfileInfo(models.Model):
+    PRIVATE = 'PRIVATE'
+    PUBLIC = 'PUBLIC'
+    PRIVACY_CHOICES = (
+        (PRIVATE,"Private"),
+        (PUBLIC,"Public")
+    )
+    privacy_choice = models.CharField(max_length=7,choices=PRIVACY_CHOICES, default= PUBLIC)
     name = models.CharField(max_length=40)
     current_city = models.CharField(blank=True,max_length=100)
     bio = models.CharField(blank=True, max_length=200)

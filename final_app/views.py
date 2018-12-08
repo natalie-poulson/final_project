@@ -295,7 +295,7 @@ def search(request):
     if request.method == 'GET':     
         trip_search =  request.GET.get('search')  
         try:
-            db_results = Trip.objects.filter(trail__icontains=trip_search).exclude(user=request.user)
+            db_results = Trip.objects.filter(trail__icontains=trip_search).exclude(user=request.user).exclude(user__profile__privacy_choice='PRIVATE')
         except Trip.DoesNotExist:
             db_results = None
 
