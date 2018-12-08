@@ -104,6 +104,7 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 * ~~Display maps on each trip page to show the general location of the trip~~ completed 12/07/2018
 * Allow user's to draw lines (instead of a point) to capture their trip more precisely, especially useful for section hiking
 * Allow users to add collaborators to a trip, allowing for mutual editing/editing/memory storing
+* Refactor to React
 * Add commenting
 * Add likes
 * Add follows and a feed page

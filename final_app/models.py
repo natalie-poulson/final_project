@@ -35,10 +35,10 @@ class Trip (models.Model):
         return self.trail
 
     def total_days(self):
-        return (self.end_date - self.start_date).days 
+        return ((self.end_date - self.start_date).days +1)
 
     def day_range(self):
-        return range((self.end_date - self.start_date).days +1)
+        return range((self.end_date - self.start_date).days+1)
 
     def lat(self):
         return '%s ' % (self.location.y)

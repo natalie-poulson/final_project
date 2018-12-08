@@ -33,6 +33,8 @@
                     zoom: 3,
                     mapTypeId: 'terrain'
                     });
+                    var infowindow = new google.maps.InfoWindow()
+
                 
                 {% if trips %}
                     {% for trip in trips %}
@@ -43,7 +45,6 @@
                             map: map,
                         });
 
-                        var infowindow = new google.maps.InfoWindow()
 
                         var content = '<h5><a href={% url 'final_app:trip_detail' slug=trip.slug %} >{{trip.trail}}</a></h5><p>{{trip.start_date}} - {{trip.end_date}}</p>'
 
