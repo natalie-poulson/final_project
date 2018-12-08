@@ -8,6 +8,28 @@
             <h1>{{ trip.trail }}</h1>
             <a href={% url 'final_app:other_profile' username=trip.user.username %} ><img data-toggle="tooltip" data-placement="bottom" title="{{trip.user.username}}"class="user_profile_icon" src="{{trip.user.profile.profile_picture.url}}" width="auto" height="40px"></a>
         </div>
+
+        <div class ="trip-map">
+                <div id="trip-map"></div>
+    
+                <script>
+                    function initMap() {
+                        var trip = { lat: {{trip.lat}}, lng: {{trip.lon}} };
+    
+                        var map = new google.maps.Map(document.getElementById('trip-map'), {
+                        center: trip,
+                        zoom: 14,
+                        mapTypeId: 'terrain'
+                        });
+    
+                        var marker = new google.maps.Marker({position: trip, map: map});
+                    }
+    
+                </script>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg&callback=initMap"
+                async defer></script>
+            </div>    
+
         <div class="trip-dates">
             <p>{{ trip.start_date }} - {{ trip.end_date}}</p>
             {% if trip.completed is False %}
@@ -35,36 +57,43 @@
                         <p {% if trip_gear.packed is True %} style="text-decoration: line-through" {% endif %}>{{trip_gear.gear_name}}</p>
                     </div>
                     <div>
-                        <a href= {% url 'final_app:gear_edit' pk=trip_gear.id %} ><i class="fas fa-edit"></i></a>
-                        <a href= {% url 'final_app:gear_delete' pk=trip_gear.id %} ><i class="far fa-trash-alt"></i></a>
                     </div>
                 </div>
             {% endfor %}
         </div>
         <div class="trip-food">
-            <div class="food-head">
-                <h4>Food</h4>
-            </div>
-            <div class='food-wrapper'>
+
+                <div class="food-head">
+                    <h4>Food</h4>
+                </div>
+                <div class='food-wrapper'>
+    
                 {% for day in trip.day_range %}
                     <div class="food-box">
-                        <i class="far fa-calendar"></i>
-                        <h6>Day {{day |add:"1" }}</h6>  
-                    </div>  
+                        <div class="food-day-box">
+                            <i class="far fa-calendar"></i>
+                            <h6>Day {{day |add:"1" }}</h6> 
+                        </div>
+                        <div>
+
+                        </div>
+                        <div>
+                            {% for trip_food in trip.trip_foods.all %}
+                                {% if day|add:"1"   ==  trip_food.day %}
+                                <div class='pack-line'>
+                                        <div class='checkbox'>
+                                            <p >{{trip_food.food_name}}</p>
+                                        </div>
+                                        <div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %} 
+                        </div>
+                    </div>
                 {% endfor %}
+                </div> 
             </div>
-            {% for trip_food in trip.trip_foods.all %}
-                <div class='pack-line'>
-                    <div>
-                        <p {% if trip_food.packed is True %} style="text-decoration: line-through" {% endif %}>{{trip_food.food_name}}</p>
-                    </div>
-                    <div>
-                        <a href= {% url 'final_app:food_edit' pk=trip_food.id %} ><i class="fas fa-edit"></i></a>
-                        <a href= {% url 'final_app:food_delete' pk=trip_food.id %} ><i class="far fa-trash-alt"></i></a>
-                    </div>
-                </div>
-            {% endfor %}       
-        </div>
     </div>
     <div class="trip-posts">
         <div>
@@ -73,9 +102,15 @@
             {% endif %}
         </div>
         <div>
-            {% for trip_post in trip.trip_posts.all %}
-                <a href={% url 'final_app:other_post_detail' username=trip_post.user.username slug=trip_post.slug %} ><img id ="hover-img" src="{{ trip_post.image.url }}" width="250px" height="250px" alt=""></a>        
-            {% endfor %} 
+             
+                {% for trip_post in trip.trip_posts.all %}
+                {% if trip_post.image%}
+                <a href={% url 'final_app:post_detail' slug=trip_post.slug %} ><img id ="hover-img" src="{{ trip_post.image.url }}" width="250px" height="250px" alt=""></a>        
+                {% endif %}
+                {% if trip_post.video%}
+                <a href={% url 'final_app:post_detail' slug=trip_post.slug %} ><video id ="hover-img" src="{{ trip_post.video.url }}" width="250px" height="250px" alt=""></a>          
+                {% endif %}
+            {% endfor %}  
         </div>   
     </div>
 </div>

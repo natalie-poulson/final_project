@@ -21,18 +21,50 @@
         </div>
     </div>
     <div class='profile-main'>
-        <div id='map' style='width: 56vw; height: 40vh;'>  </div>
+            <div id="profile-map"></div>
+
             <script>
-                    mapboxgl.accessToken = 'pk.eyJ1IjoibmF0YWxpZXBsc24iLCJhIjoiY2psZm8ybnFnMHl4NDNwcG16eGFmMTdwaCJ9.2xYdBHCpcf5cdap8BvhVgQ';
-                    var map = new mapboxgl.Map({
-                        container: 'map',
-                        style: 'mapbox://styles/mapbox/outdoors-v9',
-                        center: [-119.538330, 37.865101],
-                        zoom: 6
+                function initMap() {
+
+                    var map = new google.maps.Map(document.getElementById('profile-map'), {
+                    center: {lat: 39.8283, lng: -98.5795},
+                    zoom: 3,
+                    mapTypeId: 'terrain'
                     });
+
+                    var infowindow = new google.maps.InfoWindow()
+
+                
+                {% if trips %}
+                    {% for trip in trips %}
+                        var trip = { lat: {{trip.lat}}, lng: {{trip.lon}} };                              
+
+                        var marker = new google.maps.Marker({
+                            position: trip, 
+                            map: map,
+                        });
+                        
+                        var content = '<h5><a href={% url 'final_app:other_trip_detail' username=trip.user.username slug=trip.slug %}>{{trip.trail}}</a></h5><p>{{trip.start_date}} - {{trip.end_date}}</p>'
+
+                        google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+                            return function() {
+                                infowindow.setContent(content);
+                                infowindow.open(map,marker);
+                            };
+                        })(marker,content,infowindow));  
+            
+                    {% endfor %}
+                {% endif %}
+
+                }
+
             </script>
-        <div>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg&callback=initMap"
+            async defer></script>
+            </script>
+       
             {% if trips %}
+            <div class='profileTrips'>
                 <h1> Trips</h1>
             {% endif %}
 
@@ -46,11 +78,17 @@
 
         </div>
         <div class ="profile-post">
-            {% for trip in trips %}
-                    {% for trip_post in trip.trip_posts.all %}
-                        <a href={% url 'final_app:other_post_detail' username=trip_post.user.username slug=trip_post.slug %} ><img id ="hover-img" src="{{ trip_post.image.url }}" width="250px" height="250px" alt=""></a>
-                    {% endfor %}
-            {% endfor %}  
+
+                {% for trip in trips %}
+                {% for trip_post in trip.trip_posts.all %}
+                    {% if trip_post.image %}
+                    <a href={% url 'final_app:other_post_detail' username=trip_post.user.username slug=trip_post.slug %} ><img id ="hover-img" src="{{ trip_post.image.url }}" width="250px" height="250px" alt=""></a>
+                    {% endif %}
+                    {% if trip_post.video %}
+                    <a href={% url 'final_app:other_post_detail' username=trip_post.user.username slug=trip_post.slug %} ><video id ="hover-img" src="{{ trip_post.video.url }}" width="250px" height="250px" alt=""></a>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %} 
         </div>
     </div>
 </div>   
