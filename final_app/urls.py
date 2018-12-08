@@ -33,7 +33,7 @@ urlpatterns = [
     path('<username>/posts/<slug>', views.other_post_detail, name="other_post_detail"),
     path('<username>/trips/<slug>', views.other_trip_detail, name="other_trip_detail"),
 
-    path('search', views.search, name='search'),
+    path('explore', views.explore, name='explore'),
 
     # path('calendar',views.trip_calendar,name="trip_calendar")
 ]

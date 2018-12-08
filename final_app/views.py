@@ -291,14 +291,9 @@ def other_post_detail(request, username, slug):
 
 
 @login_required(login_url='/accounts/login/')
-def search(request):        
-    if request.method == 'GET':     
-        trip_search =  request.GET.get('search')  
-        try:
-            db_results = Trip.objects.filter(trail__icontains=trip_search).exclude(user=request.user).exclude(user__profile__privacy_choice='PRIVATE')
-        except Trip.DoesNotExist:
-            db_results = None
+def explore(request):        
+    db_results = Trip.objects.exclude(user=request.user).exclude(user__profile__privacy_choice='PRIVATE')
 
-        return render(request,'final_app/search.html',{'results':db_results})
+    return render(request,'final_app/explore.html',{'results':db_results})
     
 

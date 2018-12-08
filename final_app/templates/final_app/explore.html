@@ -1,0 +1,51 @@
+{% extends 'final_app/base_layout.html' %}
+{% block content %}
+
+
+<div class="search-page">
+    <div>
+        <h3>Explore</h3>
+    </div>
+    <div id="explore-map"></div>
+
+    <script>
+        function initMap() {
+
+            var map = new google.maps.Map(document.getElementById('explore-map'), {
+            center: {lat: 39.8283, lng: -98.5795},
+            zoom: 3,
+            mapTypeId: 'terrain'
+            });
+            var infowindow = new google.maps.InfoWindow()
+
+        
+        {% if results %}
+            {% for result in results %}
+                var trip = { lat: {{result.lat}}, lng: {{result.lon}} };                              
+
+                var marker = new google.maps.Marker({
+                    position: trip, 
+                    map: map,
+                });
+
+
+                var content = '<h5><a href={% url 'final_app:other_trip_detail' username=result.user.username slug=result.slug %} >{{result.trail}}</a></h5><h6><a href={% url 'final_app:other_profile' username=result.user.username %} >{{result.user.username}}</a></h6><p>{{result.start_date}} - {{result.end_date}}</p>'
+
+                google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+                    return function() {
+                        infowindow.setContent(content);
+                        infowindow.open(map,marker);
+                    };
+                })(marker,content,infowindow));  
+
+
+            {% endfor %}
+        {% endif %}
+
+        }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg&callback=initMap"
+    async defer></script>
+    </script>
+{% endblock %}

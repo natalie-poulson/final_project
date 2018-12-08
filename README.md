@@ -91,6 +91,7 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 * ~~Google Maps Widget on load isn't correct size~~ completed 12/4/2018
 * ~~Add logic to check trip date and automatically change status of trip complete if date has passed~~ completed 11/21/2018
 * Make delete confirmation notices more elegant
+* Redesign trips page
   
 
 ## Still to Come...
@@ -105,6 +106,7 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 * Allow user's to draw lines (instead of a point) to capture their trip more precisely, especially useful for section hiking
 * Allow users to add collaborators to a trip, allowing for mutual editing/editing/memory storing
 * Refactor to React
+* ~~Change search page to an explore page, showing a map with pins linking to trips~~ completed 12/07/2018
 * Add commenting
 * Add likes
 * Add follows and a feed page
