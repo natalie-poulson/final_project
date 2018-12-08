@@ -46,14 +46,16 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 * User signup, login, logout
 * User profile create & edit
 * Upload profile picture (default picture provided if left blank)
-* View other user's profiles
+* View other user's profiles (if user selected "public" privacy setting)
 * Create, edit, delete a new trip
-  * Displays name of trail, permit info (optional), dates of trip, length of trip, and a section to plan what gear and food  to pack 
+  * Displays name of trail, permit info (optional), dates of trip, length of trip,a map of the location of the trip, and a section to plan what gear and food  to pack 
   * User's can select a point on a map to store the location of their trip
 * Create, edit, delete posts about trips
-  * Upload photos or write about your trip after you get back
+  * Upload photos, videos or write about your trip after you get back
 * Explore page allows users to view other user's trips to get ideas for their next adventure
-* Users can share trips and posts with friends and family on Facebook and Google+ 
+* Users can share trips and posts with friends and family on Facebook 
+* Users can determine privacy settings
+  * If their profile is private, then their trips and profile will not be displayed in the explore page for other users the see
 * Pretty URLs
 
 
@@ -64,14 +66,14 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 * If the user selects the  ‘sign-in’ button, they will be redirected to their profile page
  * Users can select icons from the nav bar containing links to:  
   * Profile: 
-    * A user’s profile page showing their information, trips, posts and a map
+    * A user’s profile page showing their information and a map displaying pins from all of the trips they have taken
   * Trips:
     * Displays all of the user's trips, both completed and upcoming
   * Start a New Trip:
     * User can create a trip by entereing a trail name, permit info (optional), dates, whether the trip has been completed, and the specific location by placing a marker on a map 
   * Explore:
-    * Users can explore the trip database to see where other user's have gone to get ideas for their next adventure
-    * Trips are displayed as markers on a map and when clicked, display the trial name (linkes to trip detail page), name of the user who took the trip (linkes to profile page of user), and  the dates of the trip. 
+    * Users can explore the trip database to see where other users have gone to get ideas for their next adventure
+    * Trips are displayed as markers on a map and when clicked, display the trial name (links to trip detail page), name of the user who took the trip (links to profile page of user), and  the dates of the trip. 
   * Logout:
     * User can logout and will be redirected to the landing page
   

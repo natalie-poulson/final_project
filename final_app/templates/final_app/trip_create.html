@@ -4,7 +4,7 @@
 
 {% block extrahead %}
 {{ trip_form.media }}
-<script>  
+<!-- <script>  
     $(document).on("google_point_map_widget:marker_create", function (e, place, lat, lng, locationInputElem, mapWrapID) {
         console.log(place); // Google geocoding response object
         console.log(locationInputElem); // django widget textarea widget (hidden)
@@ -24,14 +24,15 @@
         console.log(lat, lng);  // deleted marker coordinates
         console.log(mapWrapID); // map widget wrapper element ID
     })
-</script>
+</script> -->
 {% endblock extrahead %}
 
 
 {% block content %}
 <div class="trip-wrapper">
     <div class="trip-create">
-        <form class='post-create-form' action="{% url 'final_app:trip_create' %}" method='post'>
+        <h1>Create A New Trip</h1>
+        <form class='trip-create-form' action="{% url 'final_app:trip_create' %}" method='post'>
             {% csrf_token %}  
             {{ trip_form|crispy }}
             <button type="input" class="modal-btn">Submit</button>
