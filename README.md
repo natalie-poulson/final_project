@@ -97,13 +97,13 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
   
 
 ## Still to Come...
+* Add an about page
+* Add a contact page
 * ~~Allow user's to upload videos~~ completed 12/04/2018
 * ~~Enable Google Authentication~~ completed 12/10/2018
 * Sync with Google Calendar 
-* Integrate a Weather API
 * ~~Allow user's to break food planning down by day~~ completed 12/07/2018
 * ~~Allow user's to opt out of sharing their trips and/or profile with other users~~ completed 12/07/2018
-* Make the search feature dynamic and implement autocomplete
 * ~~Display a map on each user's profile page that displays pins from all of their completed trips~~ completed 12/07/2018
 * ~~Display maps on each trip page to show the general location of the trip~~ completed 12/07/2018
 * Allow user's to draw lines (instead of a point) to capture their trip more precisely, especially useful for section hiking
@@ -113,7 +113,7 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 * Add commenting
 * Add likes
 * Add follows and a feed page
-
+* Add friends list to profile page
 
 ## Links:
 

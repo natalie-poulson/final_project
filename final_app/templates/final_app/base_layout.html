@@ -28,10 +28,10 @@
             <h4>OutPACK</h4>
             <ul>
                 <li><a href= "{% url 'final_app:profile' %}" data-toggle="tooltip" data-placement="bottom" title="Profile"><i class="fas fa-user-alt"></i></a></li>
-                <li><a href= "{% url 'final_app:trips' %}"data-toggle="tooltip" data-placement="bottom" title="Trips"> <i class="fas fa-hiking"></i></a></li>
                 <li><a href="{% url 'final_app:trip_create' %}"data-toggle="tooltip" data-placement="bottom" title="Start A New Trip"><i class="fas fa-plus"></i></li>
-                <li><a href= "{% url 'accounts:logout' %}"data-toggle="tooltip" data-placement="bottom" title="Logout"><i class="fas fa-sign-out-alt"></i></a></li>
+                <li><a href= "{% url 'final_app:trips' %}"data-toggle="tooltip" data-placement="bottom" title="Trips"> <i class="fas fa-hiking"></i></a></li>
                 <li><a href="{% url 'final_app:explore' %}"> <i class="fas fa-search"data-toggle="tooltip" data-placement="bottom" title="Explore"></i></a> </li>
+                <li><a href= "{% url 'accounts:logout' %}"data-toggle="tooltip" data-placement="bottom" title="Logout"><i class="fas fa-sign-out-alt"></i></a></li>
                 <li><img class="user_profile_icon" src="{{request.user.profile.profile_picture.url}}" width="auto" height="40px"></li>
             </ul>
         </nav>
