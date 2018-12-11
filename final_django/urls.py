@@ -25,7 +25,8 @@ from django.conf.urls import url
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
-    path('', include ('final_app.urls')),   
+    path('', include ('final_app.urls')),
+    path('auth/', include('social_django.urls', namespace='social')),
 ]
 
 # allows Django to append to url patterns to serve static files

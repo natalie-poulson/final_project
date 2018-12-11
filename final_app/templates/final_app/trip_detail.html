@@ -97,6 +97,33 @@
             {% endif %}
         </div>
     </div>  
+
+    <!-- <div class="weather">
+        <button id="weather" onclick="weather()">weather</button>
+        <script>
+         weather = ()=> {
+             console.log('clicked')
+             let lat =  Math.round({{trip.lat}}) 
+             let lon =  Math.round({{trip.lon}})
+             console.log(lat)
+             console.log(lon)
+             console.log(`this is a test {{trip.lat}}`)
+            
+             let url = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&APPID=1019781506d45effe2d460ea48bad2b8`
+            $.ajax({
+            method:"GET",
+            url: url,
+            success: (data) => {
+                console.log(data)
+                $('#weather').html(`<p>${data.list[0].main.temp}`)
+            },
+            error: (error)=> { console.log('error:', error)}
+            })
+         }
+      
+
+</script>
+    </div> -->
  
     <div class="trip-pack"> 
 
@@ -167,7 +194,7 @@
 
     <div class="trip-posts">
         <div>
-            {% if trip.trip_posts %}
+                {% if trip.trip_posts.all %}
                 <h4>Posts about this trip</h4>
             {% endif %}
         </div>

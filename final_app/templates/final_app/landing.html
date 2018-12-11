@@ -31,15 +31,16 @@
                     {% else %}
                         <h1> OutPACK</h1>
                         <h3>the app for backpackers</h3>
+                        <a href="{% url 'social:begin' 'google-oauth2' %}"><img src="{% static 'google.png' %}"></a>
                 </div>
-                <div class ="login-wrapper">
+                <!-- <div class ="login-wrapper"> -->
                     <!-- Button trigger modal -->
-                        <button class="landing-button" type="button"  data-toggle="modal" data-target="#login-modal">Login </button>
+                        <!-- <button class="landing-button" type="button"  data-toggle="modal" data-target="#login-modal">Login </button>
                             {% if login_form.errors %}
                             <script>$(function() {$('#login-modal').modal({show: true});});</script>
-                            {% endif %}
+                            {% endif %} -->
                         <!-- Modal -->
-                        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalCenterTitle" aria-hidden="true">
+                        <!-- <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalCenterTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -62,16 +63,16 @@
                                     </div>
                                 </div>
                                 </div>
-                        </div>
+                        </div> -->
                         <!-- Button trigger modal -->
-                        <button class="landing-button" type="button"  data-toggle="modal" data-target="#exampleModalCenter">Sign Up</button>
+                        <!-- <button class="landing-button" type="button"  data-toggle="modal" data-target="#exampleModalCenter">Sign Up</button> -->
 
-                            {% if signup_form.errors %}
+                            <!-- {% if signup_form.errors %}
                                 <script>$(function() {$('#exampleModalCenter').modal({show: true});});</script>
-                            {% endif %}
+                            {% endif %} -->
 
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -92,7 +93,7 @@
                             </div>
                             </div>
                         </div>    
-                {% endif %}
+                {% endif %} -->
             </div>
         </div>
     </body>

@@ -2,6 +2,10 @@
 {% load crispy_forms_tags %}
 {% crispy form %}
 
+{% block extrahead %}
+{{ form.media }}
+{% endblock extrahead %}
+
 
 {% block content %}
 <div class='profile-edit'>

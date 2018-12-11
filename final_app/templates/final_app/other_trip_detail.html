@@ -46,7 +46,7 @@
             {% endif %}
         </div>
     </div>  
-    <div class="trip-pack"> 
+    <!-- <div class="trip-pack"> 
         <div class="trip-gear">
             <div class="gear-head">
                 <h4>Gear</h4>                
@@ -94,10 +94,10 @@
                 {% endfor %}
                 </div> 
             </div>
-    </div>
+    </div> -->
     <div class="trip-posts">
         <div>
-            {% if trip.trip_posts %}
+            {% if trip.trip_posts.all %}
                 <h4>Posts about this trip</h4>
             {% endif %}
         </div>
