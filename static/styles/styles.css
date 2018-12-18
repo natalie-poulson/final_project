@@ -191,6 +191,11 @@ footer nav a {
 .landing-wrapper .landing-content .landing-button:hover {
   transform: scale(1.3);
 }
+.landing-wrapper .landing-content .modal-body p {
+  color: black;
+  font-size: 1.5em;
+  padding: 1em 0;
+}
 .landing-wrapper .landing-content .modal-btn {
   background-color: Transparent;
   background-repeat: no-repeat;

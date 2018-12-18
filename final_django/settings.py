@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 import django_heroku
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -90,7 +91,7 @@ WSGI_APPLICATION = 'final_django.wsgi.application'
 AUTHENTICATION_BACKENDS = (
  'social_core.backends.open_id.OpenIdAuth',  # for Google authentication
  'social_core.backends.google.GoogleOpenId',  # for Google authentication
- 'social_core.backends.google.GoogleOAuth2',  # for Google authentication
+ 'social_core.backends.google.GoogleOAuth2',
  
  'django.contrib.auth.backends.ModelBackend',
 )
@@ -99,8 +100,12 @@ SOCIAL_AUTH_LOGIN_URL ='final_app:login'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL ='final_app:profile'
 SOCIAL_AUTH_NEW_USER_REDIRECT_URL = 'final_app:profile_create'
 
+
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ='1085080882765-rihjko5c4qigjjdskkjk01tg25si9sa2.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'tGfbJFHIR_PjbW1Zeiy6S0Sf' #Paste Secret Key
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['https://www.googleapis.com/auth/calendar.readonly']
+
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases

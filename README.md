@@ -94,6 +94,7 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 * ~~Add logic to check trip date and automatically change status of trip complete if date has passed~~ completed 11/21/2018
 * Make delete confirmation notices more elegant
 * Redesign trips page
+* Make responsive
   
 
 ## Still to Come...
