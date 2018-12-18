@@ -9,6 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>OutPACK</title>
 
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:100" rel="stylesheet">
         <link rel="stylesheet" href="{% static './styles/styles.css' %}">
@@ -20,12 +21,16 @@
 
     </head>
     <body>
-            
+        <header>
+            <nav>
+                <h4>OutPACK</h4>
+            </nav>
+        </header>   
             
         <div class='profile-edit'>
             <h1> Welcome!</h1>
             <h4> Creae Your Profile </h4>
-            <div class="col-6">
+            <div class="col-4">
                 <form enctype="multipart/form-data" method="POST">
                     {% csrf_token %}
                     {{ form|crispy }}
@@ -33,6 +38,12 @@
                 </form>
             </div>
         </div>
+        <footer>
+                <nav>
+                    <p>&copy; 2018 all rights reserved</p>
+                    <a href="https://github.com/natalie-poulson/final_project" target="_blank"><i class="fab fa-github"></i></a>
+                </nav>
+            </footer>
     </body>
 </html>
 

@@ -37,6 +37,8 @@ To run OutPACK on your local machine, clone the repository, then:
 
 * mapwidgets
 
+* social_django
+
 
 ## Users:
 Our user is someone who enjoys the outdoors, traveling, planning, keeping track of memories, & sharing and receiving ideas for their next adventure. 

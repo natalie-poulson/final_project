@@ -3,21 +3,34 @@
 
 {% block content %}
 <div class="trips-page">
+    {% if trips_completed or trips_future %}
     <div>
         <h4><i class="fas fa-hiking"></i> &emsp;<i class="fas fa-calendar-check"></i> &emsp; Completed Trips</h4>
+        {% if trips_completed %}
         <div>
             {% for trip_completed in trips_completed %}
                 <li><a href={% url 'final_app:trip_detail' slug=trip_completed.slug %} >{{trip_completed.trail}} </a><span class='trip-date-line'> {{trip_completed.start_date}} - {{trip_completed.end_date}}</span></li>
             {% endfor %}
         </div>
+        {% else %}
+        <p>you have no completed trips yet</p>
+        {% endif %}
     </div>
+ 
     <div>
         <h4> <i class="fas fa-hiking"></i> &emsp;Future Trips</h4>
+        {% if trips_future %}
         <div>
             {% for trip_future in trips_future %}
                 <li><a href={% url 'final_app:trip_detail' slug=trip_future.slug %}> {{trip_future.trail}} </a><span class='trip-date-line'> {{trip_future.start_date}} - {{trip_future.end_date}}</span></li>
             {% endfor %}
         </div>
+        {% else %}
+        <p>you have no future trips yet</p>
+        {% endif %}
     </div>
+   {% else %}
+   <h1>You have no trips yet. Add trips by pressing the plus on the nav bar!</h1>
+   {% endif %}
 </div>
 {% endblock %}

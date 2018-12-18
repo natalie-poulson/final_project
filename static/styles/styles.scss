@@ -33,15 +33,14 @@ $body-stack: 'Raleway', sans-serif;
 .profile-edit {
     display:flex;
     flex-direction:column;
-    height:100vh;
     align-items: center;
     h1 {
         font-family:$logo-stack;
-        margin: 2em 0 .5em 0;
+        margin: 1em 0 .5em 0;
     }
     h4 {
         font-family:$logo-stack;
-        margin: 1em 0 .5em 0;
+        margin: 0 0 1em 0;
     }
     
     .profile-edit-submit{
@@ -55,6 +54,7 @@ $body-stack: 'Raleway', sans-serif;
         font-size:1.5em;
         font-family:$logo-stack;
         margin-top:1em;
+        margin-bottom:2em;
     }
 }
 body {

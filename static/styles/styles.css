@@ -69,16 +69,15 @@ table {
 .profile-edit {
   display: flex;
   flex-direction: column;
-  height: 100vh;
   align-items: center;
 }
 .profile-edit h1 {
   font-family: "Josefin Sans", sans-serif;
-  margin: 2em 0 0.5em 0;
+  margin: 1em 0 0.5em 0;
 }
 .profile-edit h4 {
   font-family: "Josefin Sans", sans-serif;
-  margin: 1em 0 0.5em 0;
+  margin: 0 0 1em 0;
 }
 .profile-edit .profile-edit-submit {
   background-color: Transparent;
@@ -91,6 +90,7 @@ table {
   font-size: 1.5em;
   font-family: "Josefin Sans", sans-serif;
   margin-top: 1em;
+  margin-bottom: 2em;
 }
 
 body {
