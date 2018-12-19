@@ -298,7 +298,7 @@ def explore(request):
 
     return render(request,'final_app/explore.html',{'results':db_results})
     
-
+@login_required(login_url='/accounts/login/')
 def export(request, slug):
     event = Trip.objects.get(slug = slug)
 
@@ -321,6 +321,7 @@ def export(request, slug):
 
     response = HttpResponse(cal.to_ical(), content_type="text/calendar")
     response['Content-Disposition'] = 'attachment; filename=%s.ics' % event.slug
+
     return response
 
 

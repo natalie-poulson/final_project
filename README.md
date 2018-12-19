@@ -51,7 +51,8 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 * View other user's profiles (if user selected "public" privacy setting)
 * Create, edit, delete a new trip
   * Displays name of trail, permit info (optional), dates of trip, length of trip,a map of the location of the trip, and a section to plan what gear and food  to pack 
-  * User's can select a point on a map to store the location of their trip
+  * Users can select a point on a map to store the location of their trip
+  * Users can add trip events to their Calendar via ics file
 * Create, edit, delete posts about trips
   * Upload photos, videos or write about your trip after you get back
 * Explore page allows users to view other user's trips to get ideas for their next adventure
@@ -60,7 +61,6 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
   * If their profile is private, then their trips and profile will not be displayed in the explore page for other users the see
 * Pretty URLs
 * Google Authentication
-* Add trip events to your Calendar
 
 
 ## User Story: 
@@ -91,20 +91,27 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 
 
 ## Unsolved Problems...
-* ~~Figure out default profile picture location so not ignored~~ completed 11/21/2018
-* Clean up Sass code
 * Modal glitches and design challenges with Django forms
-* ~~Google Maps Widget on load isn't correct size~~ completed 12/4/2018
-* ~~Add logic to check trip date and automatically change status of trip complete if date has passed~~ completed 11/21/2018
 * Make delete confirmation notices more elegant
 * Redesign trips page
 * Make responsive
 * Add latitude and longitude to calendar trip events
-  
+* ~~Figure out default profile picture location so not ignored~~ completed 11/21/2018
+* ~~Google Maps Widget on load isn't correct size~~ completed 12/4/2018
+* ~~Add logic to check trip date and automatically change status of trip complete if date has passed~~ completed 11/21/2018
+
 
 ## Still to Come...
 * Add an about page
 * Add a contact page
+* Allow user's to draw lines (instead of a point) to capture their trip more precisely, especially useful for section hiking
+* Allow users to add collaborators to a trip, allowing for mutual editing/editing/memory storing
+* Refactor to React
+* Clean up Sass code
+* Add commenting
+* Add likes
+* Add follows and a feed page
+* Add friends list to profile page
 * ~~Allow user's to upload videos~~ completed 12/04/2018
 * ~~Enable Google Authentication~~ completed 12/10/2018
 * ~~Allow users to add to their calendar via ICS files~~ completed 12/18/2018 
@@ -112,14 +119,8 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 * ~~Allow user's to opt out of sharing their trips and/or profile with other users~~ completed 12/07/2018
 * ~~Display a map on each user's profile page that displays pins from all of their completed trips~~ completed 12/07/2018
 * ~~Display maps on each trip page to show the general location of the trip~~ completed 12/07/2018
-* Allow user's to draw lines (instead of a point) to capture their trip more precisely, especially useful for section hiking
-* Allow users to add collaborators to a trip, allowing for mutual editing/editing/memory storing
-* Refactor to React
 * ~~Change search page to an explore page, showing a map with pins linking to trips~~ completed 12/07/2018
-* Add commenting
-* Add likes
-* Add follows and a feed page
-* Add friends list to profile page
+
 
 ## Links:
 

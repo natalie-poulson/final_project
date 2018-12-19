@@ -4,8 +4,6 @@ from .  import views
 app_name = "final_app"
 
 urlpatterns = [
-    path('trips/<slug>/export', views.export, name="export"),
-
     path('', views.landing, name='landing'),
 
     path('profile/create', views.profile_create, name='profile_create'),
@@ -15,6 +13,7 @@ urlpatterns = [
     path ('trips', views.trips, name="trips"),
     path('trips/<slug>', views.trip_detail, name="trip_detail"),
     path('trips/<slug>/edit', views.trip_edit, name="trip_edit"),
+    path('trips/<slug>/export', views.export, name="export"),
     path('trip/create', views.trip_create, name="trip_create"),
     path('trip/delete', views.trip_delete, name="trip_delete"),
 
@@ -37,5 +36,4 @@ urlpatterns = [
 
     path('explore', views.explore, name='explore'),
 
-    # path('calendar',views.trip_calendar,name="trip_calendar")
 ]

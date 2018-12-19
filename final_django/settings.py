@@ -11,18 +11,16 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-import django_heroku
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('secret_KEY')
+SECRET_KEY = os.environ.get('Secret')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -62,9 +60,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # heroku
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-
 ]
 
 ROOT_URLCONF = 'final_django.urls'
@@ -103,11 +98,8 @@ SOCIAL_AUTH_LOGIN_URL ='final_app:login'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL ='final_app:profile'
 SOCIAL_AUTH_NEW_USER_REDIRECT_URL = 'final_app:profile_create'
 
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ='1085080882765-rihjko5c4qigjjdskkjk01tg25si9sa2.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'tGfbJFHIR_PjbW1Zeiy6S0Sf' #Paste Secret Key
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['https://www.googleapis.com/auth/calendar.readonly']
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY =os.environ.get('OauthKey')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('OauthSecret')
 
 
 # Database
@@ -157,9 +149,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
+GOOGLE_MAP_API_KEY = os.environ.get('GoogleAPIKey')
 
-
-GOOGLE_MAP_API_KEY = "AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg"
 
 MAP_WIDGETS = {
     "GooglePointFieldWidget": (
@@ -169,7 +160,6 @@ MAP_WIDGETS = {
     ),
     "GOOGLE_MAP_API_KEY": GOOGLE_MAP_API_KEY,
 }
-
 
 
 #The address to visit to find the media files
@@ -186,11 +176,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 
-django_heroku.settings(locals())
 
