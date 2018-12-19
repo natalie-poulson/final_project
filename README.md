@@ -60,6 +60,7 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
   * If their profile is private, then their trips and profile will not be displayed in the explore page for other users the see
 * Pretty URLs
 * Google Authentication
+* Add trip events to your Calendar
 
 
 ## User Story: 
@@ -98,6 +99,7 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 * Make delete confirmation notices more elegant
 * Redesign trips page
 * Make responsive
+* Add latitude and longitude to calendar trip events
   
 
 ## Still to Come...
@@ -105,7 +107,7 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 * Add a contact page
 * ~~Allow user's to upload videos~~ completed 12/04/2018
 * ~~Enable Google Authentication~~ completed 12/10/2018
-* Allow users to add to their calendar via ICS files 
+* ~~Allow users to add to their calendar via ICS files~~ completed 12/18/2018 
 * ~~Allow user's to break food planning down by day~~ completed 12/07/2018
 * ~~Allow user's to opt out of sharing their trips and/or profile with other users~~ completed 12/07/2018
 * ~~Display a map on each user's profile page that displays pins from all of their completed trips~~ completed 12/07/2018
