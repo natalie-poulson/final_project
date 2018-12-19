@@ -4,6 +4,8 @@ from .  import views
 app_name = "final_app"
 
 urlpatterns = [
+    path('trips/<slug>/export', views.export, name="export"),
+
     path('', views.landing, name='landing'),
 
     path('profile/create', views.profile_create, name='profile_create'),

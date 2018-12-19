@@ -41,15 +41,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
+    'django.contrib.sites',
     # third party apps
     'social_django',
     'django_extensions',
     'crispy_forms',
     'mapwidgets',
+    'django_ical',
     # my apps
     'accounts',
     'final_app',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

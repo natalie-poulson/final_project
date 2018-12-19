@@ -8,13 +8,6 @@ from django.contrib.gis.db import models as gismodels
 from django.contrib.gis.geos import Point
 from social_core.backends.google import GoogleOAuth2
 
-# class CustomGoogleOAuth2(GoogleOAuth2):
-#      def get_scope(self):
-#         scope = super(CustomGoogleOAuth2, self).get_scope()
-#         if self.data.get('extrascope'):
-#             scope = scope + [('caledndar', 'https://www.googleapis.com/auth/calendar')]
-#         return scope
-
 class UserProfileInfo(models.Model):
     PRIVATE = 'PRIVATE'
     PUBLIC = 'PUBLIC'

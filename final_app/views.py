@@ -6,7 +6,9 @@ from . import forms
 from django.conf import settings
 from .models import User, UserProfileInfo, Trip, Post, Gear, Food
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from datetime import date
+from datetime import date, timedelta
+from icalendar import Calendar, Event
+from django.contrib.sites.models import Site
 
 
 def landing(request):
@@ -296,4 +298,29 @@ def explore(request):
 
     return render(request,'final_app/explore.html',{'results':db_results})
     
+
+def export(request, slug):
+    event = Trip.objects.get(slug = slug)
+
+    cal = Calendar()
+    site = Site.objects.get_current()
+
+    cal.add('prodid', '-//%s Events Calendar//%s//' % (site.name, site.domain))
+    cal.add('version', '2.0')
+
+    site_token = site.domain.split('.')
+    site_token.reverse()
+    site_token = '.'.join(site_token)
+
+    ical_event = Event()
+    ical_event.add('summary', event.trail)
+    ical_event.add('dtstart', event.start_date)
+    ical_event.add('dtend', event.end_date + timedelta(days=1))
+    ical_event['uid'] = '%d.event.events.%s' % (event.id, site_token)
+    cal.add_component(ical_event)
+
+    response = HttpResponse(cal.to_ical(), content_type="text/calendar")
+    response['Content-Disposition'] = 'attachment; filename=%s.ics' % event.slug
+    return response
+
 

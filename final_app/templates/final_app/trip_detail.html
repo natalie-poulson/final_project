@@ -90,6 +90,9 @@
         <div>
             <p><strong> Trip Length:</strong> {{trip.total_days}} days</p>
         </div>
+        <div>
+            <a href={% url 'final_app:export' slug=trip.slug %}>Add to Calendar</a>       
+        </div>
 
         <div>
             {% if trip.permit %}
