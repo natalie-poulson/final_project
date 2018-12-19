@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'django_extensions',
     'crispy_forms',
     'mapwidgets',
-    'django_ical',
     # my apps
     'accounts',
     'final_app',
