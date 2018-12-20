@@ -274,15 +274,20 @@ def food_delete(request,pk ):
 def other_profile(request, username):
     user = User.objects.get(username=username)
     trips = Trip.objects.filter(user=user).order_by('-start_date')
+    
+    context = {
+        'user': user,
+        'trips': trips
+    }
 
-    return render(request, 'final_app/other_profile.html', {'user': user, 'trips': trips})
+    return render(request, 'final_app/profile.html', context)
 
 
 @login_required(login_url='/accounts/login/')
 def other_trip_detail(request,username, slug):
     trip = Trip.objects.get(slug=slug)   
 
-    return render(request, 'final_app/other_trip_detail.html', {'trip': trip})
+    return render(request, 'final_app/trip_detail.html', {'trip': trip})
 
 
 @login_required(login_url='/accounts/login/')    

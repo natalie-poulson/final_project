@@ -1,12 +1,59 @@
 {% extends 'final_app/base_layout.html' %}
 
+{% block extrahead %}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg&callback=initMap"defer></script>
+
+<script>
+        function initMap() {
+
+            var map = new google.maps.Map(document.getElementById('profile-map'), {
+            center: {lat: 39.8283, lng: -98.5795},
+            zoom: 3,
+            mapTypeId: 'terrain'
+            });
+            var infowindow = new google.maps.InfoWindow()
+
+        {% if trips %}
+            {% for trip in trips %}
+                var trip = { lat: {{trip.lat}}, lng: {{trip.lon}} };                              
+
+                var marker = new google.maps.Marker({
+                    position: trip, 
+                    map: map,
+                });
+
+                var content = '<h5><a href={% url 'final_app:trip_detail' slug=trip.slug %} >{{trip.trail}}</a></h5><p>{{trip.start_date}} - {{trip.end_date}}</p>'
+
+                google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+                    return function() {
+                        infowindow.setContent(content);
+                        infowindow.open(map,marker);
+                    };
+                })(marker,content,infowindow));  
+
+            {% endfor %}
+        {% endif %}
+
+        }
+
+    </script>
+{% endblock %}
+
 
 {% block content %}
 <div class = "profile">
     <div class = "profile-aside">
-        <a href = "{% url 'final_app:profile_edit' %}">edit </a>
+
+<!-- /* ------------------------------------------------------ */ -->
+<!-- /* -------------- LOGGED IN USER ------------------ */ -->
+<!-- /* ------------------------------------------------------ */ -->
+        {% if request.user.pk == user.pk %} 
+        <a href = "{% url 'final_app:profile_edit' %}">edit</a>
+        {% endif %}
+<!-- /* ------------------------------------------------------ */ -->
+
         <div class = "profile-picture">
-            <img src="{{ user.profile.profile_picture.url }}" width="auto" height="250px" alt="">
+            <img src="{{ user.profile.profile_picture.url }}" width="auto" height="250px">
         </div>
         <div class = "profile-info">
             <p> {{ user.profile.name }}</p>
@@ -23,75 +70,7 @@
         </div>
     </div>
     <div class='profile-main'>
-            <div id="profile-map"></div>
-
-            <script>
-                function initMap() {
-
-                    var map = new google.maps.Map(document.getElementById('profile-map'), {
-                    center: {lat: 39.8283, lng: -98.5795},
-                    zoom: 3,
-                    mapTypeId: 'terrain'
-                    });
-                    var infowindow = new google.maps.InfoWindow()
-
-                
-                {% if trips %}
-                    {% for trip in trips %}
-                        var trip = { lat: {{trip.lat}}, lng: {{trip.lon}} };                              
-
-                        var marker = new google.maps.Marker({
-                            position: trip, 
-                            map: map,
-                        });
-
-
-                        var content = '<h5><a href={% url 'final_app:trip_detail' slug=trip.slug %} >{{trip.trail}}</a></h5><p>{{trip.start_date}} - {{trip.end_date}}</p>'
-
-                        google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
-                            return function() {
-                                infowindow.setContent(content);
-                                infowindow.open(map,marker);
-                            };
-                        })(marker,content,infowindow));  
-
-
-                    {% endfor %}
-                {% endif %}
-
-                }
-
-            </script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg&callback=initMap"
-            async defer></script>
-            </script>
-       
-            <!-- {% if trips %}
-            <div class='profileTrips'>
-                <h1> Trips</h1>
-            {% endif %}
-
-                {% for trip in trips %}
-                    {% if trip.completed %}
-                        <li><i class="fas fa-calendar-check"></i> &nbsp; <a href={% url 'final_app:trip_detail' slug=trip.slug %} >{{trip.trail}}</a><span class='trip-date-line'> &nbsp; {{trip.start_date}} - {{trip.end_date}}</span></li>
-                    {% else %}
-                        <li><a href={% url 'final_app:trip_detail' slug=trip.slug %} >{{trip.trail}}</a> <span class='trip-date-line'>&nbsp;{{trip.start_date}} - {{trip.end_date}}</span></li>
-                    {% endif %}
-                {% endfor %} 
-                
-        </div>
-        <div class ="profile-post">
-            {% for trip in trips %}
-                {% for trip_post in trip.trip_posts.all %}
-                    {% if trip_post.image %}
-                        <a href={% url 'final_app:post_detail' slug=trip_post.slug %} ><img id ="hover-img" src="{{ trip_post.image.url }}" width="150px" height="150px" alt=""></a>
-                    {% endif %}
-                    {% if trip_post.video %}
-                    <a href={% url 'final_app:post_detail' slug=trip_post.slug %} ><video id ="hover-img" src="{{ trip_post.video.url }}" width="150px" height="150px" alt=""></a>
-                    {% endif %}
-                {% endfor %}
-            {% endfor %} 
-        </div> -->
+        <div id="profile-map"></div>
     </div>
 </div>   
 {% endblock %}

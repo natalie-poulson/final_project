@@ -24,15 +24,27 @@
             <video playsinline autoplay muted  loop  id="video" ><source src="{% static 'video.MP4' %}"></video>
             <div class="landing-content">
                 <div class="logo">
+
+<!-- /* ------------------------------------------------------ */ -->
+<!-- /* -------------- LOGGED IN USER ------------------ */ -->
+<!-- /* ------------------------------------------------------ */ -->
                     {% if user.is_authenticated %} 
                         <a href="{% url 'final_app:profile' %}"><h1> OutPACK</h1></a>
                         <h3>the app for backpackers</h3>
                     </div>
+<!-- /* ------------------------------------------------------ */ -->
+
+
+
+<!-- /* ------------------------------------------------------ */ -->
+<!-- /* -------------- NOT LOGGED IN USER ------------------ */ -->
+<!-- /* ------------------------------------------------------ */ -->
                     {% else %}
                         <h1> OutPACK</h1>
                         <h3>the app for backpackers</h3>
                 </div>
                 <div class ="login-wrapper">
+
                     <!-- Button trigger modal -->
                         <button class="landing-button" type="button"  data-toggle="modal" data-target="#login-modal">Login </button>
                             {% if login_form.errors %}
@@ -65,13 +77,12 @@
                                 </div>
                                 </div>
                         </div>
+
                         <!-- Button trigger modal -->
                         <button class="landing-button" type="button"  data-toggle="modal" data-target="#exampleModalCenter">Sign Up</button>
-
                             {% if signup_form.errors %}
                                 <script>$(function() {$('#exampleModalCenter').modal({show: true});});</script>
                             {% endif %}
-
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -97,6 +108,8 @@
                             </div>
                         </div>    
                 {% endif %}
+<!-- /* ------------------------------------------------------ */ -->
+
             </div>
         </div>
     </body>

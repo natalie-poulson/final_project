@@ -12,7 +12,7 @@ def signup_view(request):
         login_form = AuthenticationForm()
         if signup_form.is_valid():
             user = signup_form.save()
-            login(request, user)
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             return redirect('final_app:profile_create')
         print(signup_form.errors)
         return render(request, 'final_app/landing.html',{'signup_form': signup_form, 'login_form': login_form} )
