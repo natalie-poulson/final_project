@@ -95,6 +95,17 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 
 <img src="./screenshots/8.png">
 
+<img src="./screenshots/9.png">
+
+<img src="./screenshots/10.png">
+
+<img src="./screenshots11.png">
+
+<img src="./screenshots/12.png">
+
+<img src="./screenshots/13.png">
+
+
 
 
 ## Unsolved Problems...
