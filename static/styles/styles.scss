@@ -204,10 +204,20 @@ footer nav {
         display:flex;
         justify-content: center;
         align-items: center;
+        border-radius: 5px;
+        padding: 2em 3em;
+        border:1px solid lightgrey;
+        background-color:white;
+        max-width:60vw;
+        // &:hover {
+        //     transform: scale(1.1);
+        //     box-shadow: 0px 1px 8px grey;
+        // }
         h1 {
             text-align: center;
             margin:0;
             font-family:$logo-stack;
+            font-size:2em;
         }
         p {
             text-align: center;
@@ -216,6 +226,14 @@ footer nav {
         }
         i {
             margin-left:1em;
+            &:hover{
+                color:#FD8671;
+            }
+        }
+        a {
+            &:hover{
+                color:#FD8671;
+            }
         }
         .trip-header {
             margin-right:2em;
@@ -266,6 +284,14 @@ footer nav {
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          border-radius: 5px;
+          padding: 2em 3em;
+          border:1px solid lightgrey;
+          background-color:white;
+          &:hover {
+              transform: scale(1.1);
+              box-shadow: 0px 1px 8px grey;
+          }
           .gear-head {
               display:flex;
               justify-content: space-between;
@@ -280,6 +306,14 @@ footer nav {
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            border-radius: 5px;
+            padding: 2em 3em;
+            border:1px solid lightgrey;
+            background-color:white;
+            &:hover {
+                transform: scale(1.1);
+                box-shadow: 0px 1px 8px grey;
+            }
             .food-head {
                 display:flex;
                 justify-content: space-between;
@@ -291,14 +325,18 @@ footer nav {
                 display:flex;
                 flex-wrap: wrap;
                 .food-box {
+                    &:hover {
+                        transform: scale(1.1);
+                        box-shadow: 0px 1px 8px grey;
+                    }
                     border:1px solid black;
                     padding:.5em 1em;
                     margin:1em;
                     display:flex;
                     flex-direction: column;
                     width:200px;
-
                     .food-day-box {
+                     
                         display:flex;
                         h6 {
                             margin-left:.5em;
@@ -321,8 +359,13 @@ footer nav {
         flex-direction:column;
         align-items: center;
         justify-content: center;
-        flex-wrap:wrap;
+        margin-top:2em;
         width:80vw;
+        div {
+            display:flex;
+            justify-content: center;
+            flex-wrap:wrap;
+        }
         h4{
             font-family:$logo-stack;
             font-size:2em;
@@ -335,6 +378,8 @@ footer nav {
             margin:.3em;
             &:hover {
                 opacity:.5;
+                transform: scale(1.1);
+                box-shadow: 0px 1px 8px grey;
             }
         }
     }
@@ -700,12 +745,25 @@ nav {
 .trips-page {
     width:100vw;
     display:flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: flex-start;
     height:90vh;
     margin-top:8em;
-    div {
+    h1 {
+        font-family:$logo-stack;
+        font-size:2em;
+
+    }
+    .trip-section {
         margin:0 3em;
+        border-radius: 5px;
+        padding: 2em 3em;
+        border:1px solid lightgrey;
+        background-color:white;
+        &:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 1px 8px grey;
+        }
     }
     h4 {
         display:flex;
@@ -713,19 +771,19 @@ nav {
         margin-bottom:1em;
         font-family:$logo-stack;
         text-transform:uppercase;
-        
-
     }
     li {
         margin:1em 0;
         a {
             font-size:1.3em;
             font-family: $body-stack;
+            &:hover{
+                color:#FD8671;
+            }
         }
         span {
             font-size:.8em;
         }
-
     }
 }
 

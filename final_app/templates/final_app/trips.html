@@ -5,7 +5,7 @@
 <div class="trips-page">
 
     {% if trips_completed or trips_future %}
-    <div>
+    <div class='trip-section'>
         <h4> Completed Trips</h4>
         {% if trips_completed %}
         <div>
@@ -17,7 +17,7 @@
         <p>You do not have any completed trips yet</p>
         {% endif %}
     </div>
-    <div>
+    <div class='trip-section'>
         <h4>Future Trips</h4>
         {% if trips_future %}
         <div>
@@ -31,7 +31,7 @@
     </div>
     
     {% else %}
-    <h1>You have no trips yet. Add trips using the plus sign on the nav bar!</h1>
+    <h1>You do not have any trips yet. Add trips using the plus sign on the nav bar!</h1>
     {% endif %}
 </div>
 {% endblock %}

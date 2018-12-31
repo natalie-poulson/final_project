@@ -234,11 +234,17 @@ footer nav a {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
+  padding: 2em 3em;
+  border: 1px solid lightgrey;
+  background-color: white;
+  max-width: 60vw;
 }
 .trip-detail .trip-info h1 {
   text-align: center;
   margin: 0;
   font-family: "Josefin Sans", sans-serif;
+  font-size: 2em;
 }
 .trip-detail .trip-info p {
   text-align: center;
@@ -247,6 +253,12 @@ footer nav a {
 }
 .trip-detail .trip-info i {
   margin-left: 1em;
+}
+.trip-detail .trip-info i:hover {
+  color: #FD8671;
+}
+.trip-detail .trip-info a:hover {
+  color: #FD8671;
 }
 .trip-detail .trip-info .trip-header {
   margin-right: 2em;
@@ -297,6 +309,14 @@ footer nav a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
+  padding: 2em 3em;
+  border: 1px solid lightgrey;
+  background-color: white;
+}
+.trip-detail .trip-pack .trip-gear:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 1px 8px grey;
 }
 .trip-detail .trip-pack .trip-gear .gear-head {
   display: flex;
@@ -311,6 +331,14 @@ footer nav a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
+  padding: 2em 3em;
+  border: 1px solid lightgrey;
+  background-color: white;
+}
+.trip-detail .trip-pack .trip-food:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 1px 8px grey;
 }
 .trip-detail .trip-pack .trip-food .food-head {
   display: flex;
@@ -331,6 +359,10 @@ footer nav a {
   flex-direction: column;
   width: 200px;
 }
+.trip-detail .trip-pack .trip-food .food-wrapper .food-box:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 1px 8px grey;
+}
 .trip-detail .trip-pack .trip-food .food-wrapper .food-box .food-day-box {
   display: flex;
 }
@@ -350,8 +382,13 @@ footer nav a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
+  margin-top: 2em;
   width: 80vw;
+}
+.trip-detail .trip-posts div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .trip-detail .trip-posts h4 {
   font-family: "Josefin Sans", sans-serif;
@@ -366,6 +403,8 @@ footer nav a {
 }
 .trip-detail .trip-posts img:hover, .trip-detail .trip-posts video:hover {
   opacity: 0.5;
+  transform: scale(1.1);
+  box-shadow: 0px 1px 8px grey;
 }
 
 .trip-wrapper {
@@ -724,13 +763,25 @@ header nav ul li a i:hover {
 .trips-page {
   width: 100vw;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: flex-start;
   height: 90vh;
   margin-top: 8em;
 }
-.trips-page div {
+.trips-page h1 {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 2em;
+}
+.trips-page .trip-section {
   margin: 0 3em;
+  border-radius: 5px;
+  padding: 2em 3em;
+  border: 1px solid lightgrey;
+  background-color: white;
+}
+.trips-page .trip-section:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 1px 8px grey;
 }
 .trips-page h4 {
   display: flex;
@@ -745,6 +796,9 @@ header nav ul li a i:hover {
 .trips-page li a {
   font-size: 1.3em;
   font-family: "Raleway", sans-serif;
+}
+.trips-page li a:hover {
+  color: #FD8671;
 }
 .trips-page li span {
   font-size: 0.8em;
