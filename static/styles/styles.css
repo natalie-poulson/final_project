@@ -42,8 +42,8 @@ table {
 }
 
 #trip-map {
-  width: 50vw;
-  height: 50vh;
+  width: 300px;
+  height: 300px;
 }
 
 #explore-map {
@@ -222,29 +222,18 @@ footer nav a {
   font-family: "Josefin Sans", sans-serif;
   font-size: 2em;
 }
-.trip-detail .trip-header {
+.trip-detail .trip-icons {
   display: flex;
-  width: 100vw;
-}
-.trip-detail .trip-header .trip-icons {
-  width: 100vw;
-  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  margin-right: 4em;
-  margin-bottom: 2em;
 }
-.trip-detail .trip-header .trip-icons div {
-  margin: 0 0.7em;
+.trip-detail .trip-icons div {
+  margin: 0.7em 0;
 }
 .trip-detail .trip-info {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-.trip-detail .trip-info div {
-  margin: 0.3em 0;
 }
 .trip-detail .trip-info h1 {
   text-align: center;
@@ -259,7 +248,26 @@ footer nav a {
 .trip-detail .trip-info i {
   margin-left: 1em;
 }
-.trip-detail .trip-info .trip-dates {
+.trip-detail .trip-info .trip-header {
+  margin-right: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.trip-detail .trip-info .trip-header div {
+  padding: 0.15em 0;
+}
+.trip-detail .trip-info .trip-header .trip-head {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.trip-detail .trip-info .trip-header .trip-dates {
+  display: flex;
+}
+.trip-detail .trip-info .trip-map {
   display: flex;
 }
 .trip-detail .trip-pack {
@@ -272,7 +280,7 @@ footer nav a {
 .trip-detail .trip-pack .pack-line {
   display: flex;
   justify-content: space-between;
-  width: 20vw;
+  width: 150px;
   margin: 0.4em 0;
 }
 .trip-detail .trip-pack .pack-line .checkbox {
@@ -321,6 +329,7 @@ footer nav a {
   margin: 1em;
   display: flex;
   flex-direction: column;
+  width: 200px;
 }
 .trip-detail .trip-pack .trip-food .food-wrapper .food-box .food-day-box {
   display: flex;
