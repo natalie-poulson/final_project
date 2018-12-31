@@ -1,6 +1,6 @@
 # OutPACK
 
-<img src="./screenshots/5.png">
+<img src="./screenshots/1.png">
 
 ## Scope:
 OutPACK is an app that allows users to plan, log and share all of their outdoor backpacking adventures in one place!
@@ -88,6 +88,15 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 <img src="./screenshots/3.png">
 
 <img src="./screenshots/4.png">
+
+<img src="./screenshots/5.png">
+
+<img src="./screenshots/6.png">
+
+<img src="./screenshots/7.png">
+
+<img src="./screenshots/8.png">
+
 
 
 ## Unsolved Problems...
