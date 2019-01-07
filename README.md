@@ -99,7 +99,7 @@ Our user is someone who enjoys the outdoors, traveling, planning, keeping track 
 
 <img src="./screenshots/10.png">
 
-<img src="./screenshots11.png">
+<img src="./screenshots/11.png">
 
 <img src="./screenshots/12.png">
 
