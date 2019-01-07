@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('Secret')
+SECRET_KEY = os.environ.get('OutPACK_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -98,8 +98,8 @@ SOCIAL_AUTH_LOGIN_URL ='final_app:login'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL ='final_app:profile'
 SOCIAL_AUTH_NEW_USER_REDIRECT_URL = 'final_app:profile_create'
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY =os.environ.get('OauthKey')
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('OauthSecret')
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY =os.environ.get('OutPACK_OauthKey')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('OUTPACK_OauthSecret')
 
 
 # Database
@@ -149,7 +149,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
-GOOGLE_MAP_API_KEY = os.environ.get('GoogleAPIKey')
+GOOGLE_MAP_API_KEY = os.environ.get('OUTPACK_GoogleAPIKey')
 
 
 MAP_WIDGETS = {
