@@ -27,12 +27,12 @@ blockquote, q {
 }
 
 blockquote:before, blockquote:after {
-  content: "";
+  content: '';
   content: none;
 }
 
 q:before, q:after {
-  content: "";
+  content: '';
   content: none;
 }
 
@@ -55,9 +55,12 @@ table {
   width: 60vw;
   height: 72vh;
 }
+
 #profile-map:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 1px 8px grey;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-box-shadow: 0px 1px 8px grey;
+          box-shadow: 0px 1px 8px grey;
 }
 
 .tooltip > .tooltip-inner {
@@ -67,18 +70,28 @@ table {
 }
 
 .profile-edit {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .profile-edit h1 {
   font-family: "Josefin Sans", sans-serif;
-  margin: 1em 0 0.5em 0;
+  margin: 1em 0 .5em 0;
 }
+
 .profile-edit h4 {
   font-family: "Josefin Sans", sans-serif;
   margin: 0 0 1em 0;
 }
+
 .profile-edit .profile-edit-submit {
   background-color: Transparent;
   background-repeat: no-repeat;
@@ -96,24 +109,39 @@ table {
 body {
   height: 100vh;
   width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.04);
 }
 
 footer nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5em;
-  padding: 3em 0 0.5em 0;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: .5em;
+  padding: 3em 0 .5em 0;
   background-color: white;
 }
+
 footer nav p {
   margin-left: 1em;
-  font-size: 0.9em;
+  font-size: .9em;
 }
+
 footer nav a {
   margin-right: 1em;
 }
@@ -126,24 +154,42 @@ footer nav a {
 .landing-wrapper {
   width: 100vw;
   height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: rgba(29, 41, 48, 0.9);
 }
+
 .landing-wrapper #video {
   position: fixed;
   height: 100vh;
   width: 100vw;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   z-index: -100;
 }
+
 .landing-wrapper .landing-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   text-align: center;
 }
+
 .landing-wrapper .landing-content h1 {
   font-family: "Josefin Sans", sans-serif;
   font-size: 17em;
@@ -151,6 +197,7 @@ footer nav a {
   text-align: center;
   text-shadow: -10px 10px 0px #FD8671, -20px 20px 0px #1483CA, -30px 30px 0px #CA1414;
 }
+
 .landing-wrapper .landing-content h3 {
   color: #32FDDF;
   font-family: "Josefin Sans", sans-serif;
@@ -160,21 +207,29 @@ footer nav a {
   font-weight: bold;
   text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
 }
+
 .landing-wrapper .landing-content h2 {
   color: white;
   font-family: "Josefin Sans", sans-serif;
   font-size: 3em;
   margin-bottom: 1em;
 }
+
 .landing-wrapper .landing-content h4 {
   color: white;
   font-family: "Josefin Sans", sans-serif;
   font-size: 3em;
 }
+
 .landing-wrapper .landing-content .login-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
+
 .landing-wrapper .landing-content .landing-button {
   background-color: Transparent;
   background-repeat: no-repeat;
@@ -188,14 +243,18 @@ footer nav a {
   font-size: 3em;
   font-weight: bold;
 }
+
 .landing-wrapper .landing-content .landing-button:hover {
-  transform: scale(1.3);
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
 }
+
 .landing-wrapper .landing-content .modal-body p {
   color: black;
   font-size: 1.5em;
   padding: 1em 0;
 }
+
 .landing-wrapper .landing-content .modal-btn {
   background-color: Transparent;
   background-repeat: no-repeat;
@@ -208,234 +267,412 @@ footer nav a {
 
 .trip-detail {
   margin: 3em 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .trip-detail h1 {
   font-family: "Josefin Sans", sans-serif;
   font-size: 3.3em;
   margin-left: 1em;
 }
+
 .trip-detail h4 {
   font-family: "Josefin Sans", sans-serif;
   font-size: 2em;
 }
+
 .trip-detail .trip-icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .trip-detail .trip-icons div {
-  margin: 0.7em 0;
+  margin: .7em 0;
 }
+
 .trip-detail .trip-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-radius: 5px;
   padding: 2em 3em;
   border: 1px solid lightgrey;
   background-color: white;
   max-width: 60vw;
 }
+
 .trip-detail .trip-info h1 {
   text-align: center;
   margin: 0;
   font-family: "Josefin Sans", sans-serif;
   font-size: 2em;
 }
+
 .trip-detail .trip-info p {
   text-align: center;
   margin: 0;
   font-family: "Raleway", sans-serif;
 }
+
 .trip-detail .trip-info i {
   margin-left: 1em;
 }
+
 .trip-detail .trip-info i:hover {
   color: #FD8671;
 }
+
 .trip-detail .trip-info a:hover {
   color: #FD8671;
 }
+
 .trip-detail .trip-info .trip-header {
   margin-right: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .trip-detail .trip-info .trip-header div {
-  padding: 0.15em 0;
+  padding: .15em 0;
 }
+
 .trip-detail .trip-info .trip-header .trip-head {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .trip-detail .trip-info .trip-header .trip-dates {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
+
 .trip-detail .trip-info .trip-map {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
+
 .trip-detail .trip-pack {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   width: 90vw;
   margin: 3em 0;
 }
+
 .trip-detail .trip-pack .pack-line {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 150px;
-  margin: 0.4em 0;
+  margin: .4em 0;
 }
+
 .trip-detail .trip-pack .pack-line .checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
+
 .trip-detail .trip-pack .pack-line p {
   font-family: "Raleway", sans-serif;
-  margin-left: 0.5em;
+  margin-left: .5em;
 }
+
 .trip-detail .trip-pack .trip-gear {
   margin-right: 4em;
   width: 45%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-radius: 5px;
   padding: 2em 3em;
   border: 1px solid lightgrey;
   background-color: white;
 }
+
 .trip-detail .trip-pack .trip-gear:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 1px 8px grey;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-box-shadow: 0px 1px 8px grey;
+          box-shadow: 0px 1px 8px grey;
 }
+
 .trip-detail .trip-pack .trip-gear .gear-head {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 20vw;
   margin-bottom: 1em;
 }
+
 .trip-detail .trip-pack .trip-food {
   margin-left: 4em;
   width: 45%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-radius: 5px;
   padding: 2em 3em;
   border: 1px solid lightgrey;
   background-color: white;
 }
+
 .trip-detail .trip-pack .trip-food:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 1px 8px grey;
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+  -webkit-box-shadow: 0px 1px 8px grey;
+          box-shadow: 0px 1px 8px grey;
 }
+
 .trip-detail .trip-pack .trip-food .food-head {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 20vw;
   margin-bottom: 1em;
 }
+
 .trip-detail .trip-pack .trip-food .food-wrapper {
   margin-bottom: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
+
 .trip-detail .trip-pack .trip-food .food-wrapper .food-box {
   border: 1px solid black;
-  padding: 0.5em 1em;
+  padding: .5em 1em;
   margin: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 200px;
 }
+
 .trip-detail .trip-pack .trip-food .food-wrapper .food-box:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 1px 8px grey;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-box-shadow: 0px 1px 8px grey;
+          box-shadow: 0px 1px 8px grey;
 }
+
 .trip-detail .trip-pack .trip-food .food-wrapper .food-box .food-day-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
+
 .trip-detail .trip-pack .trip-food .food-wrapper .food-box .food-day-box h6 {
-  margin-left: 0.5em;
-  margin-bottom: 0.3em;
+  margin-left: .5em;
+  margin-bottom: .3em;
   font-family: "Raleway", sans-serif;
 }
+
 .trip-detail .trip-pack .trip-food form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
+
 .trip-detail .trip-posts {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin-top: 2em;
   width: 80vw;
 }
+
 .trip-detail .trip-posts div {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
+
 .trip-detail .trip-posts h4 {
   font-family: "Josefin Sans", sans-serif;
   font-size: 2em;
   text-align: center;
-  margin: 1em 0 0.5em 0;
+  margin: 1em 0 .5em 0;
 }
+
 .trip-detail .trip-posts img, .trip-detail .trip-posts video {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 5px;
-  margin: 0.3em;
+  margin: .3em;
 }
+
 .trip-detail .trip-posts img:hover, .trip-detail .trip-posts video:hover {
-  opacity: 0.5;
-  transform: scale(1.1);
-  box-shadow: 0px 1px 8px grey;
+  opacity: .5;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-box-shadow: 0px 1px 8px grey;
+          box-shadow: 0px 1px 8px grey;
 }
 
 .trip-wrapper {
   width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
 }
+
 .trip-wrapper .trip-create {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 50vw;
   font-family: "Josefin Sans", sans-serif;
   font-size: 1.2em;
 }
+
 .trip-wrapper .trip-create h1 {
   font-family: "Josefin Sans", sans-serif;
   font-size: 2.5em;
-  margin: 0.5em 0;
+  margin: .5em 0;
 }
+
 .trip-wrapper .trip-create .trip-create-form {
-  margin: 0.5em 0;
+  margin: .5em 0;
   font-family: "Josefin Sans", sans-serif;
   text-transform: uppercase;
 }
+
 .trip-wrapper .trip-create .trip-create-form .mw-wrap {
   width: 100%;
   min-width: 50vw;
 }
+
 .trip-wrapper .trip-create .trip-create-form button {
   margin: 2em 0;
   font-family: "Josefin Sans", sans-serif;
@@ -459,35 +696,57 @@ footer nav a {
 .hover-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .explore-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 100vh;
 }
+
 .explore-page h3 {
   font-family: "Josefin Sans", sans-serif;
   font-size: 3em;
-  margin: 0.5em 0;
+  margin: .5em 0;
 }
+
 .explore-page .search-result-line {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 1.5em 0;
 }
+
 .explore-page .search-result-line a {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-family: "Raleway", sans-serif;
   font-size: 1.2em;
 }
+
 .explore-page .search-result-line span {
   font-family: "Raleway", sans-serif;
-  font-size: 0.8em;
+  font-size: .8em;
 }
 
 .modal-btn {
@@ -503,7 +762,8 @@ footer nav a {
 .user_profile_icon {
   width: 40px;
   border-radius: 50%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 a {
@@ -529,40 +789,58 @@ li {
 }
 
 header {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 1;
 }
+
 header nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   background: white;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-bottom: 1px solid lightgrey;
 }
+
 header nav h4 {
-  padding: 0.25em 0.5em;
+  padding: .25em .5em;
   margin-left: 1em;
   font-family: "Josefin Sans", sans-serif;
   font-weight: 300;
   font-size: 2.5em;
   color: #1483CA;
   letter-spacing: 3px;
-  text-shadow: -3px 3px 0px #CA1414, -6px 6px 0px #FD8671, -9px 9px 0px #32FDDF;
+  text-shadow: -3px 3px 0px #CA1414,  -6px 6px 0px #FD8671, -9px 9px 0px #32FDDF;
 }
+
 header nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-right: 2em;
 }
+
 header nav ul li {
-  margin: 0.5em 1em;
+  margin: .5em 1em;
 }
+
 header nav ul li a i {
   color: black;
 }
+
 header nav ul li a i:hover {
-  transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
 }
 
 .search {
@@ -574,6 +852,19 @@ header nav ul li a i:hover {
   outline: none;
   color: #FD8671;
 }
+
+.search::-webkit-input-placeholder {
+  color: black;
+}
+
+.search:-ms-input-placeholder {
+  color: black;
+}
+
+.search::-ms-input-placeholder {
+  color: black;
+}
+
 .search::placeholder {
   color: black;
 }
@@ -593,63 +884,101 @@ header nav ul li a i:hover {
 }
 
 .profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 3em 0;
 }
+
 .profile .profile-aside {
   border-radius: 5px;
   font-size: 1.3em;
   padding: 2em 3em;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 50%;
   border: 1px solid lightgrey;
   background-color: white;
 }
+
 .profile .profile-aside:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 1px 8px grey;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-box-shadow: 0px 1px 8px grey;
+          box-shadow: 0px 1px 8px grey;
 }
+
 .profile .profile-aside a {
   font-family: "Josefin Sans", sans-serif;
   color: black;
 }
+
 .profile .profile-aside a:hover {
   color: #FD8671;
 }
+
 .profile .profile-aside .profile-picture img {
   border-radius: 50%;
   width: 250px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   margin: 1.5em 0;
 }
+
 .profile .profile-aside .profile-info p {
-  margin: 0.5em 0;
+  margin: .5em 0;
   font-family: "Josefin Sans", sans-serif;
   font-weight: 300;
   color: black;
 }
+
 .profile .profile-main {
   width: 60vw;
   margin-left: 4em;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
+
 .profile .profile-main a, .profile .profile-main span {
   font-family: "Raleway", sans-serif;
 }
+
 .profile .profile-main span {
-  font-size: 0.8em;
+  font-size: .8em;
 }
+
 .profile .profile-main div {
   margin: 1em 0;
 }
+
 .profile .profile-main .profileTrips {
   border-radius: 5px;
   padding: 2em 3em;
@@ -657,95 +986,163 @@ header nav ul li a i:hover {
   border: 1px solid lightgrey;
   color: black;
 }
+
 .profile .profile-main .profileTrips:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 1px 8px grey;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-box-shadow: 0px 1px 8px grey;
+          box-shadow: 0px 1px 8px grey;
 }
+
 .profile .profile-main .profileTrips a {
   color: black;
 }
+
 .profile .profile-main .profileTrips a:hover {
   color: #FD8671;
 }
+
 .profile .profile-main .trip-list-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-around;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   width: 60vw;
 }
+
 .profile .profile-main h1 {
   font-family: "Josefin Sans", sans-serif;
   text-align: center;
 }
+
 .profile .profile-main li {
   margin: 1em 0;
 }
+
 .profile .profile-main li a {
   font-size: 1.2em;
 }
+
 .profile .profile-main .profile-post {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
+
 .profile .profile-main .profile-post img, .profile .profile-main .profile-post video {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 5px;
-  margin: 0.5em;
+  margin: .5em;
 }
+
 .profile .profile-main .profile-post img:hover, .profile .profile-main .profile-post video:hover {
-  opacity: 0.5;
-  transform: scale(1.1);
-  box-shadow: 0px 1px 8px grey;
+  opacity: .5;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-box-shadow: 0px 1px 8px grey;
+          box-shadow: 0px 1px 8px grey;
 }
 
 .post-detail {
   margin: 4em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .post-detail .post-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 80vw;
   margin-bottom: 1em 0;
 }
+
 .post-detail .post-header h1 {
   font-family: "Josefin Sans", sans-serif;
 }
+
 .post-detail .post-header .icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .post-detail .post-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
+
 .post-detail .post-main h4, .post-detail .post-main p {
   font-size: 1.1em;
   font-family: "Raleway", sans-serif;
 }
+
 .post-detail .post-main div {
-  margin-top: 0.5em;
+  margin-top: .5em;
   width: 80vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
+
 .post-detail .post-main img, .post-detail .post-main video {
   width: 80vw;
   height: 70vh;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   margin: 1em 0;
 }
 
 .create-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
+
 .create-form button {
   margin-bottom: 1em;
 }
@@ -754,6 +1151,7 @@ header nav ul li a i:hover {
   font-family: "Josefin Sans", sans-serif;
   text-transform: uppercase;
 }
+
 .post-create-form button {
   margin-top: 2em;
   font-family: "Josefin Sans", sans-serif;
@@ -762,16 +1160,24 @@ header nav ul li a i:hover {
 
 .trips-page {
   width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   height: 90vh;
   margin-top: 8em;
 }
+
 .trips-page h1 {
   font-family: "Josefin Sans", sans-serif;
   font-size: 2em;
 }
+
 .trips-page .trip-section {
   margin: 0 3em;
   border-radius: 5px;
@@ -779,40 +1185,60 @@ header nav ul li a i:hover {
   border: 1px solid lightgrey;
   background-color: white;
 }
+
 .trips-page .trip-section:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 1px 8px grey;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-box-shadow: 0px 1px 8px grey;
+          box-shadow: 0px 1px 8px grey;
 }
+
 .trips-page h4 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin-bottom: 1em;
   font-family: "Josefin Sans", sans-serif;
   text-transform: uppercase;
 }
+
 .trips-page li {
   margin: 1em 0;
 }
+
 .trips-page li a {
   font-size: 1.3em;
   font-family: "Raleway", sans-serif;
 }
+
 .trips-page li a:hover {
   color: #FD8671;
 }
+
 .trips-page li span {
-  font-size: 0.8em;
+  font-size: .8em;
 }
 
 .trip-head {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #pac-input {
   width: 60vw;
 }
+
 #pac-input .pac-container {
   background-color: white;
   position: absolute !important;
@@ -820,12 +1246,13 @@ header nav ul li a i:hover {
   border-radius: 2px;
   border-top: 1px solid #d9d9d9;
   font-family: Arial, sans-serif;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  -moz-box-sizing: border-box;
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   overflow: hidden;
 }
+
 #pac-input .pac-logo:after {
   content: "";
   padding: 1px 1px 1px 0;
@@ -837,9 +1264,11 @@ header nav ul li a i:hover {
   background-repeat: no-repeat;
   background-size: 120px 14px;
 }
+
 #pac-input .hdpi.pac-logo:after {
   background-image: url(https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white3_hdpi.png);
 }
+
 #pac-input .pac-item {
   cursor: default;
   padding: 0 4px;
@@ -851,15 +1280,19 @@ header nav ul li a i:hover {
   font-size: 11px;
   color: black !important;
 }
+
 #pac-input .pac-item:hover {
   background-color: lightgray;
 }
+
 #pac-input .pac-item-selected, #pac-input .pac-item-selected:hover {
   background-color: #ebf2fe;
 }
+
 #pac-input .pac-matched {
   font-weight: 700;
 }
+
 #pac-input .pac-item-query {
   font-size: 13px;
   padding-right: 3px;
@@ -867,6 +1300,7 @@ header nav ul li a i:hover {
   z-index: 20000;
   margin: 0;
 }
+
 #pac-input .pac-icon {
   display: none;
   width: 15px;
@@ -878,22 +1312,26 @@ header nav ul li a i:hover {
   background-image: url(https://maps.gstatic.com/mapfiles/api-3/images/autocomplete-icons.png);
   background-size: 34px;
 }
+
 #pac-input .pac-item-selected .pac-icon-search {
   background-position: -18px -1px;
 }
+
 #pac-input .pac-icon-marker {
   background-position: -1px -161px;
   display: none;
 }
+
 #pac-input .pac-item-selected .pac-icon-marker {
   background-position: -18px -161px;
 }
+
 #pac-input .pac-placeholder {
   color: gray;
 }
+
 #pac-input .pac-item span {
   color: #000 !important;
   margin: 0;
 }
-
 /*# sourceMappingURL=styles.css.map */
