@@ -22,7 +22,7 @@ To run OutPACK on your local machine...
     * Install requirements:
        * `pip3 install -r requirements.txt`
        
-    * Create a database
+    * Create a database & enter in secret key information
        * `createdb final`
 
     * Make migrations:
