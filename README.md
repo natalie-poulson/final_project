@@ -49,6 +49,8 @@ To run OutPACK on your local machine...
 
 * social_django
 
+* icalendar
+
 
 ## Users:
 Our user is someone who enjoys the outdoors, traveling, planning, keeping track of memories, & sharing and receiving ideas for their next adventure. 
