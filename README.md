@@ -51,6 +51,8 @@ To run OutPACK on your local machine...
 
 * icalendar
 
+* Pillow
+
 
 ## Users:
 Our user is someone who enjoys the outdoors, traveling, planning, keeping track of memories, & sharing and receiving ideas for their next adventure. 
