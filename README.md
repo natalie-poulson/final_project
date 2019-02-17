@@ -18,15 +18,14 @@ To run OutPACK on your local machine...
   
 
  2. Clone this repository, then:
- 
-     * Create a database
-         * `createdb final`
   
     * Install requirements:
        * `pip3 install -r requirements.txt`
+       
+    * Create a database
+       * `createdb final`
 
     * Make migrations:
-      * `python3 manage.py makemigrations`
       * `python3 manage.py migrate`
       * `python3 manage.py runserver`
 
