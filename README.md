@@ -8,12 +8,14 @@ OutPACK is an app that allows users to plan, log and share all of their outdoor 
 ## Getting Started:
 To run OutPACK on your local machine, clone the repository, then:
 
-* Install requirements:
+* Install Python:
   * `brew install python3`
-  * `pip3 install -r requirements.txt`
 
 * Install PostGIS (https://postgis.net/install/):
   * `brew install postgis`
+  
+ * Install requirements:
+   * `pip3 install -r requirements.txt`
 
 * Make migrations:
   * `python3 manage.py makemigrations`
